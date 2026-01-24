@@ -170,3 +170,30 @@ Presented as a “message” or “invite” rather than a generic form.
 3. Add projects and rarity structure
 4. Add project detail pages
 5. Apply subtle motion and polish last
+
+---
+
+## Project Rarity order distribution
+**LEGENDARY (Gold):**
+- DawsonDial
+- MERN Project Convergence
+- Book Reading App
+
+**EPIC (Purple):**
+
+- HairHub
+- Weather + Gemini
+- Fireworks Simulator
+
+**RARE (Blue):**
+- Science Platform (MQTT/WebSocket)
+- GreenTravel+
+- Virtual Store (Java)
+- Love Letter (Java)
+- AlcoPredictor (AI)
+- Task Management System (DB2)
+
+**COMMON (Green):**
+- Simon
+- Dicee
+- Hangman
