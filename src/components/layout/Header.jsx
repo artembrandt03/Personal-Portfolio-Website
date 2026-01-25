@@ -44,21 +44,13 @@ export default function Header() {
 
         <nav style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
           {NAV.map((x) => (
-            <button
-              key={x.id}
-              onClick={() => scrollToId(x.id)}
-              style={{
-                all: "unset",
-                cursor: "pointer",
-                color: "var(--muted)",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                fontSize: 12,
-                padding: "8px 6px",
-              }}
-            >
-              [ {x.label} ]
-            </button>
+          <button
+            key={x.id}
+            onClick={() => scrollToId(x.id)}
+            className="navBtn"
+          >
+            [ {x.label} ]
+          </button>
           ))}
         </nav>
       </div>

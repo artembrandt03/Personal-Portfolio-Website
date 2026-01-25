@@ -109,3 +109,50 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Terminal-style nav buttons */
+.navBtn {
+  all: unset;
+  cursor: pointer;
+
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+
+  padding: 8px 10px;
+  border-radius: 999px;
+
+  transition:
+    background-color 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
+
+  border: 1px solid transparent;
+}
+
+.navBtn:hover {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+  animation: navBlink 650ms steps(2, end) 1;
+}
+
+/* Optional: keep it highlighted if you add "active" later */
+.navBtnActive {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* “terminal blink” — short and punchy */
+@keyframes navBlink {
+  0% { opacity: 1; }
+  20% { opacity: 0.35; }
+  40% { opacity: 1; }
+  60% { opacity: 0.35; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
