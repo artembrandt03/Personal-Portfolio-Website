@@ -25,18 +25,8 @@ export default function Header() {
         borderBottom: "1px solid var(--line)",
       }}
     >
-      <div
-        className="container"
-        style={{
-          height: 64,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 18,
-          minWidth: 0, // IMPORTANT: lets the nav shrink instead of overflow
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "baseline", gap: 12, minWidth: 0 }}>
+      <div className="container headerBar">
+        <div className="headerBrand">
           <span style={{ letterSpacing: "0.08em", textTransform: "uppercase" }}>
             Artem Brandt
           </span>
@@ -45,17 +35,13 @@ export default function Header() {
           </span>
         </div>
 
-        <nav
-          style={{
-            display: "flex",
-            gap: 18,
-            flexWrap: "nowrap",     // no wrap
-            overflow: "hidden",     // no inner scrollbar
-            minWidth: 0,
-          }}
-        >
+        <nav className="headerNav">
           {NAV.map((x) => (
-            <button key={x.id} onClick={() => scrollToId(x.id)} className="navBtn">
+            <button
+              key={x.id}
+              onClick={() => scrollToId(x.id)}
+              className="navBtn"
+            >
               [ {x.label} ]
             </button>
           ))}

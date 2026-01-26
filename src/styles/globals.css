@@ -115,23 +115,15 @@ a:hover {
 .navBtn {
   all: unset;
   cursor: pointer;
-
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 12px;
+  font-size: 11px;          /* was 12 */
   flex: 0 0 auto;
-
-  padding: 8px 10px;
+  padding: 5px 7px;         /* slightly smaller */
   border-radius: 999px;
-
-  transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    border-color 120ms ease,
-    transform 120ms ease;
-
   border: 1px solid transparent;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, transform 120ms ease;
 }
 
 .navBtn:hover {
@@ -186,3 +178,44 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.02);
 }
+
+.headerBar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.headerBrand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  white-space: nowrap;
+  flex: 0 0 auto;           /* brand stays “its size” */
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;        /* IMPORTANT: never wrap */
+  justify-content: flex-end;
+  white-space: nowrap;      /* keeps buttons in one line */
+  overflow: hidden;         /* no scrollbar */
+  flex: 1;                  /* nav takes remaining space */
+  min-width: 0;             /* IMPORTANT for overflow/fit behavior */
+}
+
+/* @media (max-width: 900px) {
+  .headerBar {
+    height: auto;         
+    padding: 10px 0;
+    align-items: flex-start;
+  }
+
+  .headerNav {
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+} */
