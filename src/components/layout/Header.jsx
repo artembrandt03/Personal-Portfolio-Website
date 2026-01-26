@@ -1,9 +1,10 @@
 const NAV = [
-  { id: "home", label: "Start" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
+  { id: "start", label: "START" },
+  { id: "about", label: "CHARACTER" },
+  { id: "skills", label: "SKILLS" },
+  { id: "projects", label: "INVENTORY" },
+  { id: "hobbies", label: "SIDE QUESTS" },
+  { id: "contact", label: "CONTACT" },
 ];
 
 function scrollToId(id) {
@@ -31,9 +32,11 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: 18,
+          minWidth: 0, // IMPORTANT: lets the nav shrink instead of overflow
         }}
       >
-        <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 12, minWidth: 0 }}>
           <span style={{ letterSpacing: "0.08em", textTransform: "uppercase" }}>
             Artem Brandt
           </span>
@@ -42,15 +45,19 @@ export default function Header() {
           </span>
         </div>
 
-        <nav style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+        <nav
+          style={{
+            display: "flex",
+            gap: 18,
+            flexWrap: "nowrap",     // no wrap
+            overflow: "hidden",     // no inner scrollbar
+            minWidth: 0,
+          }}
+        >
           {NAV.map((x) => (
-          <button
-            key={x.id}
-            onClick={() => scrollToId(x.id)}
-            className="navBtn"
-          >
-            [ {x.label} ]
-          </button>
+            <button key={x.id} onClick={() => scrollToId(x.id)} className="navBtn">
+              [ {x.label} ]
+            </button>
           ))}
         </nav>
       </div>

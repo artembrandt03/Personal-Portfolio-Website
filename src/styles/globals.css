@@ -9,6 +9,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--mono);
+  overflow-x: hidden;
 }
 
 a {
@@ -119,6 +120,7 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 12px;
+  flex: 0 0 auto;
 
   padding: 8px 10px;
   border-radius: 999px;
@@ -155,4 +157,32 @@ a:hover {
   60% { opacity: 0.35; }
   80% { opacity: 1; }
   100% { opacity: 1; }
+}
+
+.cardTitle {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.muted {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
 }
