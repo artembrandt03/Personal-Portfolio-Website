@@ -197,3 +197,8 @@ Presented as a “message” or “invite” rather than a generic form.
 - Simon
 - Dicee
 - Hangman
+
+### Later additions
+- Found this for the background, should fit the asthetic so well!!!
+
+https://reactbits.dev/backgrounds/faulty-terminal

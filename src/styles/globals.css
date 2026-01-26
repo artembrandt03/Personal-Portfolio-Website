@@ -219,3 +219,15 @@ a:hover {
     justify-content: flex-start;
   }
 } */
+
+.bgLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none; /* so you can click buttons */
+}
+
+.appLayer {
+  position: relative;
+  z-index: 1;
+}
