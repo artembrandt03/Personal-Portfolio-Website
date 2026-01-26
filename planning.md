@@ -202,3 +202,9 @@ Presented as a “message” or “invite” rather than a generic form.
 - Found this for the background, should fit the asthetic so well!!!
 
 https://reactbits.dev/backgrounds/faulty-terminal
+
+It might be too green though, still thiking about it
+
+- Another option, fits the webiste's colors well:
+
+https://reactbits.dev/backgrounds/dither

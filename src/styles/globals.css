@@ -220,14 +220,14 @@ a:hover {
   }
 } */
 
-.bgLayer {
+/* .bgLayer {
   position: fixed;
   inset: 0;
   z-index: 0;
-  pointer-events: none; /* so you can click buttons */
+  pointer-events: none; 
 }
 
 .appLayer {
   position: relative;
   z-index: 1;
-}
+} */
