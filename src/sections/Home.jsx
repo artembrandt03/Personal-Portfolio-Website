@@ -24,11 +24,17 @@ export default function Home() {
 
           <p className="p">{profile.tagline}</p>
 
-          <div style={{ marginTop: 18 }} className="row">
-            <span className="kbd">scroll</span>
-            <span className="kbd">click header nav</span>
-            <span className="kbd">open projects</span>
+          <div style={{ marginTop: 18 }}>
+            <div className="cardTitle" style={{ marginBottom: 8 }}>
+              Languages (fluent)
+            </div>
+            <div className="row">
+              <span className="kbd">English</span>
+              <span className="kbd">French</span>
+              <span className="kbd">Ukranian</span>
+            </div>
           </div>
+
         </div>
 
         {/* RIGHT: GET IN TOUCH */}

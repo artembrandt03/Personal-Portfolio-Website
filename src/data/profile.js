@@ -1,17 +1,6 @@
 export const profile = {
   name: "Artem Brandt",
-  title: "Computer Science Student • Full-Stack Builder",
+  title: "Graduating Computer Science Student • Full-Stack Developer",
   tagline:
-    "A terminal-style portfolio: projects categorized by rarity, built for fast skimming and deep dives.",
-  stats: [
-    { k: "Role", v: "Full-Stack" },
-    { k: "Focus", v: "Shipping projects" },
-    { k: "Stack", v: "C#, Java, JS, Python" },
-  ],
-  links: {
-    github: "https://github.com/artembrandt03",
-    linkedin: "",
-    email: "artem.brandt03@gmail.com",
-    resume: "",
-  },
+    "Welcome! I build clean, practical software and learn by shipping real projects. Explore my background, skills, and hands-on work in this fun terminal-themed portfolio!",
 };
