@@ -1,6 +1,9 @@
 import dawsonDialPreview from "../assets/images/previews/Dawson-Dial.png";
 import convergencePreview from "../assets/images/previews/MERN-Convergence.png";
 import bookAppPreview from "../assets/images/previews/Book-App.png";
+import weatherPreview from "../assets/images/previews/Weather-API.png";
+import fireworksPreview from "../assets/images/previews/Fireworks.png";
+import metroPreview from "../assets/images/previews/Metro-Trip-Planner.png";
 
 
 export const projects = [
@@ -95,16 +98,19 @@ export const projects = [
     title: "HairHub — Hair Salon Web Platform",
     rarity: "EPIC",
     oneLiner:
-      "Flask full-stack salon system with roles, appointments, admin dashboard, PostgreSQL, and Blueprints.",
+      "Full-stack salon management platform with role-based accounts, appointment booking, profile management, and an admin dashboard.",
     stack: ["Python", "Flask", "WTForms", "PostgreSQL", "Docker"],
-    links: { github: "", live: "", video: "" },
-    quest: {
-      problem: "Support clients, professionals, and admins with booking and management flows.",
-      solution:
-        "Blueprint-based backend with RBAC, database workflows, and clean separation of concerns.",
-      highlights: ["RBAC", "Blueprint architecture", "DB-driven workflows"],
-      improvements: ["Public deployment", "More automated testing"],
-    },
+    meta: "Web Application",
+    overview: [
+      "HairHub is a full-stack Flask web application that simulates a real-world hair salon management system for clients, professionals, and administrators.",
+      "Users can register, manage profiles (including avatars), create and manage appointments, and access protected admin tools like user management, appointment oversight, and report workflows."
+    ],
+    media: null,
+    links: {
+      github: "https://github.com/artembrandt03/HairHub-Barbershop-Fullstack-Project",
+      live: "",
+      video: ""
+    }
   },
 
   {
@@ -112,16 +118,22 @@ export const projects = [
     title: "Weather Forecast App — OpenWeather + Gemini",
     rarity: "EPIC",
     oneLiner:
-      "Vite + vanilla JS frontend with Express proxy backend, caching, geolocation, rate-limited Gemini summaries.",
-    stack: ["Vite", "JavaScript", "Node", "Express", "OpenWeather", "Gemini"],
-    links: { github: "", live: "https://weather-api-project-ptff.onrender.com/", video: "" },
-    quest: {
-      problem: "Build a clean weather app with secure key handling and AI summaries.",
-      solution:
-        "Server-side proxy keeps keys private; client provides fast UX with caching and location support.",
-      highlights: ["API keys never on client", "Rate limiting", "Local storage caching"],
-      improvements: ["Move to fast host", "Mobile optimization"],
+      "Full-stack weather app with city search, geolocation, caching, and AI-generated summaries—built with a secure server proxy for API keys.",
+    stack: ["Vite", "JavaScript", "Node.js", "Express", "OpenWeather", "Gemini"],
+    meta: "Web Application",
+    overview: [
+      "This weather forecast web app lets users search cities, use geolocation, and view detailed forecast data with a smooth, polished UI and smart caching for faster reloads.",
+      "It also generates AI summaries and suggestions using Google Gemini, while keeping all API keys private through an Express backend proxy with rate limiting and usage protections."
+    ],
+    media: {
+      screenshot: weatherPreview,
+      alt: "Weather Forecast App preview"
     },
+    links: {
+      github: "https://github.com/artembrandt03/Weather-API-Project",
+      live: "https://weather-api-project-ptff.onrender.com/",
+      video: "https://www.youtube.com/watch?v=dwLjwfxsJsA"
+    }
   },
 
   {
@@ -129,16 +141,22 @@ export const projects = [
     title: "Fireworks Simulator — C# MonoGame",
     rarity: "EPIC",
     oneLiner:
-      "Real-time simulation with patterns, input controls, audio, cleanup, benchmarking, and tests.",
+      "Real-time fireworks simulation featuring particle physics, multiple explosion patterns, sound, interactive controls, and a scripted show mode.",
     stack: ["C#", "MonoGame", "OOP", "Testing"],
-    links: { github: "", live: "", video: "https://www.youtube.com/watch?v=2KNP2KN5YVg" },
-    quest: {
-      problem: "Simulate fireworks physics and patterns in a real-time loop.",
-      solution:
-        "Modular multi-project solution with clean separation (rendering/physics/shapes), plus testing/benchmarking.",
-      highlights: ["Pattern system", "Performance benchmarking", "Unit tests"],
-      improvements: ["More pattern types", "Preset show editor"],
+    meta: "Desktop Application",
+    overview: [
+      "Fireworks Simulator is a real-time MonoGame simulation where users can launch fireworks manually, trigger different explosion patterns, and run scripted multi-wave shows with sound and on-screen controls.",
+      "The project is built as a multi-project C# solution with clean separation between rendering, physics logic, reusable shape utilities, and test/benchmark projects for reliability and performance."
+    ],
+    media: {
+      screenshot: fireworksPreview,
+      alt: "Fireworks Simulator preview"
     },
+    links: {
+      github: "https://github.com/artembrandt03/Fireworks-Simulation-Project",
+      live: "",
+      video: "https://www.youtube.com/watch?v=2KNP2KN5YVg"
+    }
   },
 
   {
@@ -163,26 +181,30 @@ export const projects = [
     title: "Metro Trip Planner",
     rarity: "EPIC",
     oneLiner:
-      "Full-stack STM metro trip planner with Leaflet map, route validation, and live Wikipedia station summaries.",
-    stack: ["React", "Vite", "Node.js", "Express", "Leaflet", "STM Open Data", "Wikipedia API"],
+      "Full-stack STM metro trip planner that validates routes on the same line, visualizes them on a map, and fetches station summaries from Wikipedia.",
+    stack: [
+      "React",
+      "Vite",
+      "Node.js",
+      "Express",
+      "Leaflet",
+      "STM Open Data",
+      "Wikipedia API"
+    ],
+    meta: "Web Application",
+    overview: [
+      "Metro Trip Planner is a full-stack web app that helps users plan trips between STM metro stations in Montreal by selecting a start and end station and visualizing the route on an interactive map.",
+      "It uses official STM open data for station and line accuracy, validates trips to prevent invalid cross-line routes, and enriches stations with real-time Wikipedia summaries directly in map popups."
+    ],
+    media: {
+      screenshot: metroPreview,
+      alt: "Metro Trip Planner preview"
+    },
     links: {
       github: "https://github.com/artembrandt03/Metro-Trip-Planner",
       live: "",
-      video: "",
-    },
-    quest: {
-      problem:
-        "Help users plan valid STM metro trips between Montreal stations and visualize the route clearly.",
-      solution:
-        "React UI + Express backend using STM GeoJSON for coordinates/lines and Wikipedia API for station info in map popups.",
-      highlights: [
-        "Line-aware trip validation (prevents cross-line invalid trips)",
-        "Interactive Leaflet map with clickable stations",
-        "Wikipedia summaries per station (REST API)",
-        "Uses official STM open data (GeoJSON)",
-      ],
-      improvements: ["Add transfer support (multi-line trips)", "Better mobile layout"],
-    },
+      video: ""
+    }
   },
 
   { id: "greentravel", title: "GreenTravel+ — Hackathon Full-Stack", rarity: "RARE", oneLiner: "Hackathon app for eco-friendly travel decisions using AI and multiple APIs.", stack: ["React", "Flask", "MongoDB", "Gemini"], links: { github: "", live: "", video: "" }, quest: { problem: "Encourage greener travel choices.", solution: "Combine flight data + emissions + AI insights.", highlights: ["Multi-API integration"], improvements: ["Revive deployment"] } },
