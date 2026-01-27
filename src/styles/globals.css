@@ -316,3 +316,57 @@ a:hover {
   filter: invert(1);
   opacity: 0.9;
 }
+
+/* Projects filter row */
+.filterRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Rarity filter buttons */
+.rarityFilterBtn {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--fg);
+
+  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease,
+    opacity 120ms ease;
+}
+
+.rarityFilterBtn:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.rarityFilterBtn:active {
+  transform: translateY(0px);
+  opacity: 0.9;
+}
+
+/* Colored rarity backgrounds (text should be black) */
+.rarityFilterBtn[data-rarity="LEGENDARY"] { background: #f5c542; color: #000; }
+.rarityFilterBtn[data-rarity="EPIC"]      { background: #a78bfa; color: #000; }
+.rarityFilterBtn[data-rarity="RARE"]      { background: #60a5fa; color: #000; }
+.rarityFilterBtn[data-rarity="COMMON"]    { background: #34d399; color: #000; }
+
+/* Active button a bit more “selected” */
+.rarityFilterBtn[aria-pressed="true"] {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) inset;
+}
+
+/* ALL button stays neutral */
+.rarityFilterBtnAll {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--fg);
+}
