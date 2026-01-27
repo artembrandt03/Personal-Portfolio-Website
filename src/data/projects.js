@@ -4,6 +4,12 @@ import bookAppPreview from "../assets/images/previews/Book-App.png";
 import weatherPreview from "../assets/images/previews/Weather-API.png";
 import fireworksPreview from "../assets/images/previews/Fireworks.png";
 import metroPreview from "../assets/images/previews/Metro-Trip-Planner.png";
+import sciencePreview1 from "../assets/images/previews/MQTT-1.png";
+import sciencePreview2 from "../assets/images/previews/MQTT-2.png";
+import greenTravelPreview from "../assets/images/previews/GreenTravelPlus.png";
+import virtualStorePreview from "../assets/images/previews/VirtualStore.png";
+import loveLetterPreview from "../assets/images/previews/LoveLetter.png";
+import jdbcPreview from "../assets/images/previews/JDBC.png";
 
 
 export const projects = [
@@ -161,19 +167,25 @@ export const projects = [
 
   {
     id: "science",
-    title: "Science Platform — MQTT + WebSocket",
+    title: "Science Platform — MQTT & WebSocket",
     rarity: "RARE",
     oneLiner:
-      "MQTT sensor pipeline + async WebSocket chat with CLI and browser clients.",
+      "Python-based monitoring simulation: MQTT sensor pipeline + async WebSocket chat with CLI and browser clients.",
     stack: ["Python", "MQTT", "WebSockets", "asyncio", "JavaScript"],
-    links: { github: "", live: "", video: "" },
-    quest: {
-      problem: "Simulate forest monitoring data and real-time scientist communication.",
-      solution:
-        "Sensors publish JSON and images via MQTT; chat runs over websockets with browser + CLI clients.",
-      highlights: ["Protocol integration", "Async server", "Topic-based filtering"],
-      improvements: ["Persist chat history", "Better dashboard UI"],
+    meta: "Networking Mini Project",
+    overview: [
+      "Science Platform is a Data Communications mini project simulating forest monitoring where Raspberry Pi-style sensors publish environmental data and images over MQTT.",
+      "It also includes a real-time WebSocket chat system (browser + CLI clients) so “scientists” can communicate live while observing incoming sensor messages."
+    ],
+    media: {
+      screenshots: [sciencePreview1, sciencePreview2],
+      alt: "Science Platform screenshots"
     },
+    links: {
+      github: "https://github.com/artembrandt03/MQTT-And-WebSocketChat",
+      live: "",
+      video: ""
+    }
   },
 
   {
@@ -207,19 +219,116 @@ export const projects = [
     }
   },
 
-  { id: "greentravel", title: "GreenTravel+ — Hackathon Full-Stack", rarity: "RARE", oneLiner: "Hackathon app for eco-friendly travel decisions using AI and multiple APIs.", stack: ["React", "Flask", "MongoDB", "Gemini"], links: { github: "", live: "", video: "" }, quest: { problem: "Encourage greener travel choices.", solution: "Combine flight data + emissions + AI insights.", highlights: ["Multi-API integration"], improvements: ["Revive deployment"] } },
+  {
+    id: "greentravel",
+    title: "GreenTravel+ — Hackathon Full-Stack",
+    rarity: "RARE",
+    oneLiner:
+      "Hackathon project for eco-friendly travel decisions: flight options optimized for both price and carbon emissions, plus AI insights.",
+    stack: ["React", "Vite", "Flask", "MongoDB", "Gemini"],
+    meta: "Hackathon Web App",
+    overview: [
+      "GreenTravel+ was built during JACHacks 2025 to encourage eco-friendly travel decisions by ranking flight options using both cost and carbon emissions.",
+      "The app integrates multiple APIs (including Google Gemini for contextual suggestions) and uses a clean separation between a React frontend and Flask backend with MongoDB reference data."
+    ],
+    media: {
+      screenshot: greenTravelPreview,
+      alt: "GreenTravel+ preview"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/GreenTravelPlus",
+      live: "",
+      video: "https://www.youtube.com/watch?v=D1hUhAS9oo0",
+      devpost: "https://devpost.com/software/greentravel"
+    }
+  },
 
-  { id: "virtualstore", title: "Virtual Store — Java", rarity: "RARE", oneLiner: "Layered console store with cart, coupons, points, filtering, CSV persistence, and JUnit tests.", stack: ["Java", "Maven", "JUnit"], links: { github: "", live: "", video: "" }, quest: { problem: "Build a complete store workflow in a console app.", solution: "Layered design with persistence and tests.", highlights: ["48 tests passing"], improvements: ["Add DB + UI"] } },
+  {
+    id: "virtualstore",
+    title: "Virtual Store Application — Java",
+    rarity: "RARE",
+    oneLiner:
+      "Console store with cart, coupons, loyalty points, filtering/sorting, CSV persistence, and full JUnit coverage (48 tests).",
+    stack: ["Java", "Maven", "JUnit", "CSV"],
+    meta: "Console Application",
+    overview: [
+      "A team-built Java console shopping system where guests and registered users can browse products, manage a cart, apply coupons, and complete purchases with loyalty points.",
+      "The project emphasizes layered architecture (business/data/display), file-based persistence via CSV, and strong reliability through a fully passing JUnit test suite."
+    ],
+    media: {
+      screenshot: virtualStorePreview,
+      alt: "Virtual Store preview"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/VirtualStore-Application-Project--Java-3",
+      live: "",
+      video: ""
+    }
+  },
 
-  { id: "loveletter", title: "Love Letter — Java Card Game", rarity: "RARE", oneLiner: "OOP card game with turn flow, validation, and reusable classes.", stack: ["Java"], links: { github: "", live: "", video: "" }, quest: { problem: "Implement a full game loop with rules.", solution: "Modular classes for deck/player/cards.", highlights: ["Validation + game flow"], improvements: ["Better UI"] } },
+  {
+    id: "loveletter",
+    title: "Love Letter — Java Card Game",
+    rarity: "RARE",
+    oneLiner:
+      "Turn-based console card game built with clean OOP classes, validation, and reusable game mechanics.",
+    stack: ["Java"],
+    meta: "Console Game",
+    overview: [
+      "A Java implementation of the Love Letter card game developed for Programming 2, focused on object-oriented design and clean separation of responsibilities.",
+      "Includes turn flow, input validation, deck/hand/discard management, and modular helper methods to keep gameplay logic readable and maintainable."
+    ],
+    media: {
+      screenshot: loveLetterPreview,
+      alt: "Love Letter preview"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/LoveLetter-CardGame---Java-2-project",
+      live: "",
+      video: ""
+    }
+  },
 
-  { id: "alcopredictor", title: "AlcoPredictor — ML Project", rarity: "RARE", oneLiner: "ML model predicting early signs of alcohol consumption with ethics-first approach.", stack: ["Python", "Scikit-learn", "TensorFlow", "Streamlit"], links: { github: "", live: "", video: "" }, quest: { problem: "Early intervention via predictions.", solution: "Trained/evaluated models with ethical considerations.", highlights: ["Decision Tree + Random Forest"], improvements: ["Deployment + metrics page"] } },
+  {
+    id: "alcopredictor",
+    title: "AlcoPredictor — ML Project",
+    rarity: "RARE",
+    oneLiner:
+      "ML project predicting early signs of student alcohol consumption with an ethics-first approach (Decision Tree + Random Forest).",
+    stack: ["Python", "Scikit-learn", "TensorFlow", "Streamlit"],
+    meta: "Machine Learning Project",
+    overview: [
+      "AlcoPredictor was developed during the AI LaunchLab Summer 2024 cohort (with Dawson AI) to explore early-intervention style predictions using anonymized student data.",
+      "The project evaluated classic ML models (Decision Tree and Random Forest), prioritized ethics and privacy, and used tools like Google Colab and Streamlit for development and presentation."
+    ],
+    media: null,
+    links: {
+      github: "https://github.com/artembrandt03/AlcoPredictor-Ai-Model",
+      live: "",
+      video: ""
+    }
+  },
 
-  { id: "taskmgmt", title: "Task Management System — DB Project", rarity: "RARE", oneLiner: "JIRA-inspired system using relational DB, PL/SQL, triggers, and JDBC.", stack: ["SQL", "PL/SQL", "JDBC", "Java"], links: { github: "", live: "", video: "" }, quest: { problem: "Manage teams/sprints/tickets with DB integrity.", solution: "Normalized DB with triggers + Java UI.", highlights: ["DB-heavy architecture"], improvements: ["Finish remaining flows"] } },
-
-  { id: "simon", title: "Simon Game — Mini Web", rarity: "COMMON", oneLiner: "Classic Simon memory game with jQuery.", stack: ["HTML", "CSS", "JavaScript", "jQuery"], links: { github: "", live: "https://artembrandt03.github.io/Simon-Game/", video: "" }, quest: { problem: "Practice DOM + timing.", solution: "Sequence playback + input locking.", highlights: ["Timing control"], improvements: ["Better animations"] } },
-
-  { id: "dicee", title: "Dicee — Mini Web", rarity: "COMMON", oneLiner: "Two-player dice roll with DOM updates.", stack: ["HTML", "CSS", "JavaScript"], links: { github: "", live: "https://artembrandt03.github.io/Dicee-Game/", video: "" }, quest: { problem: "Practice random + DOM.", solution: "Roll dice and show winner.", highlights: ["Simple and clean"], improvements: ["Add stats"] } },
-
-  { id: "hangman", title: "Hangman — Java", rarity: "COMMON", oneLiner: "First Java project: console hangman.", stack: ["Java"], links: { github: "", live: "", video: "" }, quest: { problem: "Practice fundamentals.", solution: "Loops, arrays, input validation.", highlights: ["Foundational project"], improvements: ["OOP refactor"] } },
+  {
+    id: "taskmgmt",
+    title: "Task Management System — DB Project",
+    rarity: "RARE",
+    oneLiner:
+      "JIRA-inspired team/sprint/ticket system using a relational DB with PL/SQL logic and a Java UI connected via JDBC.",
+    stack: ["SQL", "PL/SQL", "JDBC", "Java"],
+    meta: "Database Application",
+    overview: [
+      "A Database 2 course project inspired by JIRA that supports teams, sprints, and ticket workflows with role-based login for admins and employees.",
+      "Built around a relational database with PL/SQL procedures/triggers for integrity and a Java application using JDBC for data manipulation and status tracking."
+    ],
+    media: {
+      screenshot: jdbcPreview,
+      alt: "Task Management System preview"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/Task-Management-App-JDBC?tab=readme-ov-file",
+      live: "",
+      video: ""
+    }
+  }
 ];
