@@ -6,7 +6,6 @@ import About from "./sections/About.jsx";
 import Skills from "./sections/Skills.jsx";
 import Projects from "./sections/Projects.jsx";
 import Hobbies from "./sections/Hobbies.jsx";
-import Contact from "./sections/Contact.jsx";
 import ProjectDetail from "./sections/ProjectDetail.jsx";
 
 export default function App() {
@@ -38,11 +37,6 @@ export default function App() {
       <section id="hobbies" className="section">
         <Hobbies />
       </section>
-
-      {/* CONTACT
-      <section id="contact" className="section">
-        <Contact />
-      </section> */}
 
       <ProjectDetail
         project={openProject}

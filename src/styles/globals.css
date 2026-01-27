@@ -282,3 +282,21 @@ a:hover {
   filter: invert(0);
   opacity: 1;
 }
+
+/* Animated section title */
+.swapType {
+  color: inherit;
+}
+
+.swapCursor {
+  display: inline-block;
+  width: 0.7ch;
+  margin-left: 2px;
+  animation: cursorBlink 900ms steps(2, end) infinite;
+}
+
+@keyframes cursorBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}

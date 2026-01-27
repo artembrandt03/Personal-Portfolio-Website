@@ -1,9 +1,14 @@
 import Highlight from "../components/ui/Highlight.jsx";
+import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
 
 export default function About() {
   return (
     <div className="container">
-      <div className="sectionTitle">Character Sheet</div>
+      <div className="sectionTitle">
+        <Highlight>
+          [ <SwapTypeTitle primary="About Me" secondary="Character Sheet" /> ]
+        </Highlight>
+      </div>
       <div className="card">
         <p className="p">
           <Highlight>Summary</Highlight> — Computer Science student who learns by shipping real projects.

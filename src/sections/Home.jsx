@@ -6,13 +6,20 @@ import githubIcon from "../assets/images/github.png";
 import gitlabIcon from "../assets/images/gitlab.png";
 import linkedinIcon from "../assets/images/linkedin.png";
 
+import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
+
 export default function Home() {
   return (
     <div className="container">
       <div className="grid2">
         {/* LEFT: ENTRY */}
         <div>
-          <div className="sectionTitle">[ Entry ]</div>
+          <div className="sectionTitle">
+            <SwapTypeTitle
+              primary="Overview"
+              secondary="Entry"
+            />
+          </div>
           <h1 className="h1">{profile.name}</h1>
 
           <div style={{ color: "var(--muted)", marginBottom: 14 }}>

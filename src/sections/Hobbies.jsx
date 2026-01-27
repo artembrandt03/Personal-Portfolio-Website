@@ -1,9 +1,14 @@
 import Highlight from "../components/ui/Highlight.jsx";
+import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
 
 export default function Hobbies() {
   return (
     <div className="container">
-      <div className="sectionTitle">SIDE QUESTS</div>
+      <div className="sectionTitle">
+        <Highlight>
+          [ <SwapTypeTitle primary="Hobbies" secondary="Side Quests" /> ]
+        </Highlight>
+      </div>
 
       <div className="card">
         <div className="cardTitle">Off-Duty</div>
