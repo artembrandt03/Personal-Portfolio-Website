@@ -1,4 +1,7 @@
 import dawsonDialPreview from "../assets/images/previews/Dawson-Dial.png";
+import convergencePreview from "../assets/images/previews/MERN-Convergence.png";
+import bookAppPreview from "../assets/images/previews/Book-App.png";
+
 
 export const projects = [
   {
@@ -29,39 +32,63 @@ export const projects = [
     title: "Project Convergence — MERN Data Visualization",
     rarity: "LEGENDARY",
     oneLiner:
-      "React + Node/Express + MongoDB app exploring urbanization vs internet usage with maps, charts, tests, and CI/CD.",
-    stack: ["React", "Vite", "Chart.js", "Leaflet", "Node", "Express", "MongoDB"],
+      "Full-stack data visualization platform exploring the relationship between urbanization and internet connectivity worldwide from 2000–2024.",
+    stack: [
+      "React",
+      "Vite",
+      "Chart.js",
+      "Leaflet",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    meta: "Web Application",
+    overview: [
+      "Project Convergence is a full-stack MERN data visualization platform that explores how urban population growth and internet connectivity evolved together worldwide between 2000 and 2024.",
+      "Users can explore global and country-level trends through interactive charts and maps that update dynamically by year. The project emphasizes performance optimization, scalability, and clear data storytelling across client, server, and database layers."
+    ],
+    media: {
+      screenshot: convergencePreview,
+      alt: "Project Convergence preview"
+    },
     links: {
-      github: "",
+      github: "https://github.com/artembrandt03/MERN-WebProject",
       live: "https://2025-520-project-brandt-masumi-jiang.justlearning.net/",
-      video: "",
-    },
-    quest: {
-      problem:
-        "Show global + country-level trends (2000–2024) with strong performance and clear data storytelling.",
-      solution:
-        "Interactive charts/maps with lazy loading + optimized delivery; tested REST API; CI/CD to deploy.",
-      highlights: ["Lazy-loaded heavy components", "API tests", "CI/CD pipeline"],
-      improvements: ["More narrative insights per country", "More mobile polish"],
-    },
+      video: ""
+    }
   },
+
 
   {
     id: "bookapp",
     title: "Book Reading App — Android (Kotlin)",
     rarity: "LEGENDARY",
     oneLiner:
-      "Offline reading app with Room, Compose, MVVM, TTS, full-text search, and localization.",
-    stack: ["Kotlin", "Jetpack Compose", "Room", "MVVM", "Hilt", "Coroutines"],
-    links: { github: "", live: "", video: "https://www.youtube.com/watch?v=dwgH2oGBw1E" },
-    quest: {
-      problem: "Deliver a complete mobile reading experience with offline support.",
-      solution:
-        "Download + parse HTML books into chapters, store locally, track progress, search, and narrate with TTS.",
-      highlights: ["Room persistence", "TTS", "Localization (EN/FR)"],
-      improvements: ["Better typography controls", "More book source integrations"],
+      "Offline-first Android reading app supporting book downloads, full-text search, text-to-speech narration, and reading progress tracking.",
+    stack: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Room",
+      "MVVM",
+      "Hilt",
+      "Coroutines"
+    ],
+    meta: "Mobile Application",
+    overview: [
+      "The Book Reading App delivers a complete mobile reading experience that allows users to download, store, and read HTML-formatted books directly on their device.",
+      "It supports offline reading, full-text search, text-to-speech narration, localization, and automatic progress tracking. The app is designed with modern Android practices and a clean MVVM architecture."
+    ],
+    media: {
+      screenshot: bookAppPreview,
+      alt: "Book Reading App preview"
     },
+    links: {
+      github: "https://github.com/artembrandt03/BookReadingApp-Android-Project",
+      live: "",
+      video: "https://www.youtube.com/watch?v=dwgH2oGBw1E"
+    }
   },
+
 
   {
     id: "hairhub",
