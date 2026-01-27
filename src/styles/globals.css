@@ -1,3 +1,4 @@
+/* src/global.css */
 * {
   box-sizing: border-box;
 }
@@ -63,10 +64,34 @@ a:hover {
   flex-wrap: wrap;
 }
 
+.grid2 {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+}
+
+@media (max-width: 880px) {
+  :root {
+    --padX: 18px;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
+}
+
+.cardTitle {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
 }
 
 .btn {
@@ -80,6 +105,7 @@ a:hover {
   letter-spacing: 0.08em;
   font-size: 12px;
   color: var(--fg);
+  text-decoration: none;
 }
 
 .btn:hover {
@@ -96,19 +122,33 @@ a:hover {
   color: var(--muted);
 }
 
-.grid2 {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 24px;
+/* Header layout */
+.headerBar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-@media (max-width: 880px) {
-  :root {
-    --padX: 18px;
-  }
-  .grid2 {
-    grid-template-columns: 1fr;
-  }
+.headerBrand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Terminal-style nav buttons */
@@ -118,12 +158,13 @@ a:hover {
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 11px;          /* was 12 */
+  font-size: 11px;
   flex: 0 0 auto;
-  padding: 5px 7px;         /* slightly smaller */
+  padding: 5px 7px;
   border-radius: 999px;
   border: 1px solid transparent;
-  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease,
+    transform 120ms ease;
 }
 
 .navBtn:hover {
@@ -134,36 +175,34 @@ a:hover {
   animation: navBlink 650ms steps(2, end) 1;
 }
 
-/* Optional: keep it highlighted if you add "active" later */
 .navBtnActive {
   background: var(--fg);
   color: var(--bg);
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-/* “terminal blink” — short and punchy */
 @keyframes navBlink {
-  0% { opacity: 1; }
-  20% { opacity: 0.35; }
-  40% { opacity: 1; }
-  60% { opacity: 0.35; }
-  80% { opacity: 1; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.35;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.cardTitle {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.muted {
-  color: var(--muted);
-  line-height: 1.55;
-}
-
+/* Chips (used in Side Quests) */
 .chipRow {
   display: flex;
   flex-wrap: wrap;
@@ -179,55 +218,67 @@ a:hover {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.headerBar {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.muted {
+  color: var(--muted);
+  line-height: 1.55;
 }
 
-.headerBrand {
+/* Icon buttons (Get in touch) */
+.iconBtnRow {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  white-space: nowrap;
-  flex: 0 0 auto;           /* brand stays “its size” */
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.headerNav {
-  display: flex;
+.iconBtn {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: nowrap;        /* IMPORTANT: never wrap */
-  justify-content: flex-end;
-  white-space: nowrap;      /* keeps buttons in one line */
-  overflow: hidden;         /* no scrollbar */
-  flex: 1;                  /* nav takes remaining space */
-  min-width: 0;             /* IMPORTANT for overflow/fit behavior */
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 12px;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+
+  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease,
+    opacity 120ms ease;
 }
 
-/* @media (max-width: 900px) {
-  .headerBar {
-    height: auto;         
-    padding: 10px 0;
-    align-items: flex-start;
-  }
-
-  .headerNav {
-    max-width: 100%;
-    justify-content: flex-start;
-  }
-} */
-
-/* .bgLayer {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none; 
+.iconBtn:hover {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+  animation: navBlink 650ms steps(2, end) 1;
+  text-decoration: none;
 }
 
-.appLayer {
-  position: relative;
-  z-index: 1;
-} */
+.iconBtn:active {
+  transform: translateY(0px);
+  opacity: 0.9;
+}
+
+.iconBtnIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+
+  /* makes black icons visible on dark bg */
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+/* keep icons visible when hover background becomes white */
+.iconBtn:hover .iconBtnIcon {
+  filter: invert(0);
+  opacity: 1;
+}
