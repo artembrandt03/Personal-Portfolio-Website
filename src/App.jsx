@@ -7,6 +7,7 @@ import Skills from "./sections/Skills.jsx";
 import Projects from "./sections/Projects.jsx";
 import Hobbies from "./sections/Hobbies.jsx";
 import ProjectDetail from "./sections/ProjectDetail.jsx";
+import GitHubChart from "./components/ui/GitHubChart.jsx";
 
 export default function App() {
   const [openProject, setOpenProject] = useState(null);
@@ -16,6 +17,12 @@ export default function App() {
       {/* ENTRY */}
       <section id="start" className="section">
         <Home />
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <GitHubChart />
+        </div>
       </section>
 
       {/* CHARACTER SHEET */}
