@@ -1,12 +1,9 @@
-// src/sections/ProjectDetail.jsx
 import Divider from "../components/ui/Divider.jsx";
-import Highlight from "../components/ui/Highlight.jsx";
 
 export default function ProjectDetail({ project, onClose }) {
   if (!project) return null;
 
-  const { links, quest } = project;
-  const hasNewLayout = Array.isArray(project.overview) && project.overview.length > 0;
+  const { title, overview, media, stack, links } = project;
 
   return (
     <div
@@ -25,125 +22,111 @@ export default function ProjectDetail({ project, onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          width: "min(860px, 100%)",
+          width: "min(900px, 100%)",
           maxHeight: "85vh",
-          overflow: "auto",
+          overflowY: "auto",
           border: "1px solid var(--line)",
           borderRadius: "var(--radius)",
           background: "rgba(0,0,0,0.92)",
-          padding: 18,
+          padding: 20,
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-          <div style={{ fontSize: 16 }}>{project.title}</div>
+          <div style={{ fontSize: 18 }}>{title}</div>
           <button
-            className="btn"
             onClick={onClose}
-            style={{ background: "var(--fg)", color: "var(--bg)" }}
+            style={{
+              border: "1px solid var(--line)",
+              background: "var(--bg)",
+              color: "var(--text)",
+              borderRadius: 999,
+              padding: "6px 12px",
+              cursor: "pointer",
+              fontSize: 12,
+            }}
           >
-            [ Close ]
+            [ CLOSE ]
           </button>
         </div>
 
         <Divider />
 
-        {hasNewLayout ? (
+        {(links?.github || links?.video || links?.live) && (
           <>
-            <div className="sectionTitle">Overview</div>
-
-            {project.overview.map((para, i) => (
-              <p key={i} className="p" style={{ marginBottom: 12 }}>
-                {para}
-              </p>
-            ))}
-
-            {project.media?.screenshot ? (
-              <>
-                <Divider soft />
-                <div className="sectionTitle">Screenshot</div>
-                <img
-                  src={project.media.screenshot}
-                  alt={project.media.alt || project.title}
-                  style={{
-                    width: "100%",
-                    borderRadius: 12,
-                    border: "1px solid var(--line)",
-                  }}
-                />
-              </>
-            ) : null}
-
-            <Divider soft />
-
-            <div className="sectionTitle">Links</div>
-            <div className="row">
-              {links?.github ? (
+            <div className="row" style={{ gap: 10, flexWrap: "wrap" }}>
+              {links.github && (
                 <a className="btn" href={links.github} target="_blank" rel="noreferrer">
                   [ GitHub ]
                 </a>
-              ) : null}
-              {links?.video ? (
+              )}
+              {links.video && (
                 <a className="btn" href={links.video} target="_blank" rel="noreferrer">
                   [ Video ]
                 </a>
-              ) : null}
-              {links?.live ? (
+              )}
+              {links.live && (
                 <a className="btn" href={links.live} target="_blank" rel="noreferrer">
                   [ Live ]
                 </a>
-              ) : null}
+              )}
+            </div>
+
+            <Divider soft />
+          </>
+        )}
+
+        <div className="sectionTitle">Overview</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {(overview || []).map((p, i) => (
+            <p key={i} className="p" style={{ color: "var(--muted)", lineHeight: 1.7 }}>
+              {p}
+            </p>
+          ))}
+        </div>
+
+        {media?.screenshot && (
+          <>
+            <Divider soft />
+
+            <div className="sectionTitle">Screenshot</div>
+            <div
+              style={{
+                border: "1px solid var(--line)",
+                borderRadius: "var(--radius)",
+                overflow: "hidden",
+                marginTop: 8,
+              }}
+            >
+              <img
+                src={media.screenshot}
+                alt={media.alt || ""}
+                style={{ width: "100%", display: "block" }}
+              />
             </div>
           </>
-        ) : (
+        )}
+
+        {stack?.length > 0 && (
           <>
-            <div className="p">
-              <Highlight>Problem</Highlight> — {quest?.problem}
-            </div>
-
-            <div style={{ height: 12 }} />
-
-            <div className="p">
-              <Highlight>Solution</Highlight> — {quest?.solution}
-            </div>
-
             <Divider soft />
 
-            <div className="sectionTitle">Highlights</div>
-            <ul style={{ margin: 0, paddingLeft: 18, color: "var(--muted)", lineHeight: 1.8 }}>
-              {(quest?.highlights || []).map((x) => (
-                <li key={x}>{x}</li>
+            <div className="sectionTitle">Tech Stack</div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
+              {stack.map((t) => (
+                <span
+                  key={t}
+                  style={{
+                    border: "1px solid var(--line)",
+                    borderRadius: 999,
+                    padding: "6px 10px",
+                    fontSize: 12,
+                    color: "var(--muted)",
+                  }}
+                >
+                  {t}
+                </span>
               ))}
-            </ul>
-
-            <Divider soft />
-
-            <div className="sectionTitle">Links</div>
-            <div className="row">
-              {links?.github ? (
-                <a className="btn" href={links.github} target="_blank" rel="noreferrer">
-                  [ GitHub ]
-                </a>
-              ) : null}
-              {links?.live ? (
-                <a className="btn" href={links.live} target="_blank" rel="noreferrer">
-                  [ Live ]
-                </a>
-              ) : null}
-              {links?.video ? (
-                <a className="btn" href={links.video} target="_blank" rel="noreferrer">
-                  [ Video ]
-                </a>
-              ) : null}
             </div>
-
-            <Divider soft />
-
-            <div className="sectionTitle">Future Improvements</div>
-            <ul style={{ margin: 0, paddingLeft: 18, color: "var(--muted)", lineHeight: 1.8 }}>
-              {(quest?.improvements || []).map((x) => (
-                <li key={x}>{x}</li>
-              ))}
-            </ul>
           </>
         )}
       </div>
