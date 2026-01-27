@@ -300,3 +300,19 @@ a:hover {
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+.miniHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.miniIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+  filter: invert(1);
+  opacity: 0.9;
+}
