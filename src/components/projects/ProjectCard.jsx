@@ -15,7 +15,7 @@ export default function ProjectCard({ project, onOpen }) {
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
           <Tag rarity={project.rarity} />
           <span style={{ color: "var(--faint)", fontSize: 12 }}>
-            {project.stack.slice(0, 3).join(" • ")}
+            {project.meta ?? ""}
           </span>
         </div>
 

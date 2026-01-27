@@ -1,28 +1,26 @@
+import dawsonDialPreview from "../assets/images/previews/Dawson-Dial.png";
+
 export const projects = [
   {
     id: "dawsondial",
     title: "DawsonDial — College Management System",
     rarity: "LEGENDARY",
     oneLiner:
-      "C# Avalonia desktop system with roles, scheduling, EF Core + PostgreSQL, logging, and tests.",
+      "Full-scale college management desktop app simulating real academic admin workflows: users, courses, enrollment, scheduling, events, and admin logging.",
     stack: ["C#", ".NET", "Avalonia", "EF Core", "PostgreSQL"],
+    meta: "Desktop Application",
+    overview: [
+      "DawsonDial is a full-scale college management desktop application that simulates real academic administration workflows such as user management, course enrollment, scheduling, events, and administrative logging.",
+      "The system supports three roles — Admin, Student, and Teacher — each with its own permissions, menus, and responsibilities. It’s built with a clean separation of concerns and secure authentication practices."
+    ],
+    media: {
+      screenshot: dawsonDialPreview,
+      alt: "DawsonDial preview"
+    },
     links: {
-      github: "",
+      github: "https://github.com/artembrandt03/DawsonDial",
       live: "",
       video: "https://www.youtube.com/watch?v=5MVbZ24Strk",
-    },
-    quest: {
-      problem:
-        "Simulate real academic admin workflows (users, courses, events, schedules) with role-based access.",
-      solution:
-        "Desktop app with Admin/Student/Teacher flows, secure auth, audit logging, and a clean service/repository architecture.",
-      highlights: [
-        "Role-based menus and authorization",
-        "PBKDF2 password hashing",
-        "EF Core migrations + PostgreSQL",
-        "Admin audit logging",
-      ],
-      improvements: ["Optional: installer/release packaging", "UI polish passes"],
     },
   },
 
