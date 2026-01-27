@@ -1,9 +1,16 @@
 import Divider from "../components/ui/Divider.jsx";
+import Highlight from "../components/ui/Highlight.jsx";
 
 export default function ProjectDetail({ project, onClose }) {
   if (!project) return null;
 
-  const { title, overview, media, stack, links } = project;
+  const { links, media, overview, stack } = project;
+
+  const screenshots = Array.isArray(media?.screenshots)
+    ? media.screenshots.filter(Boolean)
+    : media?.screenshot
+      ? [media.screenshot]
+      : [];
 
   return (
     <div
@@ -22,113 +29,104 @@ export default function ProjectDetail({ project, onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          width: "min(900px, 100%)",
+          width: "min(860px, 100%)",
           maxHeight: "85vh",
-          overflowY: "auto",
+          overflow: "auto",
           border: "1px solid var(--line)",
           borderRadius: "var(--radius)",
           background: "rgba(0,0,0,0.92)",
-          padding: 20,
+          padding: 18,
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-          <div style={{ fontSize: 18 }}>{title}</div>
-          <button
-            onClick={onClose}
-            style={{
-              border: "1px solid var(--line)",
-              background: "var(--bg)",
-              color: "var(--text)",
-              borderRadius: 999,
-              padding: "6px 12px",
-              cursor: "pointer",
-              fontSize: 12,
-            }}
-          >
+          <div style={{ fontSize: 16 }}>{project.title}</div>
+          <button className="btn" onClick={onClose}>
             [ CLOSE ]
           </button>
         </div>
 
-        <Divider />
-
-        {(links?.github || links?.video || links?.live) && (
-          <>
-            <div className="row" style={{ gap: 10, flexWrap: "wrap" }}>
-              {links.github && (
-                <a className="btn" href={links.github} target="_blank" rel="noreferrer">
-                  [ GitHub ]
-                </a>
-              )}
-              {links.video && (
-                <a className="btn" href={links.video} target="_blank" rel="noreferrer">
-                  [ Video ]
-                </a>
-              )}
-              {links.live && (
-                <a className="btn" href={links.live} target="_blank" rel="noreferrer">
-                  [ Live ]
-                </a>
-              )}
-            </div>
-
-            <Divider soft />
-          </>
-        )}
-
-        <div className="sectionTitle">Overview</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {(overview || []).map((p, i) => (
-            <p key={i} className="p" style={{ color: "var(--muted)", lineHeight: 1.7 }}>
-              {p}
-            </p>
-          ))}
+        <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
+          {links?.github ? (
+            <a className="btn" href={links.github} target="_blank" rel="noreferrer">
+              [ GITHUB ]
+            </a>
+          ) : null}
+          {links?.live ? (
+            <a className="btn" href={links.live} target="_blank" rel="noreferrer">
+              [ LIVE ]
+            </a>
+          ) : null}
+          {links?.video ? (
+            <a className="btn" href={links.video} target="_blank" rel="noreferrer">
+              [ VIDEO ]
+            </a>
+          ) : null}
+          {links?.devpost ? (
+            <a className="btn" href={links.devpost} target="_blank" rel="noreferrer">
+              [ DEVPOST ]
+            </a>
+          ) : null}
         </div>
 
-        {media?.screenshot && (
-          <>
-            <Divider soft />
+        <Divider />
 
-            <div className="sectionTitle">Screenshot</div>
-            <div
-              style={{
-                border: "1px solid var(--line)",
-                borderRadius: "var(--radius)",
-                overflow: "hidden",
-                marginTop: 8,
-              }}
-            >
-              <img
-                src={media.screenshot}
-                alt={media.alt || ""}
-                style={{ width: "100%", display: "block" }}
-              />
+        <div className="sectionTitle">Overview</div>
+        <div style={{ marginTop: 10 }}>
+          {(overview || []).map((p, i) => (
+            <div key={i} className="p" style={{ marginTop: i === 0 ? 0 : 10 }}>
+              {p}
             </div>
-          </>
-        )}
+          ))}
+          {!overview?.length ? (
+            <div className="p">
+              <Highlight>Overview</Highlight> — {project.oneLiner}
+            </div>
+          ) : null}
+        </div>
 
-        {stack?.length > 0 && (
+        {screenshots.length ? (
           <>
             <Divider soft />
+            <div className="sectionTitle">Screenshot</div>
 
-            <div className="sectionTitle">Tech Stack</div>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
-              {stack.map((t) => (
-                <span
-                  key={t}
+            <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
+              {screenshots.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={media?.alt || `${project.title} screenshot ${i + 1}`}
                   style={{
+                    width: "100%",
+                    borderRadius: 12,
                     border: "1px solid var(--line)",
-                    borderRadius: 999,
-                    padding: "6px 10px",
-                    fontSize: 12,
-                    color: "var(--muted)",
+                    display: "block",
                   }}
-                >
-                  {t}
-                </span>
+                  loading="lazy"
+                />
               ))}
             </div>
           </>
-        )}
+        ) : null}
+
+        <Divider soft />
+
+        <div className="sectionTitle">Tech Stack</div>
+        <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
+          {(stack || []).map((t) => (
+            <span
+              key={t}
+              style={{
+                border: "1px solid var(--line)",
+                borderRadius: 999,
+                padding: "6px 10px",
+                fontSize: 12,
+                color: "var(--muted)",
+              }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
