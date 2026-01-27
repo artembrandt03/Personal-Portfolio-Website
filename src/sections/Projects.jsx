@@ -6,6 +6,17 @@ import { projects } from "../data/projects.js";
 import { RARITY_ORDER } from "../utils/rarity.js";
 import SectionTitle from "../components/ui/SectionTitle.jsx";
 
+const RARITY_BLURB = {
+  LEGENDARY:
+    "Portfolio highlights — the most complete, challenging, and polished builds I’m proudest of.",
+  EPIC:
+    "Large, hands-on projects with real features and structure — solid complexity and lots of learning.",
+  RARE:
+    "Unique builds and experiments — strong ideas, interesting tech, and problem-solving reps.",
+  COMMON:
+    "Where I started — simpler (but fun) projects that helped me build fundamentals and confidence.",
+};
+
 export default function Projects({ onOpen }) {
   const [filter, setFilter] = useState("LEGENDARY");
 
@@ -54,6 +65,10 @@ export default function Projects({ onOpen }) {
               <Tag rarity={r} />{" "}
               <span style={{ color: "var(--faint)" }}>({grouped.get(r).length})</span>
             </div>
+
+            {/* NEW: subsection description (your red highlighted area) */}
+            <div className="rarityBlurb">{RARITY_BLURB[r]}</div>
+
             <ProjectGrid projects={grouped.get(r)} onOpen={onOpen} />
           </div>
         ) : null
@@ -61,4 +76,3 @@ export default function Projects({ onOpen }) {
     </div>
   );
 }
-

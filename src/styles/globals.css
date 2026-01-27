@@ -370,3 +370,10 @@ a:hover {
   background: rgba(255, 255, 255, 0.02);
   color: var(--fg);
 }
+
+.rarityBlurb {
+  margin: 6px 0 14px 0;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 75ch;
+}
