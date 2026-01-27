@@ -7,6 +7,7 @@ import gitlabIcon from "../assets/images/gitlab.png";
 import linkedinIcon from "../assets/images/linkedin.png";
 
 import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
+import SectionTitle from "../components/ui/SectionTitle.jsx";
 
 export default function Home() {
   return (
@@ -14,12 +15,7 @@ export default function Home() {
       <div className="grid2">
         {/* LEFT: ENTRY */}
         <div>
-          <div className="sectionTitle">
-            <SwapTypeTitle
-              primary="Overview"
-              secondary="Entry"
-            />
-          </div>
+          <SectionTitle primary="Overview" secondary="Entry" />
           <h1 className="h1">{profile.name}</h1>
 
           <div style={{ color: "var(--muted)", marginBottom: 14 }}>

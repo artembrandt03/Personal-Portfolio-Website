@@ -1,10 +1,9 @@
 const NAV = [
-  { id: "start", label: "START" },
-  { id: "about", label: "CHARACTER" },
+  { id: "start", label: "OVERVIEW" },
+  { id: "about", label: "ABOUT" },
   { id: "skills", label: "SKILLS" },
-  { id: "projects", label: "INVENTORY" },
-  { id: "hobbies", label: "SIDE QUESTS" },
-  { id: "contact", label: "CONTACT" },
+  { id: "projects", label: "PROJECTS" },
+  { id: "hobbies", label: "BEYOND" },
 ];
 
 function scrollToId(id) {

@@ -5,6 +5,7 @@ import Tag from "../components/ui/Tag.jsx";
 import { projects } from "../data/projects.js";
 import { RARITY_ORDER } from "../utils/rarity.js";
 import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
+import SectionTitle from "../components/ui/SectionTitle.jsx";
 
 export default function Projects({ onOpen }) {
   const [filter, setFilter] = useState("ALL");
@@ -20,12 +21,7 @@ export default function Projects({ onOpen }) {
 
   return (
     <div className="container">
-      <div className="sectionTitle">
-        <SwapTypeTitle
-          primary="Projects"
-          secondary="Inventory"
-        />
-      </div>
+      <SectionTitle primary="Projects" secondary="Inventory" />
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
         <button className="btn" onClick={() => setFilter("ALL")}>
           [ All ]

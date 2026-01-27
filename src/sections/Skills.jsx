@@ -1,14 +1,10 @@
 import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
+import SectionTitle from "../components/ui/SectionTitle.jsx";
 
 export default function Skills() {
   return (
     <div className="container">
-      <div className="sectionTitle">
-        <SwapTypeTitle
-          primary="Skills"
-          secondary="Skill Tree"
-        />
-      </div>
+      <SectionTitle primary="Skills" secondary="Skill Tree" />
       <div className="grid2">
         <div className="card">
           <div className="sectionTitle">Backend</div>
