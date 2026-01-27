@@ -21,14 +21,40 @@ export default function Home() {
         </div>
 
         <div className="card">
-          <div className="sectionTitle">Quick Stats</div>
-          <div style={{ display: "grid", gap: 10 }}>
-            {profile.stats.map((s) => (
-              <div key={s.k} style={{ display: "flex", justifyContent: "space-between", gap: 14 }}>
-                <span style={{ color: "var(--faint)" }}>{s.k}</span>
-                <span style={{ color: "var(--fg)" }}>{s.v}</span>
+          <div className="sectionTitle">Socials</div>
+
+          <div style={{ display: "grid", gap: 10, marginTop: 10 }}>
+            <div>
+              <div style={{ color: "var(--muted)", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                Location
               </div>
-            ))}
+              <div>Montreal, QC</div>
+            </div>
+
+            <div>
+              <div style={{ color: "var(--muted)", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                Email
+              </div>
+              <a href="mailto:artem.brandt03@gmail.com">artem.brandt03@gmail.com</a>
+            </div>
+
+            <div>
+              <div style={{ color: "var(--muted)", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                GitHub
+              </div>
+              <a href="https://github.com/artembrandt03" target="_blank" rel="noreferrer">
+                github.com/artembrandt03
+              </a>
+            </div>
+
+            <div>
+              <div style={{ color: "var(--muted)", fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                LinkedIn
+              </div>
+              <a href="https://www.linkedin.com/in/artem-brandt-48874428a/" target="_blank" rel="noreferrer">
+                linkedin.com/in/…
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -39,10 +39,10 @@ export default function App() {
         <Hobbies />
       </section>
 
-      {/* CONTACT */}
+      {/* CONTACT
       <section id="contact" className="section">
         <Contact />
-      </section>
+      </section> */}
 
       <ProjectDetail
         project={openProject}

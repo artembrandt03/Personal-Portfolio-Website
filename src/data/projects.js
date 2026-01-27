@@ -133,6 +133,33 @@ export const projects = [
     },
   },
 
+  {
+    id: "metro-trip-planner",
+    title: "Metro Trip Planner",
+    rarity: "EPIC",
+    oneLiner:
+      "Full-stack STM metro trip planner with Leaflet map, route validation, and live Wikipedia station summaries.",
+    stack: ["React", "Vite", "Node.js", "Express", "Leaflet", "STM Open Data", "Wikipedia API"],
+    links: {
+      github: "https://github.com/artembrandt03/Metro-Trip-Planner",
+      live: "",
+      video: "",
+    },
+    quest: {
+      problem:
+        "Help users plan valid STM metro trips between Montreal stations and visualize the route clearly.",
+      solution:
+        "React UI + Express backend using STM GeoJSON for coordinates/lines and Wikipedia API for station info in map popups.",
+      highlights: [
+        "Line-aware trip validation (prevents cross-line invalid trips)",
+        "Interactive Leaflet map with clickable stations",
+        "Wikipedia summaries per station (REST API)",
+        "Uses official STM open data (GeoJSON)",
+      ],
+      improvements: ["Add transfer support (multi-line trips)", "Better mobile layout"],
+    },
+  },
+
   { id: "greentravel", title: "GreenTravel+ — Hackathon Full-Stack", rarity: "RARE", oneLiner: "Hackathon app for eco-friendly travel decisions using AI and multiple APIs.", stack: ["React", "Flask", "MongoDB", "Gemini"], links: { github: "", live: "", video: "" }, quest: { problem: "Encourage greener travel choices.", solution: "Combine flight data + emissions + AI insights.", highlights: ["Multi-API integration"], improvements: ["Revive deployment"] } },
 
   { id: "virtualstore", title: "Virtual Store — Java", rarity: "RARE", oneLiner: "Layered console store with cart, coupons, points, filtering, CSV persistence, and JUnit tests.", stack: ["Java", "Maven", "JUnit"], links: { github: "", live: "", video: "" }, quest: { problem: "Build a complete store workflow in a console app.", solution: "Layered design with persistence and tests.", highlights: ["48 tests passing"], improvements: ["Add DB + UI"] } },
