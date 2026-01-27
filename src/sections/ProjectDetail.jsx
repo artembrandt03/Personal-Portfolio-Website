@@ -40,9 +40,9 @@ export default function ProjectDetail({ project, onClose }) {
       >
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
           <div style={{ fontSize: 16 }}>{project.title}</div>
-          <button className="btn" onClick={onClose}>
-            [ CLOSE ]
-          </button>
+        <button className="closeBtn" onClick={onClose}>
+          [ CLOSE ]
+        </button>
         </div>
 
         <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>

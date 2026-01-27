@@ -10,6 +10,8 @@ import greenTravelPreview from "../assets/images/previews/GreenTravelPlus.png";
 import virtualStorePreview from "../assets/images/previews/VirtualStore.png";
 import loveLetterPreview from "../assets/images/previews/LoveLetter.png";
 import jdbcPreview from "../assets/images/previews/JDBC.png";
+import diceePreview from "../assets/images/previews/Dicee.png";
+import simonPreview from "../assets/images/previews/Simon.png";
 
 
 export const projects = [
@@ -327,6 +329,72 @@ export const projects = [
     },
     links: {
       github: "https://github.com/artembrandt03/Task-Management-App-JDBC?tab=readme-ov-file",
+      live: "",
+      video: ""
+    }
+  },
+
+  {
+    id: "simon",
+    title: "Simon Game — Mini Web Project",
+    rarity: "COMMON",
+    oneLiner:
+      "Classic Simon memory game with sequence playback, input locking, and score-based game-over flow.",
+    stack: ["HTML", "CSS", "JavaScript", "jQuery"],
+    meta: "Web Application",
+    overview: [
+      "A web recreation of the classic Simon memory game: the app generates a growing color sequence and you repeat it by clicking the buttons.",
+      "This project focuses on DOM/event handling, timed sequence playback with setTimeout, basic state management using arrays, and sound feedback."
+    ],
+    media: {
+      screenshot: simonPreview,
+      alt: "Simon game preview"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/Simon-Game",
+      live: "https://artembrandt03.github.io/Simon-Game/",
+      video: ""
+    }
+  },
+
+  {
+    id: "dicee",
+    title: "Dicee — Mini Web Game",
+    rarity: "COMMON",
+    oneLiner:
+      "Front-end dice roll simulator that updates dice images and announces Player 1, Player 2, or Draw.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    meta: "Web Application",
+    overview: [
+      "Dicee is a small front-end project that simulates a two-player dice roll and displays the winner (or a draw).",
+      "It’s intentionally lightweight: no build tools or frameworks—just HTML/CSS/JS DOM updates driven by random rolls."
+    ],
+    media: {
+      screenshot: diceePreview,
+      alt: "Dicee game preview"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/Dicee-Game",
+      live: "https://artembrandt03.github.io/Dicee-Game/",
+      video: ""
+    }
+  },
+
+  {
+    id: "hangman",
+    title: "Hangman — Java (First Project)",
+    rarity: "COMMON",
+    oneLiner:
+      "My first Java project: console hangman built with loops, arrays, random word selection, and input validation.",
+    stack: ["Java", "Console", "Arrays", "Scanner", "Random"],
+    meta: "Console Application",
+    overview: [
+      "This Hangman game was my first-ever Java project, built during my introductory programming class at Dawson College.",
+      "It focuses on fundamentals: variables/data types, loops and conditionals, random word selection, and handling user input to drive a full win/lose game loop."
+    ],
+    media: null,
+    links: {
+      github: "https://github.com/artembrandt03/Hangman---Java-1-mini-project",
       live: "",
       video: ""
     }
