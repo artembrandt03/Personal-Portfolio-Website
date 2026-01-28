@@ -14,7 +14,7 @@ export default function Home() {
     <div className="container">
       <div className="grid2">
         {/* LEFT: ENTRY */}
-        <div>
+        <div className="card">
           <SectionTitle primary="Overview" secondary="Entry" />
           <h1 className="h1">{profile.name}</h1>
 

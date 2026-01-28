@@ -5,7 +5,7 @@ export default function GitHubChart() {
         border: "1px solid var(--line)",
         borderRadius: "var(--radius)",
         padding: 16,
-        background: "rgba(255,255,255,0.02)",
+        background: "#000",
         width: "100%",
       }}
     >

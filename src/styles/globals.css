@@ -80,25 +80,53 @@ a:hover {
   }
 }
 
-/* =========================
-   SOLID SURFACES (IMPORTANT)
-   ========================= */
+/* =========================================================
+   SOLID SURFACES (PixelBlast readability)
+   ========================================================= */
 
-/* Your main “box/panel” */
+/* Reusable solid panel (apply this to anything that needs readability) */
+.panelSolid {
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+/* Your existing main “box/panel” */
 .card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
-
-  /* was transparent; now solid so PixelBlast doesn't kill readability */
   background: #000;
 }
 
-/* Many of your sections likely have inner wrappers using .card-like styling.
-   This helps catch anything else that was semi-transparent. */
+/* Catch common “box-like” sections if they exist */
 .container .card,
 .section .card {
   background: #000;
+}
+
+/* Make subsection descriptions readable (your red-circled rarity blurbs) */
+.rarityBlurb {
+  margin: 6px 0 14px 0;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 75ch;
+
+  /* NEW: solid surface */
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+
+/* Optional: keep the Overview-left text readable even if you don't wrap it yet */
+.grid2 > div:first-child {
+  /* If you don't want this, remove it once you wrap Overview in a panel */
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
 }
 
 .cardTitle {
@@ -121,8 +149,6 @@ a:hover {
   font-size: 12px;
   color: var(--fg);
   text-decoration: none;
-
-  /* was mostly fine, but make it solid to be readable */
   background: #000;
 }
 
@@ -138,8 +164,6 @@ a:hover {
   padding: 2px 8px;
   font-size: 12px;
   color: var(--muted);
-
-  /* keep kbd readable */
   background: #000;
 }
 
@@ -150,6 +174,11 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+
+/* If your Header uses a wrapping element, this helps keep the top readable */
+header {
+  background: #000;
 }
 
 .headerBrand {
@@ -224,8 +253,6 @@ a:hover {
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-
-  /* was rgba(...,0.02) */
   background: #000;
 }
 
@@ -282,13 +309,10 @@ a:hover {
   height: 16px;
   object-fit: contain;
   display: block;
-
-  /* makes black icons visible on dark bg */
   filter: invert(1);
   opacity: 0.9;
 }
 
-/* keep icons visible when hover background becomes white */
 .iconBtn:hover .iconBtnIcon {
   filter: invert(0);
   opacity: 1;
@@ -347,8 +371,6 @@ a:hover {
   letter-spacing: 0.08em;
 
   cursor: pointer;
-
-  /* was rgba(...,0.02) */
   background: #000;
   color: var(--fg);
 
@@ -382,13 +404,6 @@ a:hover {
 .rarityFilterBtnAll {
   background: #000;
   color: var(--fg);
-}
-
-.rarityBlurb {
-  margin: 6px 0 14px 0;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 75ch;
 }
 
 /* width */
@@ -435,8 +450,6 @@ a:hover {
   font-size: 12px;
 
   color: var(--fg);
-
-  /* was rgba(...,0.02) */
   background: #000;
 }
 
@@ -448,11 +461,7 @@ a:hover {
   margin: 0 auto;
 }
 
-/* =========================================
-   FOOTER SAFETY: keep it solid and readable
-   ========================================= */
-
-/* If your footer component uses <footer> tag, this forces solid bg */
+/* Footer safety */
 footer {
   background: #000;
 }
