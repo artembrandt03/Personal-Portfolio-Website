@@ -20,7 +20,7 @@ export default function GitHubChart() {
           marginBottom: 10,
         }}
       >
-        github.com/artembrandt03
+        artembrandt03
       </div>
 
       <img
