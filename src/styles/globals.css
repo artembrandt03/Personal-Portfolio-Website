@@ -488,3 +488,36 @@ footer {
   opacity: 0.85;
   font-size: 12px;
 }
+
+/* =========================
+   MOBILE NAV FIX (WRAP)
+   ========================= */
+@media (max-width: 880px) {
+  .headerBar {
+    height: auto !important;
+    padding: 10px 0 !important;
+
+    /* stack brand + nav */
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .headerNav {
+    /* allow all buttons to show */
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+
+    /* kill the clipping behavior */
+    overflow: visible !important;
+
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .navBtn {
+    /* bigger tap target */
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+}
