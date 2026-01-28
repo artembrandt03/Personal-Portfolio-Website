@@ -25,14 +25,9 @@ export default function Header() {
       }}
     >
       <div className="container headerBar">
-        <div className="headerBrand">
-          <span style={{ letterSpacing: "0.08em", textTransform: "uppercase" }}>
-            Artem Brandt
-          </span>
-          <span style={{ color: "var(--muted)", fontSize: 12 }}>
-            classified portfolio
-          </span>
-        </div>
+      <div className="headerBrand">
+        <span>[ classified portfolio ]</span>
+      </div>
 
         <nav className="headerNav">
           {NAV.map((x) => (

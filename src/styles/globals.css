@@ -262,11 +262,12 @@ header {
 }
 
 /* Icon buttons (Get in touch) */
-.iconBtnRow {
+.iconBtnRow{
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;   /* NEW */
   gap: 10px;
   margin-top: 12px;
+  flex-wrap: nowrap;        /* NEW */
 }
 
 .iconBtn {
@@ -316,6 +317,10 @@ header {
 .iconBtn:hover .iconBtnIcon {
   filter: invert(0);
   opacity: 1;
+}
+
+.iconBtn{
+  justify-content: flex-start; /* optional but looks better */
 }
 
 /* Animated section title */
@@ -464,4 +469,22 @@ header {
 /* Footer safety */
 footer {
   background: #000;
+}
+
+.rarityHeader{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+  margin: 0 0 10px 0;
+}
+
+.rarityCount{
+  color: var(--fg);
+  opacity: 0.85;
+  font-size: 12px;
 }

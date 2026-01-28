@@ -61,10 +61,10 @@ export default function Projects({ onOpen }) {
       {RARITY_ORDER.map((r) =>
         visible(r) ? (
           <div key={r} style={{ marginBottom: 28 }}>
-            <div className="sectionTitle">
-              <Tag rarity={r} />{" "}
-              <span style={{ color: "var(--faint)" }}>({grouped.get(r).length})</span>
-            </div>
+          <div className="rarityHeader">
+            <Tag rarity={r} />
+            <span className="rarityCount">({grouped.get(r).length})</span>
+          </div>
 
             {/* NEW: subsection description (your red highlighted area) */}
             <div className="rarityBlurb">{RARITY_BLURB[r]}</div>
