@@ -1,0 +1,54 @@
+import { useState } from "react";
+import Shell from "./components/layout/Shell.jsx";
+
+import Home from "./sections/Home.jsx";
+import About from "./sections/About.jsx";
+import Skills from "./sections/Skills.jsx";
+import Projects from "./sections/Projects.jsx";
+import Hobbies from "./sections/Hobbies.jsx";
+import ProjectDetail from "./sections/ProjectDetail.jsx";
+import GitHubChart from "./components/ui/GitHubChart.jsx";
+
+export default function App() {
+  const [openProject, setOpenProject] = useState(null);
+
+  return (
+    <Shell>
+      {/* ENTRY */}
+      <section id="start" className="section">
+        <Home />
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <GitHubChart />
+        </div>
+      </section>
+
+      {/* CHARACTER SHEET */}
+      <section id="about" className="section">
+        <About />
+      </section>
+
+      {/* SKILL TREE */}
+      <section id="skills" className="section">
+        <Skills />
+      </section>
+
+      {/* INVENTORY */}
+      <section id="projects" className="section">
+        <Projects onOpen={setOpenProject} />
+      </section>
+
+      {/* NEW: HOBBIES / SIDE QUESTS */}
+      <section id="hobbies" className="section">
+        <Hobbies />
+      </section>
+
+      <ProjectDetail
+        project={openProject}
+        onClose={() => setOpenProject(null)}
+      />
+    </Shell>
+  );
+}
