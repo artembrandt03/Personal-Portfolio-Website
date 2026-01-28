@@ -80,10 +80,25 @@ a:hover {
   }
 }
 
+/* =========================
+   SOLID SURFACES (IMPORTANT)
+   ========================= */
+
+/* Your main “box/panel” */
 .card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
+
+  /* was transparent; now solid so PixelBlast doesn't kill readability */
+  background: #000;
+}
+
+/* Many of your sections likely have inner wrappers using .card-like styling.
+   This helps catch anything else that was semi-transparent. */
+.container .card,
+.section .card {
+  background: #000;
 }
 
 .cardTitle {
@@ -106,6 +121,9 @@ a:hover {
   font-size: 12px;
   color: var(--fg);
   text-decoration: none;
+
+  /* was mostly fine, but make it solid to be readable */
+  background: #000;
 }
 
 .btn:hover {
@@ -120,6 +138,9 @@ a:hover {
   padding: 2px 8px;
   font-size: 12px;
   color: var(--muted);
+
+  /* keep kbd readable */
+  background: #000;
 }
 
 /* Header layout */
@@ -182,24 +203,12 @@ a:hover {
 }
 
 @keyframes navBlink {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 0.35;
-  }
-  40% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.35;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 1; }
+  20% { opacity: 0.35; }
+  40% { opacity: 1; }
+  60% { opacity: 0.35; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
 }
 
 /* Chips (used in Side Quests) */
@@ -215,7 +224,9 @@ a:hover {
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.02);
+
+  /* was rgba(...,0.02) */
+  background: #000;
 }
 
 .muted {
@@ -245,7 +256,7 @@ a:hover {
   letter-spacing: 0.08em;
 
   color: var(--fg);
-  background: rgba(255, 255, 255, 0.02);
+  background: #000;
   text-decoration: none;
 
   transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease,
@@ -336,7 +347,9 @@ a:hover {
   letter-spacing: 0.08em;
 
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.02);
+
+  /* was rgba(...,0.02) */
+  background: #000;
   color: var(--fg);
 
   transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease,
@@ -367,7 +380,7 @@ a:hover {
 
 /* ALL button stays neutral */
 .rarityFilterBtnAll {
-  background: rgba(255, 255, 255, 0.02);
+  background: #000;
   color: var(--fg);
 }
 
@@ -422,7 +435,9 @@ a:hover {
   font-size: 12px;
 
   color: var(--fg);
-  background: rgba(255, 255, 255, 0.02);
+
+  /* was rgba(...,0.02) */
+  background: #000;
 }
 
 .closeBtn:hover {
@@ -431,4 +446,13 @@ a:hover {
 
 .githubChartWrap {
   margin: 0 auto;
+}
+
+/* =========================================
+   FOOTER SAFETY: keep it solid and readable
+   ========================================= */
+
+/* If your footer component uses <footer> tag, this forces solid bg */
+footer {
+  background: #000;
 }
