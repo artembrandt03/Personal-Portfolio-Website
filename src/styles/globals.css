@@ -535,3 +535,305 @@ footer {
   border-radius: 6px;
   white-space: nowrap;
 }
+
+/* =========================
+   SKILL TREE - TERMINAL STYLE WITH LINES
+   ========================= */
+
+.skillTree {
+  position: relative;
+  margin-top: 40px;
+  padding: 40px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #000;
+  min-height: 800px;
+}
+
+/* Central trunk line */
+.skillTree::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  bottom: 100px;
+  width: 2px;
+  background: var(--line);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* =========================
+   CLUSTER POSITIONING
+   ========================= */
+
+.skillCluster {
+  position: absolute;
+  width: 420px;
+  z-index: 10;
+}
+
+/* Row 1 - Top */
+.skillClusterLang {
+  left: 5%;
+  top: 80px;
+}
+
+.skillClusterFront {
+  right: 5%;
+  top: 80px;
+}
+
+/* Row 2 - Mid-top */
+.skillClusterDb {
+  left: 5%;
+  top: 260px;
+}
+
+.skillClusterBack {
+  right: 5%;
+  top: 260px;
+}
+
+/* Row 3 - Mid-bottom */
+.skillClusterMl {
+  left: 5%;
+  top: 440px;
+}
+
+.skillClusterDevops {
+  right: 5%;
+  top: 440px;
+}
+
+/* Row 4 - Bottom (centered, full width) */
+.skillClusterEng {
+  left: 50%;
+  top: 620px;
+  transform: translateX(-50%);
+  width: 520px;
+}
+
+/* =========================
+   CONNECTION LINES (TERMINAL STYLE)
+   ========================= */
+
+/* Horizontal lines from trunk to each cluster */
+.skillCluster::before {
+  content: "";
+  position: absolute;
+  top: 24px; /* align with title */
+  height: 1px;
+  background: var(--line);
+  z-index: 1;
+}
+
+/* Left side clusters - line goes from box to trunk */
+.skillClusterLang::before,
+.skillClusterDb::before,
+.skillClusterMl::before {
+  left: 100%;
+  width: calc(50vw - 5% - 420px - 10px);
+}
+
+/* Right side clusters - line goes from trunk to box */
+.skillClusterFront::before,
+.skillClusterBack::before,
+.skillClusterDevops::before {
+  right: 100%;
+  width: calc(50vw - 5% - 420px - 10px);
+}
+
+/* Engineering cluster - vertical line up to trunk */
+.skillClusterEng::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  height: 60px;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+/* Connection node dots */
+.skillGroup::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--fg);
+  border: 1px solid var(--line);
+  top: 20px;
+  z-index: 15;
+}
+
+/* Left clusters - dot on right edge */
+.skillClusterLang .skillGroup::before,
+.skillClusterDb .skillGroup::before,
+.skillClusterMl .skillGroup::before {
+  right: -4px;
+}
+
+/* Right clusters - dot on left edge */
+.skillClusterFront .skillGroup::before,
+.skillClusterBack .skillGroup::before,
+.skillClusterDevops .skillGroup::before {
+  left: -4px;
+}
+
+/* Engineering - dot on top */
+.skillClusterEng .skillGroup::before {
+  left: 50%;
+  top: -4px;
+  transform: translateX(-50%);
+}
+
+/* =========================
+   SKILL GROUP STYLING
+   ========================= */
+
+.skillGroup {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #000;
+  padding: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skillGroup:hover {
+  border-color: var(--fg);
+  box-shadow: 0 0 0 1px var(--fg) inset;
+}
+
+.skillGroupTitle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.skillNodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillNode {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+  transition: all 0.15s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.skillNode:hover {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+/* =========================
+   COLOR ACCENTS
+   ========================= */
+
+.skillGroup_lang .skillGroupTitle {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.skillGroup_front .skillGroupTitle {
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.skillGroup_back .skillGroupTitle {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.skillGroup_db .skillGroupTitle {
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.skillGroup_ml .skillGroupTitle {
+  color: #f472b6;
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+.skillGroup_devops .skillGroupTitle {
+  color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.skillGroup_eng .skillGroupTitle {
+  color: var(--fg);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1200px) {
+  .skillCluster {
+    width: 380px;
+  }
+  
+  .skillClusterEng {
+    width: 480px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skillTree {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .skillTree::before {
+    display: none;
+  }
+
+  .skillCluster {
+    position: static !important;
+    width: 100% !important;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    transform: none !important;
+  }
+
+  .skillCluster::before,
+  .skillGroup::before {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .skillGroup {
+    padding: 14px;
+  }
+
+  .skillGroupTitle {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .skillNode {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}

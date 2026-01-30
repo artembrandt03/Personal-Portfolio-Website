@@ -14,16 +14,16 @@ const GROUPS = [
     nodes: ["React", "Vite", "Avalonia", "Bootstrap", "ES Modules"],
   },
   {
-    key: "back",
-    title: "Backend & APIs",
-    color: "back",
-    nodes: ["Node.js", "Express", "Flask", "REST APIs", "JDBC", ".NET / EF Core"],
-  },
-  {
     key: "db",
     title: "Databases & Data",
     color: "db",
     nodes: ["PostgreSQL", "MongoDB", "SQLite", "MySQL", "Room (Android)"],
+  },
+  {
+    key: "back",
+    title: "Backend & APIs",
+    color: "back",
+    nodes: ["Node.js", "Express", "Flask", "REST APIs", "JDBC", ".NET / EF Core"],
   },
   {
     key: "ml",
@@ -51,26 +51,7 @@ export default function Skills() {
       <SectionTitle primary="Skills" secondary="Skill Tree" />
 
       <div className="skillTree">
-        {/* SVG connectors (static, but looks like a tree) */}
-        <svg className="skillLines" viewBox="0 0 1000 520" preserveAspectRatio="none">
-          {/* trunk */}
-          <path d="M500 480 L500 260" className="skillLine" />
-          {/* branches */}
-          <path d="M500 260 L220 140" className="skillLine" />
-          <path d="M500 260 L780 140" className="skillLine" />
-          <path d="M500 260 L150 300" className="skillLine" />
-          <path d="M500 260 L850 300" className="skillLine" />
-          <path d="M500 260 L320 420" className="skillLine" />
-          <path d="M500 260 L680 420" className="skillLine" />
-        </svg>
-
-        {/* Center core node */}
-        <div className="skillCore">
-          <div className="skillCoreTitle">CORE</div>
-          <div className="skillCoreSub">Building useful software</div>
-        </div>
-
-        {/* 7 clusters placed around the core */}
+        {/* Grid layout - first 6 in 2 columns */}
         <div className="skillCluster skillClusterLang">
           <Cluster group={GROUPS[0]} />
         </div>
@@ -79,11 +60,11 @@ export default function Skills() {
           <Cluster group={GROUPS[1]} />
         </div>
 
-        <div className="skillCluster skillClusterBack">
+        <div className="skillCluster skillClusterDb">
           <Cluster group={GROUPS[2]} />
         </div>
 
-        <div className="skillCluster skillClusterDb">
+        <div className="skillCluster skillClusterBack">
           <Cluster group={GROUPS[3]} />
         </div>
 
@@ -95,6 +76,7 @@ export default function Skills() {
           <Cluster group={GROUPS[5]} />
         </div>
 
+        {/* Engineering spans full width at bottom */}
         <div className="skillCluster skillClusterEng">
           <Cluster group={GROUPS[6]} />
         </div>
