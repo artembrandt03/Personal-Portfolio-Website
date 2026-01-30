@@ -26,7 +26,12 @@ export default function Header() {
     >
       <div className="container headerBar">
       <div className="headerBrand">
-        <span>[ classified portfolio ]</span>
+        <div className="brandStack">
+          <span className="brandTitle">[ classified portfolio ]</span>
+          <span className="brandSub">
+            Version française en cours de développement — bientôt disponible
+          </span>
+        </div>
       </div>
 
         <nav className="headerNav">
