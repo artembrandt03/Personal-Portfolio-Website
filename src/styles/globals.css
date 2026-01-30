@@ -681,3 +681,55 @@ footer {
 .projectCard[data-rarity="EPIC"]      { --rarityGlow: rgba(167, 139, 250, 0.55); }
 .projectCard[data-rarity="RARE"]      { --rarityGlow: rgba(96, 165, 250, 0.52); }
 .projectCard[data-rarity="COMMON"]    { --rarityGlow: rgba(52, 211, 153, 0.46); }
+
+/* =========================
+   ProjectCard: “press to open” hover prompt
+   ========================= */
+
+.pressToOpen {
+  margin-top: 14px;
+  color: var(--faint);
+  font-size: 12px;
+
+  /* start subtle */
+  opacity: 0.25;
+  transform: translateY(2px);
+  transition: opacity 180ms ease, transform 180ms ease, font-size 180ms ease;
+}
+
+/* On hover: bigger + visible + terminal flicker */
+.projectCard:hover .pressToOpen {
+  opacity: 1;
+  transform: translateY(0);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  animation: terminalFlicker 900ms steps(2, end) infinite;
+}
+
+/* Add a tiny cursor block after the text while hovering */
+.projectCard:hover .pressToOpen::after {
+  content: "▋";
+  display: inline-block;
+  margin-left: 6px;
+  animation: terminalCursor 700ms steps(2, end) infinite;
+  opacity: 0.9;
+}
+
+@keyframes terminalFlicker {
+  0%   { opacity: 1; }
+  12%  { opacity: 0.25; }
+  24%  { opacity: 1; }
+  38%  { opacity: 0.45; }
+  52%  { opacity: 1; }
+  66%  { opacity: 0.35; }
+  82%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes terminalCursor {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}

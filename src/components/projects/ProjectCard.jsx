@@ -45,9 +45,7 @@ export default function ProjectCard({ project, onOpen }) {
           ))}
         </div>
 
-        <div style={{ marginTop: 14, color: "var(--faint)", fontSize: 12 }}>
-          press to open
-        </div>
+        <div className="pressToOpen">press to open</div>
       </div>
     </button>
   );
