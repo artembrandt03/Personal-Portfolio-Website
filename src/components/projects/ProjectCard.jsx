@@ -11,7 +11,11 @@ export default function ProjectCard({ project, onOpen }) {
         width: "100%",
       }}
     >
-      <div className="card" style={{ transition: "border-color 120ms ease" }}>
+      <div
+        className="card projectCard"
+        data-rarity={project.rarity}
+        style={{ transition: "border-color 120ms ease" }}
+      >
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
           <Tag rarity={project.rarity} />
           <span style={{ color: "var(--faint)", fontSize: 12 }}>

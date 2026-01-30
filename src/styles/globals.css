@@ -643,3 +643,41 @@ footer {
     padding: 8px 10px;
   }
 }
+
+/* =========================
+   Project Card rarity glow
+   ========================= */
+
+.projectCard {
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow layer behind */
+.projectCard::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(
+    600px 240px at 28% 20%,
+    var(--rarityGlow, rgba(255,255,255,0.12)),
+    transparent 60%
+  );
+  filter: blur(24px);
+  opacity: 0.22;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 250ms ease;
+  transform: scale(1);
+}
+
+/* stronger shine on hover */
+.projectCard:hover::before {
+  opacity: 0.42;
+  transform: scale(1.06);
+}
+
+/* rarity color map */
+.projectCard[data-rarity="LEGENDARY"] { --rarityGlow: rgba(245, 197, 66, 0.55); }
+.projectCard[data-rarity="EPIC"]      { --rarityGlow: rgba(167, 139, 250, 0.55); }
+.projectCard[data-rarity="RARE"]      { --rarityGlow: rgba(96, 165, 250, 0.52); }
+.projectCard[data-rarity="COMMON"]    { --rarityGlow: rgba(52, 211, 153, 0.46); }
