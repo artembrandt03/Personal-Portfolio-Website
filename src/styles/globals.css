@@ -535,3 +535,111 @@ footer {
   border-radius: 6px;
   white-space: nowrap;
 }
+
+/* =========================
+   SKILLS (PILLS + CLEAN TITLES)
+   ========================= */
+
+/* Fix the “random highlighted” look:
+   your screenshot is just text selection styling.
+   Keep it subtle so it doesn’t look like a white marker. */
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* Optional: only if you want skills to feel a bit more balanced on wide screens */
+.skillsGrid {
+  align-items: start;
+}
+
+/* Make cards slightly “skills-specific” without breaking your theme */
+.skillsCard {
+  padding: 18px;
+}
+
+/* Subsection title: NOT a pill, brighter, underline accent */
+.skillsSubTitle {
+  margin: 0 0 14px 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  display: inline-block;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  position: relative;
+}
+
+.skillsSubTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 64px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Pills container */
+.skillsPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Individual skill pill */
+.skillPill {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 12px;
+  line-height: 1;
+  padding: 9px 11px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+
+  user-select: none;
+  transform: translateZ(0);
+
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease,
+    border-color 140ms ease, opacity 140ms ease;
+}
+
+.skillPill:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06) inset, 0 12px 26px rgba(0, 0, 0, 0.55);
+}
+
+.skillPill:active {
+  transform: translateY(-1px) scale(0.99);
+  opacity: 0.95;
+}
+
+/* Keyboard focus (accessibility) */
+.skillPill:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.06);
+}
+
+/* Mobile: slightly tighter gaps */
+@media (max-width: 880px) {
+  .skillsCard {
+    padding: 16px;
+  }
+
+  .skillsPills {
+    gap: 9px;
+  }
+
+  .skillPill {
+    padding: 8px 10px;
+  }
+}

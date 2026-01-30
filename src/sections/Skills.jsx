@@ -1,69 +1,81 @@
+// src/sections/Skills.jsx
 import SectionTitle from "../components/ui/SectionTitle.jsx";
+
+const SKILL_SECTIONS = [
+  {
+    title: "Programming Languages",
+    skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"],
+  },
+  {
+    title: "Frontend Development",
+    skills: ["React", "Vite", "Avalonia", "HTML/CSS", "JavaScript (ES Modules)", "Bootstrap"],
+  },
+  {
+    title: "Backend & APIs",
+    skills: ["Node.js", "Express", "Flask", ".NET (Entity Framework)", "JDBC", "REST APIs"],
+  },
+  {
+    title: "Databases & Data",
+    skills: ["PostgreSQL", "MongoDB", "SQLite", "MySQL", "Room (Android)"],
+  },
+  {
+    title: "AI & Machine Learning",
+    skills: [
+      "Scikit-learn",
+      "TensorFlow",
+      "Transformers",
+      "Neural Networks",
+      "Decision Trees",
+      "Transfer Learning",
+      "Model Fine-tuning",
+      "Google Colab",
+    ],
+  },
+  {
+    title: "DevOps & Tooling",
+    skills: [
+      "Git (GitHub, GitLab)",
+      "Docker",
+      "CI/CD",
+      "Linux",
+      "Nginx",
+      "Postman",
+      "VS Code",
+      "Visual Studio",
+    ],
+  },
+  {
+    title: "Engineering Practices",
+    skills: [
+      "Team collaboration",
+      "Agile & SCRUM",
+      "Version control workflows",
+      "Testing & debugging",
+      "Project-based development",
+      "DevOps mindset",
+    ],
+  },
+];
 
 export default function Skills() {
   return (
     <div className="container">
       <SectionTitle primary="Skills" secondary="Skill Tree" />
 
-      <div className="grid2">
-        {/* Programming Languages */}
-        <div className="card">
-          <div className="sectionTitle">Programming Languages</div>
-          <div className="p">
-            Java, Python, C#, JavaScript, HTML, CSS, SQL, Bash
-          </div>
-        </div>
+      <div className="grid2 skillsGrid">
+        {SKILL_SECTIONS.map((sec) => (
+          <div key={sec.title} className="card skillsCard">
+            <div className="skillsSubTitle">{sec.title}</div>
 
-        {/* Frontend */}
-        <div className="card">
-          <div className="sectionTitle">Frontend Development</div>
-          <div className="p">
-            React, Vite, Avalonia, HTML/CSS, JavaScript (ES Modules), Bootstrap
+            <div className="skillsPills">
+              {sec.skills.map((s) => (
+                <span key={s} className="skillPill">
+                  {s}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Backend */}
-        <div className="card">
-          <div className="sectionTitle">Backend & APIs</div>
-          <div className="p">
-            Node.js, Express, Flask, .NET (Entity Framework), JDBC, REST APIs
-          </div>
-        </div>
-
-        {/* Databases */}
-        <div className="card">
-          <div className="sectionTitle">Databases & Data</div>
-          <div className="p">
-            PostgreSQL, MongoDB, SQLite, MySQL, Room (Android)
-          </div>
-        </div>
-
-        {/* AI / ML */}
-        <div className="card">
-          <div className="sectionTitle">AI & Machine Learning</div>
-          <div className="p">
-            Scikit-learn, TensorFlow, Transformers, Neural Networks, Decision Trees,
-            Transfer Learning, Model Fine-tuning, Google Colab
-          </div>
-        </div>
-
-        {/* DevOps / Tooling */}
-        <div className="card">
-          <div className="sectionTitle">DevOps & Tooling</div>
-          <div className="p">
-            Git (GitHub, GitLab), Docker, CI/CD, Linux, Nginx, Postman,
-            VS Code, Visual Studio
-          </div>
-        </div>
-
-        {/* Engineering Practices */}
-        <div className="card">
-          <div className="sectionTitle">Engineering Practices</div>
-          <div className="p">
-            Team collaboration, Agile & SCRUM, version control workflows,
-            testing & debugging, project-based development, DevOps mindset
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
