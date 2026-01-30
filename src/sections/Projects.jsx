@@ -1,3 +1,4 @@
+// src/sections/Projects.jsx
 import { useMemo, useState } from "react";
 import Divider from "../components/ui/Divider.jsx";
 import ProjectGrid from "../components/projects/ProjectGrid.jsx";
@@ -33,46 +34,48 @@ export default function Projects({ onOpen }) {
     <div className="container">
       <SectionTitle primary="Projects" secondary="Inventory" />
 
-      <div className="filterRow">
-        {RARITY_ORDER.map((r) => (
+      {/* NEW: big black wrapper panel */}
+      <div className="projectsPanel">
+        <div className="filterRow">
+          {RARITY_ORDER.map((r) => (
+            <button
+              key={r}
+              className="rarityFilterBtn"
+              data-rarity={r}
+              onClick={() => setFilter(r)}
+              aria-pressed={filter === r}
+            >
+              [ {r} ]
+            </button>
+          ))}
+
           <button
-            key={r}
-            className="rarityFilterBtn"
-            data-rarity={r}
-            onClick={() => setFilter(r)}
-            aria-pressed={filter === r}
+            className="rarityFilterBtn rarityFilterBtnAll"
+            data-rarity="ALL"
+            onClick={() => setFilter("ALL")}
+            aria-pressed={filter === "ALL"}
           >
-            [ {r} ]
+            [ ALL ]
           </button>
-        ))}
+        </div>
 
-        <button
-          className="rarityFilterBtn rarityFilterBtnAll"
-          data-rarity="ALL"
-          onClick={() => setFilter("ALL")}
-          aria-pressed={filter === "ALL"}
-        >
-          [ ALL ]
-        </button>
+        <Divider />
+
+        {RARITY_ORDER.map((r) =>
+          visible(r) ? (
+            <div key={r} className="projectsRarityBlock">
+              <div className="rarityHeader">
+                <Tag rarity={r} />
+                <span className="rarityCount">({grouped.get(r).length})</span>
+              </div>
+
+              <div className="rarityBlurb">{RARITY_BLURB[r]}</div>
+
+              <ProjectGrid projects={grouped.get(r)} onOpen={onOpen} />
+            </div>
+          ) : null
+        )}
       </div>
-
-      <Divider />
-
-      {RARITY_ORDER.map((r) =>
-        visible(r) ? (
-          <div key={r} style={{ marginBottom: 28 }}>
-          <div className="rarityHeader">
-            <Tag rarity={r} />
-            <span className="rarityCount">({grouped.get(r).length})</span>
-          </div>
-
-            {/* NEW: subsection description (your red highlighted area) */}
-            <div className="rarityBlurb">{RARITY_BLURB[r]}</div>
-
-            <ProjectGrid projects={grouped.get(r)} onOpen={onOpen} />
-          </div>
-        ) : null
-      )}
     </div>
   );
 }

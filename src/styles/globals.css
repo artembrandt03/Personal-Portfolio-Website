@@ -40,10 +40,15 @@ a:hover {
 
 .sectionTitle {
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
-  color: var(--muted);
-  margin: 0 0 14px 0;
+  letter-spacing: 0.10em;
+  font-size: 14px;              /* bigger */
+  color: rgba(255,255,255,0.85); /* brighter than muted */
+  margin: 0 0 16px 0;
+  display: inline-block;         /* keeps it tight like a tag */
+  padding: 6px 10px;             /* makes it feel like a label */
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #000;              /* keeps it readable on the pixel background */
 }
 
 .h1 {
@@ -54,8 +59,8 @@ a:hover {
 
 .p {
   margin: 0;
-  line-height: 1.7;
-  color: var(--muted);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9); /* readable white */
 }
 
 .row {
@@ -520,4 +525,245 @@ footer {
     padding: 10px 12px !important;
     font-size: 12px !important;
   }
+}
+
+.highlight {
+  color: var(--fg);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 6px;
+  white-space: normal;
+}
+
+/* =========================
+   SKILLS (PILLS + CLEAN TITLES)
+   ========================= */
+
+/* Fix the “random highlighted” look:
+   your screenshot is just text selection styling.
+   Keep it subtle so it doesn’t look like a white marker. */
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* Optional: only if you want skills to feel a bit more balanced on wide screens */
+.skillsGrid {
+  align-items: start;
+}
+
+/* Make cards slightly “skills-specific” without breaking your theme */
+.skillsCard {
+  padding: 18px;
+}
+
+/* Subsection title: NOT a pill, brighter, underline accent */
+.skillsSubTitle {
+  margin: 0 0 14px 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  display: inline-block;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  position: relative;
+}
+
+.skillsSubTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 64px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Pills container */
+.skillsPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Individual skill pill */
+.skillPill {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 12px;
+  line-height: 1;
+  padding: 9px 11px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+
+  user-select: none;
+  transform: translateZ(0);
+
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease,
+    border-color 140ms ease, opacity 140ms ease;
+}
+
+.skillPill:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06) inset, 0 12px 26px rgba(0, 0, 0, 0.55);
+}
+
+.skillPill:active {
+  transform: translateY(-1px) scale(0.99);
+  opacity: 0.95;
+}
+
+/* Keyboard focus (accessibility) */
+.skillPill:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.06);
+}
+
+/* Mobile: slightly tighter gaps */
+@media (max-width: 880px) {
+  .skillsCard {
+    padding: 16px;
+  }
+
+  .skillsPills {
+    gap: 9px;
+  }
+
+  .skillPill {
+    padding: 8px 10px;
+  }
+}
+
+/* =========================
+   Project Card rarity glow
+   ========================= */
+
+.projectCard {
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow layer behind */
+.projectCard::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(
+    600px 240px at 28% 20%,
+    var(--rarityGlow, rgba(255,255,255,0.12)),
+    transparent 60%
+  );
+  filter: blur(24px);
+  opacity: 0.22;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 250ms ease;
+  transform: scale(1);
+}
+
+/* stronger shine on hover */
+.projectCard:hover::before {
+  opacity: 0.42;
+  transform: scale(1.06);
+}
+
+/* rarity color map */
+.projectCard[data-rarity="LEGENDARY"] { --rarityGlow: rgba(245, 197, 66, 0.55); }
+.projectCard[data-rarity="EPIC"]      { --rarityGlow: rgba(167, 139, 250, 0.55); }
+.projectCard[data-rarity="RARE"]      { --rarityGlow: rgba(96, 165, 250, 0.52); }
+.projectCard[data-rarity="COMMON"]    { --rarityGlow: rgba(52, 211, 153, 0.46); }
+
+/* =========================
+   ProjectCard: “press to open” hover prompt
+   ========================= */
+
+.pressToOpen {
+  margin-top: 14px;
+  color: var(--faint);
+  font-size: 12px;
+
+  /* start subtle */
+  opacity: 0.25;
+  transform: translateY(2px);
+  transition: opacity 180ms ease, transform 180ms ease, font-size 180ms ease;
+}
+
+/* On hover: bigger + visible + terminal flicker */
+.projectCard:hover .pressToOpen {
+  opacity: 1;
+  transform: translateY(0);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  animation: terminalFlicker 900ms steps(2, end) infinite;
+}
+
+/* Add a tiny cursor block after the text while hovering */
+.projectCard:hover .pressToOpen::after {
+  content: "▋";
+  display: inline-block;
+  margin-left: 6px;
+  animation: terminalCursor 700ms steps(2, end) infinite;
+  opacity: 0.9;
+}
+
+@keyframes terminalFlicker {
+  0%   { opacity: 1; }
+  12%  { opacity: 0.25; }
+  24%  { opacity: 1; }
+  38%  { opacity: 0.45; }
+  52%  { opacity: 1; }
+  66%  { opacity: 0.35; }
+  82%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes terminalCursor {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* =========================
+   Header brand subtitle
+   ========================= */
+
+.brandStack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brandTitle {
+  white-space: nowrap;
+}
+
+/* Subtle terminal-style status */
+.brandSub {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+  opacity: 0.75;
+
+  /* terminal feel */
+  font-family: var(--mono);
+}
+
+/* Optional: tiny blinking cursor for extra terminal flavor */
+.brandSub::after {
+  content: " ▌";
+  animation: cursorBlink 900ms steps(2, end) infinite;
+  opacity: 0.7;
 }
