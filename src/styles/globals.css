@@ -40,10 +40,15 @@ a:hover {
 
 .sectionTitle {
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
-  color: var(--muted);
-  margin: 0 0 14px 0;
+  letter-spacing: 0.10em;
+  font-size: 14px;              /* bigger */
+  color: rgba(255,255,255,0.85); /* brighter than muted */
+  margin: 0 0 16px 0;
+  display: inline-block;         /* keeps it tight like a tag */
+  padding: 6px 10px;             /* makes it feel like a label */
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #000;              /* keeps it readable on the pixel background */
 }
 
 .h1 {
