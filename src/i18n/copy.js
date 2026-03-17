@@ -84,8 +84,9 @@ export const copy = {
       certifications: "Certifications",
     },
     footer: {
-      pre: "Want to see how this portfolio was built?",
-      link: "Explore the full development journey on GitHub",
+      rightsReserved: "All rights reserved.",
+      sourceCode: "Source code on GitHub",
+      lastUpdated: "Last updated",
     },
   },
   fr: {
@@ -173,8 +174,9 @@ export const copy = {
       certifications: "Certifications",
     },
     footer: {
-      pre: "Vous voulez voir comment ce portfolio a été construit?",
-      link: "Découvrir tout le parcours de développement sur GitHub",
+      rightsReserved: "Tous droits réservés.",
+      sourceCode: "Code source sur GitHub",
+      lastUpdated: "Dernière mise à jour",
     },
   },
 };
