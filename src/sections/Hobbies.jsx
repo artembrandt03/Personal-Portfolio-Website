@@ -82,6 +82,15 @@ export default function Hobbies({ language = "en" }) {
         </div>
 
         <p className="muted">{c.hobbies.gaming.body}</p>
+
+        <a
+          className="btn"
+          href="https://howlongtobeat.com/user/art6996"
+          target="_blank"
+          rel="noreferrer"
+        >
+          [ {c.hobbies.gamingProfile} ]
+        </a>
       </div>
     </div>
   );

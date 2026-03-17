@@ -78,10 +78,11 @@ export const copy = {
       },
       gaming: {
         title: "Gaming",
-        body: "I’m into single-player story games, online games, and couch co-op. Ask me about my favorite games — I’ll definitely have recommendations!",
+        body: "I’m into single-player story games, online games, and couch co-op. I also have a massive backlog of games to get through, and I’m hoping to clear it eventually.",
       },
       moreOnLinkedIn: "More on LinkedIn",
       certifications: "Certifications",
+      gamingProfile: "My HowLongToBeat profile",
     },
     footer: {
       rightsReserved: "All rights reserved.",
@@ -168,10 +169,11 @@ export const copy = {
       },
       gaming: {
         title: "Jeux vidéo",
-        body: "J’aime les jeux narratifs solo, les jeux en ligne et le couch co-op. Demande-moi mes jeux préférés — j’aurai plein de recommandations!",
+        body: "J’aime les jeux narratifs solo, les jeux en ligne et le couch co-op. J’ai aussi un énorme backlog de jeux à terminer, et j’espère en venir à bout un jour.",
       },
       moreOnLinkedIn: "Voir sur LinkedIn",
       certifications: "Certifications",
+      gamingProfile: "Mon profil HowLongToBeat",
     },
     footer: {
       rightsReserved: "Tous droits réservés.",
