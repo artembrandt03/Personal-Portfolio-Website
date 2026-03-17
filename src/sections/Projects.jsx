@@ -4,7 +4,7 @@ import Divider from "../components/ui/Divider.jsx";
 import ProjectGrid from "../components/projects/ProjectGrid.jsx";
 import Tag from "../components/ui/Tag.jsx";
 import { projects } from "../data/projects.js";
-import { RARITY_ORDER } from "../utils/rarity.js";
+import { RARITY_ORDER, rarityLabel } from "../utils/rarity.js";
 import SectionTitle from "../components/ui/SectionTitle.jsx";
 import { getCopy } from "../i18n/copy.js";
 
@@ -39,7 +39,7 @@ export default function Projects({ onOpen, language = "en" }) {
               onClick={() => setFilter(r)}
               aria-pressed={filter === r}
             >
-              <Tag rarity={r} language={language} />
+              {rarityLabel(r, language)}
             </button>
           ))}
 

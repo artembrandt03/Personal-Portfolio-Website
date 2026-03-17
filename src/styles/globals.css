@@ -460,23 +460,27 @@ header {
 .rarityFilterBtn {
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 9px 14px;
 
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  font-family: var(--mono);
 
   cursor: pointer;
   background: #000;
-  color: var(--fg);
+  color: var(--muted);
 
-  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease,
-    opacity 120ms ease;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease,
+    transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
 }
 
 .rarityFilterBtn:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
   transform: translateY(-1px);
+  animation: navBlink 650ms steps(2, end) 1;
 }
 
 .rarityFilterBtn:active {
@@ -484,16 +488,50 @@ header {
   opacity: 0.9;
 }
 
-/* Colored rarity backgrounds (text should be black) */
-.rarityFilterBtn[data-rarity="LEGENDARY"] { background: #f5c542; color: #000; }
-.rarityFilterBtn[data-rarity="EPIC"]      { background: #a78bfa; color: #000; }
-.rarityFilterBtn[data-rarity="RARE"]      { background: #60a5fa; color: #000; }
-.rarityFilterBtn[data-rarity="COMMON"]    { background: #34d399; color: #000; }
+/* Terminal-dark + rarity-inked */
+.rarityFilterBtn[data-rarity="LEGENDARY"] { color: var(--legendary); border-color: rgba(214, 179, 95, 0.45); }
+.rarityFilterBtn[data-rarity="EPIC"]      { color: var(--epic);      border-color: rgba(167, 139, 250, 0.45); }
+.rarityFilterBtn[data-rarity="RARE"]      { color: var(--rare);      border-color: rgba(96, 165, 250, 0.45); }
+.rarityFilterBtn[data-rarity="COMMON"]    { color: var(--common);    border-color: rgba(52, 211, 153, 0.45); }
 
 /* Active button a bit more “selected” */
 .rarityFilterBtn[aria-pressed="true"] {
-  border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) inset;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.95),
+    0 0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 14px rgba(255, 255, 255, 0.12);
+}
+
+.rarityFilterBtn[data-rarity="LEGENDARY"][aria-pressed="true"] {
+  background: #2d2106;
+  border-color: #d6b35f;
+  color: #ffd882;
+}
+
+.rarityFilterBtn[data-rarity="EPIC"][aria-pressed="true"] {
+  background: #221637;
+  border-color: #a78bfa;
+  color: #ccbaff;
+}
+
+.rarityFilterBtn[data-rarity="RARE"][aria-pressed="true"] {
+  background: #0f2238;
+  border-color: #60a5fa;
+  color: #9bcbff;
+}
+
+.rarityFilterBtn[data-rarity="COMMON"][aria-pressed="true"] {
+  background: #0f2a1f;
+  border-color: #34d399;
+  color: #7ef0c8;
+}
+
+.rarityFilterBtnAll[aria-pressed="true"] {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #fff;
 }
 
 /* ALL button stays neutral */
