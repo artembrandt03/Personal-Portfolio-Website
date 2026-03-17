@@ -194,6 +194,55 @@ header {
   flex: 0 0 auto;
 }
 
+.headerLang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.langToggle {
+  all: unset;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+
+  background: #000;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition: border-color 120ms ease, transform 120ms ease, background-color 120ms ease;
+}
+
+.langToggle:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.langToggleOpt {
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--faint);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.langToggleOpt.isActive {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.langToggleSep {
+  color: var(--line);
+}
+
 .headerNav {
   display: flex;
   align-items: center;
@@ -234,10 +283,6 @@ header {
   background: var(--fg);
   color: var(--bg);
   border-color: rgba(255, 255, 255, 0.35);
-}
-
-.langBtn {
-  margin-left: 4px;
 }
 
 @keyframes navBlink {
@@ -522,6 +567,10 @@ footer {
 
     width: 100% !important;
     gap: 8px !important;
+  }
+
+  .headerLang {
+    align-self: flex-start;
   }
 
   .navBtn {

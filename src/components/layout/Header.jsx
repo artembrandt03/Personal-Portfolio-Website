@@ -35,6 +35,23 @@ export default function Header({ language = "en", onToggleLanguage }) {
           </div>
         </div>
 
+        <div className="headerLang">
+          <button
+            className="langToggle"
+            onClick={onToggleLanguage}
+            aria-label="Toggle language"
+            aria-pressed={language === "fr"}
+          >
+            <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+              ENG
+            </span>
+            <span className="langToggleSep">|</span>
+            <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+              FR
+            </span>
+          </button>
+        </div>
+
         <nav className="headerNav">
           {nav.map((x) => (
             <button
@@ -45,10 +62,6 @@ export default function Header({ language = "en", onToggleLanguage }) {
               [ {x.label} ]
             </button>
           ))}
-
-          <button className="navBtn langBtn" onClick={onToggleLanguage}>
-            [ {language === "en" ? "FR" : "ENG"} ]
-          </button>
         </nav>
       </div>
     </header>
