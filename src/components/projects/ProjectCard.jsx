@@ -1,6 +1,9 @@
 import Tag from "../ui/Tag.jsx";
+import { getCopy } from "../../i18n/copy.js";
 
-export default function ProjectCard({ project, onOpen }) {
+export default function ProjectCard({ project, onOpen, language = "en" }) {
+  const c = getCopy(language);
+
   return (
     <button
       onClick={() => onOpen(project)}
@@ -17,7 +20,7 @@ export default function ProjectCard({ project, onOpen }) {
         style={{ transition: "border-color 120ms ease" }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-          <Tag rarity={project.rarity} />
+          <Tag rarity={project.rarity} language={language} />
           <span style={{ color: "var(--faint)", fontSize: 12 }}>
             {project.meta ?? ""}
           </span>
@@ -45,7 +48,7 @@ export default function ProjectCard({ project, onOpen }) {
           ))}
         </div>
 
-        <div className="pressToOpen">press to open</div>
+        <div className="pressToOpen">{c.projects.pressToOpen}</div>
       </div>
     </button>
   );

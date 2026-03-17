@@ -1,6 +1,6 @@
 import ProjectCard from "./ProjectCard.jsx";
 
-export default function ProjectGrid({ projects, onOpen }) {
+export default function ProjectGrid({ projects, onOpen, language = "en" }) {
   return (
     <div
       style={{
@@ -10,7 +10,12 @@ export default function ProjectGrid({ projects, onOpen }) {
       }}
     >
       {projects.map((p) => (
-        <ProjectCard key={p.id} project={p} onOpen={onOpen} />
+        <ProjectCard
+          key={p.id}
+          project={p}
+          onOpen={onOpen}
+          language={language}
+        />
       ))}
       <style>{`
         @media (max-width: 880px) {

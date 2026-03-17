@@ -1,4 +1,8 @@
-export default function Footer() {
+import { getCopy } from "../../i18n/copy.js";
+
+export default function Footer({ language = "en" }) {
+  const c = getCopy(language);
+
   return (
     <footer style={{ borderTop: "1px solid var(--line)" }}>
       <div
@@ -15,14 +19,14 @@ export default function Footer() {
         </div>
 
         <div style={{ fontSize: 12, color: "var(--muted)" }}>
-          Want to see how this portfolio was built?{" "}
+          {c.footer.pre}{" "}
           <a
             href="https://github.com/artembrandt03/Personal-Portfolio-Website/tree/main"
             target="_blank"
             rel="noreferrer"
             style={{ textDecoration: "underline" }}
           >
-            Explore the full development journey on GitHub
+            {c.footer.link}
           </a>
           .
         </div>
