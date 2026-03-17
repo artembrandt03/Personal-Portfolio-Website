@@ -1,8 +1,11 @@
 import Divider from "../components/ui/Divider.jsx";
 import Highlight from "../components/ui/Highlight.jsx";
+import { getCopy } from "../i18n/copy.js";
 
-export default function ProjectDetail({ project, onClose }) {
+export default function ProjectDetail({ project, onClose, language = "en" }) {
   if (!project) return null;
+
+  const c = getCopy(language);
 
   const { links, media, overview, stack } = project;
 
@@ -41,7 +44,7 @@ export default function ProjectDetail({ project, onClose }) {
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
           <div style={{ fontSize: 16 }}>{project.title}</div>
         <button className="closeBtn" onClick={onClose}>
-          [ CLOSE ]
+          [ {c.projectDetail.close} ]
         </button>
         </div>
 
@@ -53,12 +56,12 @@ export default function ProjectDetail({ project, onClose }) {
           ) : null}
           {links?.live ? (
             <a className="btn" href={links.live} target="_blank" rel="noreferrer">
-              [ LIVE ]
+              [ {c.projectDetail.live} ]
             </a>
           ) : null}
           {links?.video ? (
             <a className="btn" href={links.video} target="_blank" rel="noreferrer">
-              [ VIDEO ]
+              [ {c.projectDetail.video} ]
             </a>
           ) : null}
           {links?.devpost ? (
@@ -70,7 +73,7 @@ export default function ProjectDetail({ project, onClose }) {
 
         <Divider />
 
-        <div className="sectionTitle">Overview</div>
+        <div className="sectionTitle">{c.projectDetail.overview}</div>
         <div style={{ marginTop: 10 }}>
           {(overview || []).map((p, i) => (
             <div key={i} className="p" style={{ marginTop: i === 0 ? 0 : 10 }}>
@@ -79,7 +82,7 @@ export default function ProjectDetail({ project, onClose }) {
           ))}
           {!overview?.length ? (
             <div className="p">
-              <Highlight>Overview</Highlight> — {project.oneLiner}
+              <Highlight>{c.projectDetail.overview}</Highlight> — {project.oneLiner}
             </div>
           ) : null}
         </div>
@@ -87,7 +90,7 @@ export default function ProjectDetail({ project, onClose }) {
         {screenshots.length ? (
           <>
             <Divider soft />
-            <div className="sectionTitle">Screenshot</div>
+            <div className="sectionTitle">{c.projectDetail.screenshot}</div>
 
             <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
               {screenshots.map((src, i) => (
@@ -110,7 +113,7 @@ export default function ProjectDetail({ project, onClose }) {
 
         <Divider soft />
 
-        <div className="sectionTitle">Tech Stack</div>
+        <div className="sectionTitle">{c.projectDetail.techStack}</div>
         <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
           {(stack || []).map((t) => (
             <span

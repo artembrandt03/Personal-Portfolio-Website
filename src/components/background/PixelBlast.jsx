@@ -147,6 +147,10 @@ uniform float uRippleSpeed;
 uniform float uRippleThickness;
 uniform float uRippleIntensity;
 uniform float uEdgeFade;
+uniform int   uEnablePointer;
+uniform vec2  uPointerPos;
+uniform float uPointerRadius;
+uniform float uPointerStrength;
 
 uniform int   uShapeType;
 const int SHAPE_SQUARE   = 0;
@@ -267,6 +271,14 @@ void main(){
     }
   }
 
+  if (uEnablePointer == 1 && uPointerPos.x >= 0.0) {
+    float cellPixelSize = 8.0 * pixelSize;
+    vec2 puv = (((uPointerPos - uResolution * .5 - cellPixelSize * .5) / (uResolution))) * vec2(aspectRatio, 1.0);
+    float dist = distance(uv, puv);
+    float hover = 1.0 - smoothstep(0.0, uPointerRadius, dist);
+    feed += hover * uPointerStrength;
+  }
+
   float bayer = Bayer8(fragCoord / uPixelSize) - 0.5;
   float bw = step(0.5, feed + bayer);
 
@@ -315,6 +327,11 @@ const PixelBlast = ({
   liquidRadius = 1,
   pixelSizeJitter = 0,
   enableRipples = true,
+  rippleOnClick = true,
+  rippleOnHover = false,
+  hoverRippleIntervalMs = 90,
+  hoverRadius = 0.25,
+  hoverStrength = 0.4,
   rippleIntensityScale = 1,
   rippleThickness = 0.1,
   rippleSpeed = 0.3,
@@ -350,6 +367,8 @@ const PixelBlast = ({
       if (threeRef.current) {
         const t = threeRef.current;
         t.resizeObserver?.disconnect();
+        window.removeEventListener('pointerdown', t.onPointerDown);
+        window.removeEventListener('pointermove', t.onPointerMove);
         cancelAnimationFrame(t.raf);
         t.quad?.geometry.dispose();
         t.material.dispose();
@@ -388,6 +407,10 @@ const PixelBlast = ({
         uRippleSpeed: { value: rippleSpeed },
         uRippleThickness: { value: rippleThickness },
         uRippleIntensity: { value: rippleIntensityScale },
+        uEnablePointer: { value: rippleOnHover ? 1 : 0 },
+        uPointerPos: { value: new THREE.Vector2(-1, -1) },
+        uPointerRadius: { value: hoverRadius },
+        uPointerStrength: { value: hoverStrength },
         uEdgeFade: { value: edgeFade }
       };
       const scene = new THREE.Scene();
@@ -466,6 +489,12 @@ const PixelBlast = ({
       if (composer) composer.setSize(renderer.domElement.width, renderer.domElement.height);
       const mapToPixels = e => {
         const rect = renderer.domElement.getBoundingClientRect();
+        const inside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+        if (!inside) return null;
         const scaleX = renderer.domElement.width / rect.width;
         const scaleY = renderer.domElement.height / rect.height;
         const fx = (e.clientX - rect.left) * scaleX;
@@ -477,22 +506,45 @@ const PixelBlast = ({
           h: renderer.domElement.height
         };
       };
-      const onPointerDown = e => {
-        const { fx, fy } = mapToPixels(e);
+      const pushRippleAt = (fx, fy) => {
+        if (!enableRipples) return;
         const ix = threeRef.current?.clickIx ?? 0;
         uniforms.uClickPos.value[ix].set(fx, fy);
         uniforms.uClickTimes.value[ix] = uniforms.uTime.value;
         if (threeRef.current) threeRef.current.clickIx = (ix + 1) % MAX_CLICKS;
       };
-      const onPointerMove = e => {
-        if (!touch) return;
-        const { fx, fy, w, h } = mapToPixels(e);
-        touch.addTouch({ x: fx / w, y: fy / h });
+      let lastHoverRippleTs = 0;
+      const onPointerDown = e => {
+        if (!rippleOnClick) return;
+        const mapped = mapToPixels(e);
+        if (!mapped) return;
+        const { fx, fy } = mapped;
+        pushRippleAt(fx, fy);
       };
-      renderer.domElement.addEventListener('pointerdown', onPointerDown, {
+      const onPointerMove = e => {
+        const mapped = mapToPixels(e);
+        if (!mapped) {
+          uniforms.uPointerPos.value.set(-1, -1);
+          return;
+        }
+        const { fx, fy, w, h } = mapped;
+
+        uniforms.uPointerPos.value.set(fx, fy);
+
+        if (touch) touch.addTouch({ x: fx / w, y: fy / h });
+
+        if (rippleOnHover) {
+          const now = performance.now();
+          if (now - lastHoverRippleTs >= hoverRippleIntervalMs) {
+            pushRippleAt(fx, fy);
+            lastHoverRippleTs = now;
+          }
+        }
+      };
+      window.addEventListener('pointerdown', onPointerDown, {
         passive: true
       });
-      renderer.domElement.addEventListener('pointermove', onPointerMove, {
+      window.addEventListener('pointermove', onPointerMove, {
         passive: true
       });
       let raf = 0;
@@ -532,7 +584,9 @@ const PixelBlast = ({
         timeOffset,
         composer,
         touch,
-        liquidEffect
+        liquidEffect,
+        onPointerDown,
+        onPointerMove
       };
     } else {
       const t = threeRef.current;
@@ -546,6 +600,9 @@ const PixelBlast = ({
       t.uniforms.uRippleIntensity.value = rippleIntensityScale;
       t.uniforms.uRippleThickness.value = rippleThickness;
       t.uniforms.uRippleSpeed.value = rippleSpeed;
+      t.uniforms.uEnablePointer.value = rippleOnHover ? 1 : 0;
+      t.uniforms.uPointerRadius.value = hoverRadius;
+      t.uniforms.uPointerStrength.value = hoverStrength;
       t.uniforms.uEdgeFade.value = edgeFade;
       if (transparent) t.renderer.setClearAlpha(0);
       else t.renderer.setClearColor(0x000000, 1);
@@ -563,6 +620,8 @@ const PixelBlast = ({
       if (!threeRef.current) return;
       const t = threeRef.current;
       t.resizeObserver?.disconnect();
+      window.removeEventListener('pointerdown', t.onPointerDown);
+      window.removeEventListener('pointermove', t.onPointerMove);
       cancelAnimationFrame(t.raf);
       t.quad?.geometry.dispose();
       t.material.dispose();
@@ -582,6 +641,11 @@ const PixelBlast = ({
     rippleIntensityScale,
     rippleThickness,
     rippleSpeed,
+    rippleOnClick,
+    rippleOnHover,
+    hoverRippleIntervalMs,
+    hoverRadius,
+    hoverStrength,
     pixelSizeJitter,
     edgeFade,
     transparent,

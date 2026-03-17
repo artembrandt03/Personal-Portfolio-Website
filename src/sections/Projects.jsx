@@ -4,21 +4,12 @@ import Divider from "../components/ui/Divider.jsx";
 import ProjectGrid from "../components/projects/ProjectGrid.jsx";
 import Tag from "../components/ui/Tag.jsx";
 import { projects } from "../data/projects.js";
-import { RARITY_ORDER } from "../utils/rarity.js";
+import { RARITY_ORDER, rarityLabel } from "../utils/rarity.js";
 import SectionTitle from "../components/ui/SectionTitle.jsx";
+import { getCopy } from "../i18n/copy.js";
 
-const RARITY_BLURB = {
-  LEGENDARY:
-    "Portfolio highlights — the most complete, challenging, and polished builds I’m proudest of.",
-  EPIC:
-    "Large, hands-on projects with real features and structure — solid complexity and lots of learning.",
-  RARE:
-    "Unique builds and experiments — strong ideas, interesting tech, and problem-solving reps.",
-  COMMON:
-    "Where I started — simpler (but fun) projects that helped me build fundamentals and confidence.",
-};
-
-export default function Projects({ onOpen }) {
+export default function Projects({ onOpen, language = "en" }) {
+  const c = getCopy(language);
   const [filter, setFilter] = useState("LEGENDARY");
 
   const grouped = useMemo(() => {
@@ -32,7 +23,10 @@ export default function Projects({ onOpen }) {
 
   return (
     <div className="container">
-      <SectionTitle primary="Projects" secondary="Inventory" />
+      <SectionTitle
+        primary={c.projects.section.primary}
+        secondary={c.projects.section.secondary}
+      />
 
       {/* NEW: big black wrapper panel */}
       <div className="projectsPanel">
@@ -45,7 +39,7 @@ export default function Projects({ onOpen }) {
               onClick={() => setFilter(r)}
               aria-pressed={filter === r}
             >
-              [ {r} ]
+              {rarityLabel(r, language)}
             </button>
           ))}
 
@@ -55,7 +49,7 @@ export default function Projects({ onOpen }) {
             onClick={() => setFilter("ALL")}
             aria-pressed={filter === "ALL"}
           >
-            [ ALL ]
+            [ {c.projects.allLabel} ]
           </button>
         </div>
 
@@ -65,13 +59,17 @@ export default function Projects({ onOpen }) {
           visible(r) ? (
             <div key={r} className="projectsRarityBlock">
               <div className="rarityHeader">
-                <Tag rarity={r} />
+                <Tag rarity={r} language={language} />
                 <span className="rarityCount">({grouped.get(r).length})</span>
               </div>
 
-              <div className="rarityBlurb">{RARITY_BLURB[r]}</div>
+              <div className="rarityBlurb">{c.projects.blurbs[r]}</div>
 
-              <ProjectGrid projects={grouped.get(r)} onOpen={onOpen} />
+              <ProjectGrid
+                projects={grouped.get(r)}
+                onOpen={onOpen}
+                language={language}
+              />
             </div>
           ) : null
         )}

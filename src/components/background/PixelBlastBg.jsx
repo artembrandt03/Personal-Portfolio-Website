@@ -17,6 +17,11 @@ export default function PixelBlastBg() {
         patternScale={2}
         patternDensity={1.6}
         speed={0.35}
+        rippleOnClick={false}
+        rippleOnHover
+        hoverRippleIntervalMs={80}
+        hoverRadius={0.35}
+        hoverStrength={0.55}
         edgeFade={0.25}
         transparent
       />

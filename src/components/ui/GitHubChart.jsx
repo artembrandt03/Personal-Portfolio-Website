@@ -1,4 +1,8 @@
-export default function GitHubChart() {
+import { getCopy } from "../../i18n/copy.js";
+
+export default function GitHubChart({ language = "en" }) {
+  const c = getCopy(language);
+
   return (
     <div
       style={{
@@ -10,7 +14,7 @@ export default function GitHubChart() {
       }}
     >
       <div className="sectionTitle" style={{ marginBottom: 6 }}>
-        GitHub Activity
+        {c.githubChart.title}
       </div>
 
       <div
@@ -25,7 +29,7 @@ export default function GitHubChart() {
 
       <img
         src="https://ghchart.rshah.org/artembrandt03"
-        alt="Artem Brandt GitHub contributions"
+        alt={c.githubChart.alt}
         style={{
           width: "100%",
           display: "block",

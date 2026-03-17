@@ -1,10 +1,4 @@
-const NAV = [
-  { id: "start", label: "OVERVIEW" },
-  { id: "about", label: "ABOUT" },
-  { id: "skills", label: "SKILLS" },
-  { id: "projects", label: "PROJECTS" },
-  { id: "hobbies", label: "BEYOND" },
-];
+import { getCopy } from "../../i18n/copy.js";
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -12,7 +6,17 @@ function scrollToId(id) {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-export default function Header() {
+export default function Header({ language = "en", onToggleLanguage }) {
+  const c = getCopy(language);
+
+  const nav = [
+    { id: "start", label: c.header.nav.start },
+    { id: "about", label: c.header.nav.about },
+    { id: "skills", label: c.header.nav.skills },
+    { id: "projects", label: c.header.nav.projects },
+    { id: "hobbies", label: c.header.nav.hobbies },
+  ];
+
   return (
     <header
       style={{
@@ -25,17 +29,31 @@ export default function Header() {
       }}
     >
       <div className="container headerBar">
-      <div className="headerBrand">
-        <div className="brandStack">
-          <span className="brandTitle">[ classified portfolio ]</span>
-          <span className="brandSub">
-            Version française en cours de développement — bientôt disponible
-          </span>
+        <div className="headerBrand">
+          <div className="brandStack">
+            <span className="brandTitle">{c.header.brandTitle}</span>
+          </div>
         </div>
-      </div>
+
+        <div className="headerLang">
+          <button
+            className="langToggle"
+            onClick={onToggleLanguage}
+            aria-label="Toggle language"
+            aria-pressed={language === "fr"}
+          >
+            <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+              ENG
+            </span>
+            <span className="langToggleSep">|</span>
+            <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+              FR
+            </span>
+          </button>
+        </div>
 
         <nav className="headerNav">
-          {NAV.map((x) => (
+          {nav.map((x) => (
             <button
               key={x.id}
               onClick={() => scrollToId(x.id)}
