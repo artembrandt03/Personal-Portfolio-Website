@@ -389,6 +389,29 @@ header {
 
 .contactBtn {
   flex: 1;
+  border-radius: 14px;
+  padding: 12px 14px;
+  letter-spacing: 0.12em;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease,
+    opacity 120ms ease, box-shadow 120ms ease;
+}
+
+.contactBtn:hover {
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--fg);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+  animation: navBlink 650ms steps(2, end) 1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 14px rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.contactBtn:hover .iconBtnIcon {
+  filter: invert(1);
+  opacity: 1;
 }
 
 /* Animated section title */
