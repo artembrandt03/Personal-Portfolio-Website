@@ -477,10 +477,41 @@ header {
 }
 
 .rarityFilterBtn:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.65);
+  background: #111;
   transform: translateY(-1px);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.95), 0 0 0 3px rgba(255, 255, 255, 0.35);
   animation: navBlink 650ms steps(2, end) 1;
+}
+
+.rarityFilterBtn[data-rarity="LEGENDARY"]:hover:not([aria-pressed="true"]) {
+  background: #241a06;
+  border-color: rgba(214, 179, 95, 0.85);
+  color: #f6d280;
+}
+
+.rarityFilterBtn[data-rarity="EPIC"]:hover:not([aria-pressed="true"]) {
+  background: #1d1330;
+  border-color: rgba(167, 139, 250, 0.85);
+  color: #d1bdff;
+}
+
+.rarityFilterBtn[data-rarity="RARE"]:hover:not([aria-pressed="true"]) {
+  background: #0d1f34;
+  border-color: rgba(96, 165, 250, 0.9);
+  color: #97c8ff;
+}
+
+.rarityFilterBtn[data-rarity="COMMON"]:hover:not([aria-pressed="true"]) {
+  background: #0d251c;
+  border-color: rgba(52, 211, 153, 0.9);
+  color: #85f0ca;
+}
+
+.rarityFilterBtnAll:hover:not([aria-pressed="true"]) {
+  background: #171717;
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #fff;
 }
 
 .rarityFilterBtn:active {
