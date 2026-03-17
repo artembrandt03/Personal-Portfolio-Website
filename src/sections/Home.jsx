@@ -46,7 +46,7 @@ export default function Home({ language = "en" }) {
         </div>
 
         {/* RIGHT: GET IN TOUCH */}
-        <div className="card">
+        <div className="card contactCard">
           <div className="cardTitle">
             <Highlight>{c.home.getInTouch}</Highlight>
           </div>
@@ -68,9 +68,9 @@ export default function Home({ language = "en" }) {
           </div>
 
           {/* Social buttons */}
-          <div className="iconBtnRow">
+          <div className="iconBtnRow contactBtnRow">
             <a
-              className="iconBtn"
+              className="iconBtn contactBtn"
               href="https://github.com/artembrandt03"
               target="_blank"
               rel="noreferrer"
@@ -80,7 +80,7 @@ export default function Home({ language = "en" }) {
             </a>
 
             <a
-              className="iconBtn"
+              className="iconBtn contactBtn"
               href="https://gitlab.com/ArtemBrandt"
               target="_blank"
               rel="noreferrer"
@@ -90,7 +90,7 @@ export default function Home({ language = "en" }) {
             </a>
 
             <a
-              className="iconBtn"
+              className="iconBtn contactBtn"
               href="https://www.linkedin.com/in/artem-brandt-48874428a/"
               target="_blank"
               rel="noreferrer"

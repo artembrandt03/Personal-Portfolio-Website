@@ -377,6 +377,20 @@ header {
   justify-content: flex-start; /* optional but looks better */
 }
 
+.contactCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactBtnRow {
+  flex: 1;
+  margin-top: 10px;
+}
+
+.contactBtn {
+  flex: 1;
+}
+
 /* Animated section title */
 .swapType {
   color: inherit;
