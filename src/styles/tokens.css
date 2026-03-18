@@ -1,4 +1,5 @@
 :root {
+  /* Theme colors - dark theme */
   --bg: #000;
   --fg: #fff;
   --muted: rgba(255, 255, 255, 0.65);
@@ -17,4 +18,18 @@
   --common: #34d399;
 
   --radius: 14px;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg: #f8f8f8;
+  --fg: #1a1a1a;
+  --muted: rgba(26, 26, 26, 0.65);
+  --faint: rgba(26, 26, 26, 0.35);
+  --line: rgba(26, 26, 26, 0.15);
+
+  --legendary: #b8860b;
+  --epic: #6d28d9;
+  --rare: #0369a1;
+  --common: #059669;
 }
