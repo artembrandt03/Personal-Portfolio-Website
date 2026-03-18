@@ -8,6 +8,19 @@ export default function Shell({
   onToggleLanguage,
   isLanguageTransitionActive = false,
 }) {
+  const backToTopLabel = language === "fr" ? "Retour en haut" : "Back to top";
+
+  const handleBackToTop = () => {
+    const topSection = document.getElementById("start");
+
+    if (topSection) {
+      topSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <PixelBlastBg />
@@ -19,6 +32,13 @@ export default function Shell({
           isLanguageTransitionActive={isLanguageTransitionActive}
         />
         <main>{children}</main>
+        <div className="backToTopGap">
+          <div className="container backToTopWrap">
+            <button type="button" className="backToTopBtn" onClick={handleBackToTop}>
+              [ {backToTopLabel} ]
+            </button>
+          </div>
+        </div>
         <Footer language={language} />
       </div>
     </div>

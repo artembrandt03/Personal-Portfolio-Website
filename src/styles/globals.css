@@ -631,6 +631,46 @@ footer {
   background: #000;
 }
 
+.backToTopGap {
+  padding: 12px 0 22px;
+}
+
+.backToTopWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.backToTopBtn {
+  all: unset;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+
+  color: var(--muted);
+  background: #000;
+  transition: border-color 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.backToTopBtn:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--fg);
+  transform: translateY(-1px);
+}
+
+.backToTopBtn:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 2px;
+}
+
 .rarityHeader{
   display: inline-flex;
   align-items: center;
