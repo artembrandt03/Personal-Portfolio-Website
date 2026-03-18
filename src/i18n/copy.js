@@ -2,6 +2,7 @@ export const copy = {
   en: {
     header: {
       brandTitle: "[ classified portfolio ]",
+      mobileWarning: "Mobile UI in development. Visual bugs may appear.",
       nav: {
         start: "OVERVIEW",
         about: "ABOUT",

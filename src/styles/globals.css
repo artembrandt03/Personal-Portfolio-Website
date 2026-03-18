@@ -366,6 +366,10 @@ header {
   display: none;
 }
 
+.headerMobileWarning {
+  display: none;
+}
+
 .headerMenuInner {
   display: flex;
   flex-direction: column;
@@ -399,6 +403,11 @@ header {
 @media (max-width: 880px) {
   .headerDesktopRight {
     display: none;
+  }
+
+  .headerBar {
+    height: auto;
+    padding: 10px 0 8px;
   }
 
   .headerMenuToggle {
@@ -445,6 +454,18 @@ header {
 
   .headerMenuPanel.isOpen {
     display: block;
+  }
+
+  .headerMobileWarning {
+    display: block;
+    margin: 0 auto 10px;
+    padding: 8px 0 10px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.45;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--line);
   }
 }
 

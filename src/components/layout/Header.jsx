@@ -38,6 +38,11 @@ export default function Header({
     { id: "projects", label: c.header.nav.projects },
     { id: "hobbies", label: c.header.nav.hobbies },
   ];
+  const mobileWarning =
+    c.header.mobileWarning ??
+    (language === "fr"
+      ? "Interface mobile en cours de developpement. Des bugs visuels peuvent apparaitre."
+      : "Mobile UI in development. Visual bugs may appear.");
 
   const handleNavClick = (id) => {
     scrollToId(id);
@@ -121,6 +126,10 @@ export default function Header({
           </span>
           <span className="headerMenuLabel">MENU</span>
         </button>
+      </div>
+
+      <div className="container headerMobileWarning" role="note">
+        {mobileWarning}
       </div>
 
       <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}>
