@@ -11,6 +11,8 @@
   --panel-border: rgba(255, 255, 255, 0.18);
   --icon-filter: invert(1);
   --github-chart-filter: invert(1);
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  --modal-bg: rgba(0, 0, 0, 0.92);
   
   /* Header colors - dark theme */
   --header-bg: rgba(0, 0, 0, 0.75);
@@ -47,6 +49,8 @@
   --panel-border: rgba(26, 26, 26, 0.15);
   --icon-filter: none;
   --github-chart-filter: none;
+  --overlay-bg: rgba(32, 24, 52, 0.38);
+  --modal-bg: rgba(255, 255, 255, 0.96);
   
   /* Header colors - light theme (darker to stand out) */
   --header-bg: rgba(200, 180, 240, 0.85);
