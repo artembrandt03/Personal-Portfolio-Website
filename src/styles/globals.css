@@ -794,8 +794,8 @@ footer {
 
 .skillsTreeText {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 12px;
-  line-height: 1.35;
+  font-size: 14px;
+  line-height: 1.5;
   letter-spacing: 0.01em;
   word-break: break-word;
 }
@@ -817,7 +817,7 @@ footer {
   }
 
   .skillsTreeText {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
