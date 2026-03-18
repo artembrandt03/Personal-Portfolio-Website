@@ -13,8 +13,11 @@ export default function Skills({ language = "en" }) {
       />
 
       <div className="grid2 skillsGrid">
-        {c.skills.sections.map((sec) => (
-          <div key={sec.title} className="card skillsTreeCard">
+        {c.skills.sections.map((sec, index) => {
+          const colorClass = `skillsTreeCard--color${index % 7}`;
+
+          return (
+          <div key={sec.title} className={`card skillsTreeCard ${colorClass}`}>
             <div className="skillsTreeTitle">## {sec.title}</div>
 
             <ul className="skillsTreeList" aria-label={sec.title}>
@@ -32,7 +35,8 @@ export default function Skills({ language = "en" }) {
               })}
             </ul>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
