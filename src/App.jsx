@@ -11,7 +11,6 @@ import GitHubChart from "./components/ui/GitHubChart.jsx";
 import LanguageTransitionOverlay from "./components/ui/LanguageTransitionOverlay.jsx";
 
 const LANGUAGE_TRANSITION_MS = 1000;
-const LANGUAGE_SWAP_AT_MS = 550;
 
 export default function App() {
   const [language, setLanguage] = useState(() => {
@@ -33,10 +32,7 @@ export default function App() {
     const nextLanguage = language === "en" ? "fr" : "en";
     setPendingLanguage(nextLanguage);
     setIsLanguageTransitionActive(true);
-
-    window.setTimeout(() => {
-      setLanguage(nextLanguage);
-    }, LANGUAGE_SWAP_AT_MS);
+    setLanguage(nextLanguage);
 
     window.setTimeout(() => {
       setIsLanguageTransitionActive(false);
