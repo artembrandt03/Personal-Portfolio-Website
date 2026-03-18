@@ -1,9 +1,26 @@
 :root {
+  /* Theme colors - dark theme */
   --bg: #000;
   --fg: #fff;
   --muted: rgba(255, 255, 255, 0.65);
   --faint: rgba(255, 255, 255, 0.35);
   --line: rgba(255, 255, 255, 0.18);
+  
+  /* Panel/card colors - dark theme (same as bg) */
+  --panel-bg: #000;
+  --panel-border: rgba(255, 255, 255, 0.18);
+  --icon-filter: invert(1);
+  --github-chart-filter: invert(1);
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  --modal-bg: rgba(0, 0, 0, 0.92);
+  
+  /* Header colors - dark theme */
+  --header-bg: rgba(0, 0, 0, 0.75);
+  --header-fg: #fff;
+  
+  /* RGB values for opacity support */
+  --bg-rgb: 0, 0, 0;
+  --fg-rgb: 255, 255, 255;
 
   --maxw: 1100px;
   --padX: 28px;
@@ -17,4 +34,34 @@
   --common: #34d399;
 
   --radius: 14px;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg: #f0e6ff;
+  --fg: #1a1a1a;
+  --muted: rgba(26, 26, 26, 0.75);
+  --faint: rgba(26, 26, 26, 0.5);
+  --line: rgba(26, 26, 26, 0.15);
+  
+  /* Panel/card colors - light theme (WHITE) */
+  --panel-bg: #ffffff;
+  --panel-border: rgba(26, 26, 26, 0.15);
+  --icon-filter: none;
+  --github-chart-filter: none;
+  --overlay-bg: rgba(32, 24, 52, 0.38);
+  --modal-bg: rgba(255, 255, 255, 0.96);
+  
+  /* Header colors - light theme (darker to stand out) */
+  --header-bg: rgba(200, 180, 240, 0.85);
+  --header-fg: #1a1a1a;
+  
+  /* RGB values for opacity support */
+  --bg-rgb: 240, 230, 255;
+  --fg-rgb: 26, 26, 26;
+
+  --legendary: #b8860b;
+  --epic: #6d28d9;
+  --rare: #0369a1;
+  --common: #059669;
 }

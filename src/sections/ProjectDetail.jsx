@@ -16,39 +16,16 @@ export default function ProjectDetail({ project, onClose, language = "en" }) {
       : [];
 
   return (
-    <div
-      onClick={onClose}
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.7)",
-        zIndex: 2000,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 18,
-      }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          width: "min(860px, 100%)",
-          maxHeight: "85vh",
-          overflow: "auto",
-          border: "1px solid var(--line)",
-          borderRadius: "var(--radius)",
-          background: "rgba(0,0,0,0.92)",
-          padding: 18,
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-          <div style={{ fontSize: 16 }}>{project.title}</div>
+    <div onClick={onClose} className="projectModalOverlay">
+      <div onClick={(e) => e.stopPropagation()} className="projectModal">
+        <div className="projectModalHeader">
+          <div className="projectModalTitle">{project.title}</div>
         <button className="closeBtn" onClick={onClose}>
           [ {c.projectDetail.close} ]
         </button>
         </div>
 
-        <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <div className="projectModalActions">
           {links?.github ? (
             <a className="btn" href={links.github} target="_blank" rel="noreferrer">
               [ GITHUB ]
@@ -74,7 +51,7 @@ export default function ProjectDetail({ project, onClose, language = "en" }) {
         <Divider />
 
         <div className="sectionTitle">{c.projectDetail.overview}</div>
-        <div style={{ marginTop: 10 }}>
+        <div className="projectModalSection">
           {(overview || []).map((p, i) => (
             <div key={i} className="p" style={{ marginTop: i === 0 ? 0 : 10 }}>
               {p}
@@ -92,18 +69,13 @@ export default function ProjectDetail({ project, onClose, language = "en" }) {
             <Divider soft />
             <div className="sectionTitle">{c.projectDetail.screenshot}</div>
 
-            <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
+            <div className="projectModalShots">
               {screenshots.map((src, i) => (
                 <img
                   key={i}
                   src={src}
                   alt={media?.alt || `${project.title} screenshot ${i + 1}`}
-                  style={{
-                    width: "100%",
-                    borderRadius: 12,
-                    border: "1px solid var(--line)",
-                    display: "block",
-                  }}
+                  className="projectModalShot"
                   loading="lazy"
                 />
               ))}
@@ -114,18 +86,9 @@ export default function ProjectDetail({ project, onClose, language = "en" }) {
         <Divider soft />
 
         <div className="sectionTitle">{c.projectDetail.techStack}</div>
-        <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <div className="projectModalStack">
           {(stack || []).map((t) => (
-            <span
-              key={t}
-              style={{
-                border: "1px solid var(--line)",
-                borderRadius: 999,
-                padding: "6px 10px",
-                fontSize: 12,
-                color: "var(--muted)",
-              }}
-            >
+            <span key={t} className="projectModalStackTag">
               {t}
             </span>
           ))}

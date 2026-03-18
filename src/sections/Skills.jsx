@@ -46,17 +46,19 @@ export default function Skills({ language = "en" }) {
                     loading="lazy"
                   />
                 )}
-                <span>## {sec.title}</span>
+                <span className="skillsTreeTitleText">
+                  <span className="skillsTreeHash">##</span> {sec.title}
+                </span>
               </div>
 
               <ul className="skillsTreeList" aria-label={sec.title}>
-                {sec.skills.map((skill, index) => {
-                  const isLast = index === sec.skills.length - 1;
+                {sec.skills.map((skill, skillIndex) => {
+                  const isLast = skillIndex === sec.skills.length - 1;
 
                   return (
                     <li key={skill} className="skillsTreeItem">
                       <span className="skillsTreeBranch" aria-hidden="true">
-                        {isLast ? "└──" : "├──"}
+                        {isLast ? "\u2514\u2500" : "\u251c\u2500"}
                       </span>
                       <span className="skillsTreeText">{skill}</span>
                     </li>

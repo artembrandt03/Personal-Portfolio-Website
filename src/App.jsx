@@ -17,6 +17,10 @@ export default function App() {
     const saved = localStorage.getItem("portfolio-language");
     return saved === "fr" ? "fr" : "en";
   });
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem("portfolio-theme");
+    return saved === "dark" ? "dark" : "light";
+  });
   const [openProject, setOpenProject] = useState(null);
   const [isLanguageTransitionActive, setIsLanguageTransitionActive] = useState(false);
   const [pendingLanguage, setPendingLanguage] = useState(null);
@@ -25,6 +29,11 @@ export default function App() {
     localStorage.setItem("portfolio-language", language);
     document.documentElement.lang = language;
   }, [language]);
+
+  useEffect(() => {
+    localStorage.setItem("portfolio-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme === "light" ? "light" : "");
+  }, [theme]);
 
   const toggleLanguage = () => {
     if (isLanguageTransitionActive) return;
@@ -40,12 +49,18 @@ export default function App() {
     }, LANGUAGE_TRANSITION_MS);
   };
 
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   return (
     <>
       <Shell
         language={language}
         onToggleLanguage={toggleLanguage}
         isLanguageTransitionActive={isLanguageTransitionActive}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       >
         {/* ENTRY */}
         <section id="start" className="section">

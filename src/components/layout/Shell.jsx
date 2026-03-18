@@ -7,6 +7,8 @@ export default function Shell({
   language,
   onToggleLanguage,
   isLanguageTransitionActive = false,
+  theme = "dark",
+  onToggleTheme,
 }) {
   const backToTopLabel = language === "fr" ? "Retour en haut" : "Back to top";
 
@@ -30,6 +32,8 @@ export default function Shell({
           language={language}
           onToggleLanguage={onToggleLanguage}
           isLanguageTransitionActive={isLanguageTransitionActive}
+          theme={theme}
+          onToggleTheme={onToggleTheme}
         />
         <main>{children}</main>
         <div className="backToTopGap">

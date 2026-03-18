@@ -11,6 +11,8 @@ export default function Header({
   language = "en",
   onToggleLanguage,
   isLanguageTransitionActive = false,
+  theme = "dark",
+  onToggleTheme,
 }) {
   const c = getCopy(language);
 
@@ -23,6 +25,12 @@ export default function Header({
     setIsMenuOpen(false);
   };
 
+  const handleToggleTheme = () => {
+    if (typeof onToggleTheme === "function") {
+      onToggleTheme();
+    }
+  };
+
   const nav = [
     { id: "start", label: c.header.nav.start },
     { id: "about", label: c.header.nav.about },
@@ -30,6 +38,11 @@ export default function Header({
     { id: "projects", label: c.header.nav.projects },
     { id: "hobbies", label: c.header.nav.hobbies },
   ];
+  const mobileWarning =
+    c.header.mobileWarning ??
+    (language === "fr"
+      ? "Interface mobile en cours de developpement. Des bugs visuels peuvent apparaitre."
+      : "Mobile UI in development. Visual bugs may appear.");
 
   const handleNavClick = (id) => {
     scrollToId(id);
@@ -42,9 +55,9 @@ export default function Header({
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(0,0,0,0.75)",
+        background: "var(--header-bg)",
         backdropFilter: "blur(8px)",
-        borderBottom: "1px solid var(--line)",
+        borderBottom: "1px solid var(--panel-border)",
       }}
     >
       <div className="container headerBar">
@@ -69,6 +82,21 @@ export default function Header({
               <span className="langToggleSep">|</span>
               <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
                 FR
+              </span>
+            </button>
+
+            <button
+              className="themeToggle"
+              onClick={handleToggleTheme}
+              aria-label="Toggle theme"
+              aria-pressed={theme === "light"}
+            >
+              <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                DARK
+              </span>
+              <span className="themeToggleSep">|</span>
+              <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
+                LIGHT
               </span>
             </button>
           </div>
@@ -100,23 +128,44 @@ export default function Header({
         </button>
       </div>
 
+      <div className="container headerMobileWarning" role="note">
+        {mobileWarning}
+      </div>
+
       <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}>
         <div className="container headerMenuInner">
-          <button
-            className="langToggle headerMenuLangToggle"
-            onClick={handleToggleLanguage}
-            aria-label="Toggle language"
-            aria-pressed={language === "fr"}
-            disabled={isLanguageTransitionActive}
-          >
-            <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
-              ENG
-            </span>
-            <span className="langToggleSep">|</span>
-            <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
-              FR
-            </span>
-          </button>
+          <div className="headerMenuToggles">
+            <button
+              className="langToggle headerMenuLangToggle"
+              onClick={handleToggleLanguage}
+              aria-label="Toggle language"
+              aria-pressed={language === "fr"}
+              disabled={isLanguageTransitionActive}
+            >
+              <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+                ENG
+              </span>
+              <span className="langToggleSep">|</span>
+              <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+                FR
+              </span>
+            </button>
+
+            <button
+              className="themeToggle headerMenuThemeToggle"
+              onClick={handleToggleTheme}
+              aria-label="Toggle theme"
+              aria-pressed={theme === "light"}
+            >
+              <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                DARK
+              </span>
+              <span className="themeToggleSep">|</span>
+              <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
+                LIGHT
+              </span>
+            </button>
+          </div>
 
           <nav className="headerMenuNav" aria-label="Primary navigation">
             {nav.map((x) => (
