@@ -912,7 +912,8 @@ footer {
 .skillsTreeCard {
   position: relative;
   padding: 12px 12px 10px;
-  background: rgba(0, 0, 0, 0.92);
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
   transform-origin: center;
   transition:
     transform 160ms ease-out,
@@ -925,9 +926,9 @@ footer {
 .skillsTreeCard:hover,
 .skillsTreeCard:focus-within {
   transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 22px 45px rgba(0, 0, 0, 0.8);
-  background: rgba(0, 0, 0, 0.98);
+  box-shadow: 0 0 0 1px rgba(var(--fg-rgb), 0.08),
+    0 22px 45px rgba(var(--fg-rgb), 0.18);
+  background: var(--panel-bg);
 }
 
 .skillsTreeTitle {
@@ -936,9 +937,9 @@ footer {
   gap: 8px;
   margin: 0 0 8px 0;
   padding-bottom: 6px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--panel-border);
 
-  color: rgba(255, 255, 255, 0.98);
+  color: var(--fg);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 14px;
@@ -951,7 +952,7 @@ footer {
   height: 24px;
   flex-shrink: 0;
   object-fit: contain;
-  filter: invert(1) brightness(1.4);
+  filter: var(--icon-filter);
   opacity: 0.92;
 }
 
@@ -979,7 +980,7 @@ footer {
 }
 
 .skillsTreeText {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--fg);
   font-size: 13px;
   line-height: 1.5;
   letter-spacing: 0.08em;
