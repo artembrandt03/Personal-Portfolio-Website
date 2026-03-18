@@ -749,16 +749,17 @@ footer {
 
 .skillsGrid {
   align-items: start;
+  gap: 16px;
 }
 
 .skillsTreeCard {
-  padding: 14px 14px 12px;
+  padding: 12px 12px 10px;
   background: rgba(0, 0, 0, 0.92);
 }
 
 .skillsTreeTitle {
-  margin: 0 0 10px 0;
-  padding-bottom: 8px;
+  margin: 0 0 8px 0;
+  padding-bottom: 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
   color: rgba(255, 255, 255, 0.95);
@@ -772,15 +773,18 @@ footer {
   list-style: none;
   margin: 0;
   padding: 0;
+  column-count: 2;
+  column-gap: 16px;
 }
 
 .skillsTreeItem {
   display: grid;
-  grid-template-columns: 36px 1fr;
-  column-gap: 8px;
+  grid-template-columns: 28px 1fr;
+  column-gap: 6px;
   align-items: start;
   margin: 0;
-  padding: 3px 0;
+  padding: 2px 0;
+  break-inside: avoid;
 }
 
 .skillsTreeBranch {
@@ -790,8 +794,8 @@ footer {
 
 .skillsTreeText {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 12.5px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.35;
   letter-spacing: 0.01em;
   word-break: break-word;
 }
@@ -801,9 +805,15 @@ footer {
     padding: 12px;
   }
 
+  .skillsTreeList {
+    column-count: 1;
+    column-gap: 0;
+  }
+
   .skillsTreeItem {
     grid-template-columns: 32px 1fr;
     column-gap: 7px;
+    padding: 3px 0;
   }
 
   .skillsTreeText {
