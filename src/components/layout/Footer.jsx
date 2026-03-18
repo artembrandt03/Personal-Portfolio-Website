@@ -2,8 +2,8 @@ import { getCopy } from "../../i18n/copy.js";
 
 export default function Footer({ language = "en" }) {
   const c = getCopy(language);
-  const version = "v-1.2";
-  const lastUpdated = "2026-03-16";
+  const version = "v-1.3";
+  const lastUpdated = "2026-03-17";
 
   return (
     <footer style={{ borderTop: "1px solid var(--line)" }}>
