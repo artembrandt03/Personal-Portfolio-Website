@@ -50,10 +50,9 @@ export default function Header({
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background:
-          theme === "light" ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.75)",
+        background: "var(--header-bg)",
         backdropFilter: "blur(8px)",
-        borderBottom: "1px solid var(--line)",
+        borderBottom: "1px solid var(--panel-border)",
       }}
     >
       <div className="container headerBar">

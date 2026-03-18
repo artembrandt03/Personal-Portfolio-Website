@@ -5,6 +5,18 @@
   --muted: rgba(255, 255, 255, 0.65);
   --faint: rgba(255, 255, 255, 0.35);
   --line: rgba(255, 255, 255, 0.18);
+  
+  /* Panel/card colors - dark theme (same as bg) */
+  --panel-bg: #000;
+  --panel-border: rgba(255, 255, 255, 0.18);
+  
+  /* Header colors - dark theme */
+  --header-bg: rgba(0, 0, 0, 0.75);
+  --header-fg: #fff;
+  
+  /* RGB values for opacity support */
+  --bg-rgb: 0, 0, 0;
+  --fg-rgb: 255, 255, 255;
 
   --maxw: 1100px;
   --padX: 28px;
@@ -22,11 +34,23 @@
 
 /* Light theme */
 [data-theme="light"] {
-  --bg: #f8f8f8;
+  --bg: #f0e6ff;
   --fg: #1a1a1a;
-  --muted: rgba(26, 26, 26, 0.65);
-  --faint: rgba(26, 26, 26, 0.35);
+  --muted: rgba(26, 26, 26, 0.75);
+  --faint: rgba(26, 26, 26, 0.5);
   --line: rgba(26, 26, 26, 0.15);
+  
+  /* Panel/card colors - light theme (WHITE) */
+  --panel-bg: #ffffff;
+  --panel-border: rgba(26, 26, 26, 0.15);
+  
+  /* Header colors - light theme (darker to stand out) */
+  --header-bg: rgba(200, 180, 240, 0.85);
+  --header-fg: #1a1a1a;
+  
+  /* RGB values for opacity support */
+  --bg-rgb: 240, 230, 255;
+  --fg-rgb: 26, 26, 26;
 
   --legendary: #b8860b;
   --epic: #6d28d9;
