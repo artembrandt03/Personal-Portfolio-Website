@@ -19,7 +19,7 @@ export default function App() {
   });
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("portfolio-theme");
-    return saved === "light" ? "light" : "dark";
+    return saved === "dark" ? "dark" : "light";
   });
   const [openProject, setOpenProject] = useState(null);
   const [isLanguageTransitionActive, setIsLanguageTransitionActive] = useState(false);
