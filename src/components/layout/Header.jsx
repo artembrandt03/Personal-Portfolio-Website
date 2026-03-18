@@ -6,7 +6,11 @@ function scrollToId(id) {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-export default function Header({ language = "en", onToggleLanguage }) {
+export default function Header({
+  language = "en",
+  onToggleLanguage,
+  isLanguageTransitionActive = false,
+}) {
   const c = getCopy(language);
 
   const nav = [
@@ -41,6 +45,7 @@ export default function Header({ language = "en", onToggleLanguage }) {
             onClick={onToggleLanguage}
             aria-label="Toggle language"
             aria-pressed={language === "fr"}
+            disabled={isLanguageTransitionActive}
           >
             <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
               ENG

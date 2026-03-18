@@ -926,3 +926,116 @@ footer {
   animation: cursorBlink 900ms steps(2, end) infinite;
   opacity: 0.7;
 }
+
+/* =========================
+   Language switch transition
+   ========================= */
+
+.langTransitionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: all;
+  background: #000;
+}
+
+.langTransitionOverlay::before,
+.langTransitionOverlay::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+}
+
+.langTransitionOverlay::before {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.06) 0 2px,
+      rgba(0, 0, 0, 0.85) 2px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0 1px,
+      rgba(0, 0, 0, 0.92) 1px 3px
+    );
+  mix-blend-mode: screen;
+  animation: staticShift 120ms steps(2, end) infinite;
+}
+
+.langTransitionOverlay::after {
+  background: radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0.92));
+  opacity: 0.95;
+  animation: staticFlash 180ms steps(2, end) infinite;
+}
+
+.langTransitionInner {
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.78);
+  text-align: center;
+  min-width: 220px;
+}
+
+.langTransitionLabel {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.langTransitionTarget {
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  animation: textFlicker 200ms steps(2, end) infinite;
+}
+
+@keyframes staticShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1.5%, 0.8%);
+  }
+  50% {
+    transform: translate(1.2%, -0.8%);
+  }
+  75% {
+    transform: translate(-0.6%, -1.2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes staticFlash {
+  0% {
+    opacity: 0.88;
+  }
+  50% {
+    opacity: 0.98;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes textFlicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+  }
+}
