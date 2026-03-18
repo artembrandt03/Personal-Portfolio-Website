@@ -9,7 +9,8 @@ export default function GitHubChart({ language = "en" }) {
         border: "1px solid var(--line)",
         borderRadius: "var(--radius)",
         padding: 16,
-        background: "#000",
+        background: "var(--panel-bg)",
+        color: "var(--fg)",
         width: "100%",
       }}
     >
@@ -33,7 +34,7 @@ export default function GitHubChart({ language = "en" }) {
         style={{
           width: "100%",
           display: "block",
-          filter: "invert(1)",
+          filter: "var(--github-chart-filter)",
         }}
         loading="lazy"
       />

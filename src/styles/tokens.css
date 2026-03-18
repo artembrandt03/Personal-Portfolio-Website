@@ -9,6 +9,8 @@
   /* Panel/card colors - dark theme (same as bg) */
   --panel-bg: #000;
   --panel-border: rgba(255, 255, 255, 0.18);
+  --icon-filter: invert(1);
+  --github-chart-filter: invert(1);
   
   /* Header colors - dark theme */
   --header-bg: rgba(0, 0, 0, 0.75);
@@ -43,6 +45,8 @@
   /* Panel/card colors - light theme (WHITE) */
   --panel-bg: #ffffff;
   --panel-border: rgba(26, 26, 26, 0.15);
+  --icon-filter: none;
+  --github-chart-filter: none;
   
   /* Header colors - light theme (darker to stand out) */
   --header-bg: rgba(200, 180, 240, 0.85);

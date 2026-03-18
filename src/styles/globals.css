@@ -108,13 +108,13 @@ a:hover {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
-  background: #000;
+  background: var(--panel-bg);
 }
 
 /* Catch common “box-like” sections if they exist */
 .container .card,
 .section .card {
-  background: #000;
+  background: var(--panel-bg);
 }
 
 /* Make subsection descriptions readable (your red-circled rarity blurbs) */
@@ -513,12 +513,12 @@ header {
   height: 16px;
   object-fit: contain;
   display: block;
-  filter: invert(1);
+  filter: var(--icon-filter);
   opacity: 0.9;
 }
 
 .iconBtn:hover .iconBtnIcon {
-  filter: invert(0);
+  filter: var(--icon-filter);
   opacity: 1;
 }
 
@@ -559,7 +559,7 @@ header {
 }
 
 .contactBtn:hover .iconBtnIcon {
-  filter: invert(1);
+  filter: var(--icon-filter);
   opacity: 1;
 }
 
@@ -593,8 +593,16 @@ header {
   height: 18px;
   object-fit: contain;
   display: block;
-  filter: invert(1);
+  filter: var(--icon-filter);
   opacity: 0.9;
+}
+
+.contactCard a:not(.iconBtn) {
+  color: var(--fg);
+}
+
+.contactCard a:not(.iconBtn):hover {
+  color: var(--fg);
 }
 
 /* Projects filter row */
