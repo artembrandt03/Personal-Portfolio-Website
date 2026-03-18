@@ -14,16 +14,23 @@ export default function Skills({ language = "en" }) {
 
       <div className="grid2 skillsGrid">
         {c.skills.sections.map((sec) => (
-          <div key={sec.title} className="card skillsCard">
-            <div className="skillsSubTitle">{sec.title}</div>
+          <div key={sec.title} className="card skillsTreeCard">
+            <div className="skillsTreeTitle">## {sec.title}</div>
 
-            <div className="skillsPills">
-              {sec.skills.map((s) => (
-                <span key={s} className="skillPill">
-                  {s}
-                </span>
-              ))}
-            </div>
+            <ul className="skillsTreeList" aria-label={sec.title}>
+              {sec.skills.map((skill, index) => {
+                const isLast = index === sec.skills.length - 1;
+
+                return (
+                  <li key={skill} className="skillsTreeItem">
+                    <span className="skillsTreeBranch" aria-hidden="true">
+                      {isLast ? "└──" : "├──"}
+                    </span>
+                    <span className="skillsTreeText">{skill}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         ))}
       </div>
