@@ -92,6 +92,7 @@ export default function App() {
       <LanguageTransitionOverlay
         active={isLanguageTransitionActive}
         targetLanguage={pendingLanguage ?? language}
+        durationMs={LANGUAGE_TRANSITION_MS}
       />
     </>
   );
