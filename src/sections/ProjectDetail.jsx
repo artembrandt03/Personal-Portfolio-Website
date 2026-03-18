@@ -22,7 +22,7 @@ export default function ProjectDetail({ project, onClose, language = "en" }) {
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.7)",
-        zIndex: 100,
+        zIndex: 2000,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
