@@ -1392,6 +1392,41 @@ footer {
   animation: overlayLayerFade var(--lang-transition-ms, 1000ms) ease-out forwards;
 }
 
+[data-theme="light"] .langTransitionOverlay {
+  background: rgba(32, 24, 52, 0.16);
+  backdrop-filter: blur(0.75px) saturate(1.05);
+}
+
+[data-theme="light"] .langTransitionOverlay::before {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1) 0 1px,
+      rgba(18, 12, 34, 0.14) 1px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0 1px,
+      rgba(18, 12, 34, 0.18) 1px 4px
+    );
+  opacity: 0.62;
+}
+
+[data-theme="light"] .langTransitionInner {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(26, 26, 26, 0.18);
+  box-shadow: 0 14px 28px rgba(42, 30, 74, 0.16);
+}
+
+[data-theme="light"] .langTransitionLabel {
+  color: rgba(26, 26, 26, 0.7);
+}
+
+[data-theme="light"] .langTransitionTarget {
+  color: #111;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
 .langTransitionLabel {
   font-size: 11px;
   letter-spacing: 0.12em;
