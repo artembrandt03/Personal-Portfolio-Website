@@ -1060,6 +1060,15 @@ footer {
   line-height: 1.3;
 }
 
+.skillsTreeHash {
+  display: inline-block;
+  min-width: 1.9em;
+}
+
+.skillsTreeTitleText {
+  display: inline-block;
+}
+
 .skillsTreeIcon {
   width: 24px;
   height: 24px;
@@ -1099,6 +1108,11 @@ footer {
   letter-spacing: 0.08em;
   font-family: var(--mono);
   word-break: break-word;
+}
+
+.skillsTreeCard:hover .skillsTreeTitleText,
+.skillsTreeCard:focus-within .skillsTreeTitleText {
+  animation: terminalFlicker 900ms steps(2, end) infinite;
 }
 
 /* Color variants for distinct skill categories */

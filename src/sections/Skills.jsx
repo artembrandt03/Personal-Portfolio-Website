@@ -46,7 +46,9 @@ export default function Skills({ language = "en" }) {
                     loading="lazy"
                   />
                 )}
-                <span>## {sec.title}</span>
+                <span className="skillsTreeTitleText">
+                  <span className="skillsTreeHash">##</span> {sec.title}
+                </span>
               </div>
 
               <ul className="skillsTreeList" aria-label={sec.title}>
