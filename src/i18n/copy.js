@@ -15,7 +15,6 @@ export const copy = {
       nav: {
         professional: {
           start: "OVERVIEW",
-          about: "ABOUT",
           experience: "EXPERIENCE",
           skills: "SKILLS",
           projects: "PROJECTS",
@@ -23,7 +22,6 @@ export const copy = {
         },
         gamified: {
           start: "ENTRY",
-          about: "CHARACTER SHEET",
           experience: "QUEST LOG",
           skills: "SKILL TREE",
           projects: "INVENTORY",
@@ -44,14 +42,10 @@ export const copy = {
       languagesLabel: "Languages (fluent)",
       languages: ["English", "French", "Ukrainian"],
     },
-    about: {
-      section: { primary: "About Me", secondary: "Character Sheet" },
-      p1: "I’m a Computer Science Technology student in Dawson College’s CST program (420.B0), a three-year technical program focused on building practical, industry-ready software. I’m on track to graduate in June 2026.",
-      p2: "I enjoy learning by building real systems and getting hands-on with code. I regularly explore new programming languages, frameworks, and technologies, and go beyond coursework through personal projects and bootcamps to deepen my understanding.",
-      p3: "This approach has helped me build experience across backend systems and full-stack applications. I work well in team environments, value clear communication, and enjoy collaborating to turn ideas into polished, functional software.",
-    },    experience: {
+    experience: {
       section: { primary: "Experience", secondary: "Quest Log" },
-    },    skills: {
+    },
+    skills: {
       section: { primary: "Skills", secondary: "Skill Tree" },
       sections: [
         { title: "Programming Languages", skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"] },
@@ -158,14 +152,11 @@ export const copy = {
       languagesLabel: "Langues (courantes)",
       languages: ["Anglais", "Français", "Ukrainien"],
     },
-    about: {
-      section: { primary: "À Propos", secondary: "Fiche Personnage" },
-      p1: "Je suis étudiant en Techniques de l’informatique au programme CST (420.B0) du Collège Dawson, un programme technique de trois ans axé sur la création de logiciels pratiques et prêts pour l’industrie. Je prévois obtenir mon diplôme en juin 2026.",
-      p2: "J’aime apprendre en construisant des systèmes concrets et en codant de façon pratique. J’explore régulièrement de nouveaux langages, frameworks et technologies, et je vais au-delà des cours avec des projets personnels et des bootcamps.",
-      p3: "Cette approche m’a permis de développer de l’expérience en systèmes backend et en applications full-stack. Je travaille bien en équipe, j’accorde de l’importance à une communication claire et j’aime collaborer pour transformer des idées en logiciels solides.",
-    },    experience: {
+
+    experience: {
       section: { primary: "Expérience", secondary: "Carnet de Quêtes" },
-    },    skills: {
+    },
+    skills: {
       section: { primary: "Compétences", secondary: "Arbre de Compétences" },
       sections: [
         { title: "Langages de programmation", skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"] },

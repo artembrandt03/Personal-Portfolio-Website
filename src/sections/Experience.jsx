@@ -26,10 +26,9 @@ export default function Experience({ language = "en", labelMode = "professional"
       id: 2,
       company: "Dawson College",
       position: language === "en" ? "Graduating - Computer Science Technology (CST 420.B0)" : "Diplômé - Techniques de l'informatique (CST 420.B0)",
-      startDate: "September 2023",
-      startDateFr: "Septembre 2023",
       endDate: "June 2026",
       endDateFr: "Juin 2026",
+      hideStartDate: true,
       logo: dawsonLogo,
       description: language === "en"
         ? "Three-year technical program focused on full-stack development and hands-on software engineering."
@@ -61,7 +60,10 @@ export default function Experience({ language = "en", labelMode = "professional"
 
                 <div className="experienceMeta">
                   <span className="experienceDate">
-                    {language === "en" ? exp.startDate : exp.startDateFr} — {language === "en" ? exp.endDate : exp.endDateFr}
+                    {exp.hideStartDate 
+                      ? (language === "en" ? exp.endDate : exp.endDateFr)
+                      : `${language === "en" ? exp.startDate : exp.startDateFr} — ${language === "en" ? exp.endDate : exp.endDateFr}`
+                    }
                   </span>
                 </div>
 

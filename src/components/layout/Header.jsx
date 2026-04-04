@@ -78,7 +78,6 @@ export default function Header({
   const navLabels = c.header.nav?.[labelMode] ?? c.header.nav?.professional ?? c.header.nav;
   const nav = [
     { id: "start", label: navLabels.start },
-    { id: "about", label: navLabels.about },
     { id: "experience", label: navLabels.experience },
     { id: "skills", label: navLabels.skills },
     { id: "projects", label: navLabels.projects },

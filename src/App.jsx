@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Shell from "./components/layout/Shell.jsx";
 
 import Home from "./sections/Home.jsx";
-import About from "./sections/About.jsx";
 import Experience from "./sections/Experience.jsx";
 import Skills from "./sections/Skills.jsx";
 import Projects from "./sections/Projects.jsx";
@@ -86,11 +85,6 @@ export default function App() {
           <div className="container">
             <GitHubChart language={language} />
           </div>
-        </section>
-
-        {/* CHARACTER SHEET */}
-        <section id="about" className="section">
-          <About language={language} labelMode={labelMode} />
         </section>
 
         {/* EXPERIENCE / QUEST LOG */}
