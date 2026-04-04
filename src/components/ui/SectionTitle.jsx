@@ -1,4 +1,5 @@
 import Highlight from "./Highlight.jsx";
+import SwapTypeTitle from "./SwapTypeTitle.jsx";
 
 export default function SectionTitle({ primary, secondary, labelMode = "professional" }) {
   const titleText = labelMode === "gamified" ? secondary : primary;
@@ -6,7 +7,7 @@ export default function SectionTitle({ primary, secondary, labelMode = "professi
   return (
     <div className="sectionTitle">
       <Highlight>
-        [ {titleText.toUpperCase()} ]
+        [ <SwapTypeTitle primary={titleText} secondary={titleText} /> ]
       </Highlight>
     </div>
   );
