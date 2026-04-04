@@ -21,13 +21,17 @@ export default function Header({
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const settingsRef = useRef(null);
+  const settingsButtonRef = useRef(null);
+  const settingsPanelRef = useRef(null);
 
   useEffect(() => {
     if (!isSettingsOpen) return;
 
     const handlePointerDown = (event) => {
-      if (!settingsRef.current?.contains(event.target)) {
+      const isInButton = settingsButtonRef.current?.contains(event.target);
+      const isInPanel = settingsPanelRef.current?.contains(event.target);
+
+      if (!isInButton && !isInPanel) {
         setIsSettingsOpen(false);
       }
     };
@@ -79,158 +83,161 @@ export default function Header({
     setIsSettingsOpen(false);
   };
 
-  return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 1200,
-        background: "var(--header-bg)",
-        backdropFilter: "blur(8px)",
-        borderBottom: "1px solid var(--panel-border)",
-      }}
-    >
-      <div className="container headerBar">
-        <div className="headerBrand">
-          <div className="brandStack">
-            <span className="brandTitle">{c.header.brandTitle}</span>
-          </div>
-        </div>
-
-        <div className="headerDesktopRight">
-          <div className="headerSettingsWrap" ref={settingsRef}>
-            <button
-              type="button"
-              className={`headerSettingsBtn ${isSettingsOpen ? "isOpen" : ""}`}
-              aria-label="Open settings"
-              aria-haspopup="menu"
-              aria-expanded={isSettingsOpen}
-              onClick={() => setIsSettingsOpen((open) => !open)}
-            >
-              <img src={settingsIcon} alt="" className="headerSettingsIcon" />
-            </button>
-
-            <div className={`headerSettingsPanel ${isSettingsOpen ? "isOpen" : ""}`} role="menu">
-              <div className="headerSettingsGroup">
-                <span className="headerSettingsLabel">{c.header.settings?.language ?? "Language"}</span>
-                <button
-                  className="langToggle"
-                  onClick={handleToggleLanguage}
-                  aria-label="Toggle language"
-                  aria-pressed={language === "fr"}
-                  disabled={isLanguageTransitionActive}
-                  role="menuitem"
-                >
-                  <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
-                    ENG
-                  </span>
-                  <span className="langToggleSep">|</span>
-                  <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
-                    FR
-                  </span>
-                </button>
-              </div>
-
-              <div className="headerSettingsGroup">
-                <span className="headerSettingsLabel">{c.header.settings?.colorTheme ?? "Color Theme"}</span>
-                <button
-                  className="themeToggle"
-                  onClick={handleToggleTheme}
-                  aria-label="Toggle theme"
-                  aria-pressed={theme === "light"}
-                  role="menuitem"
-                >
-                  <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
-                    <img src={brightnessIcon} alt="" className="themeToggleIcon" />
-                  </span>
-                  <span className="themeToggleSep">|</span>
-                  <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
-                    <img src={nightModeIcon} alt="" className="themeToggleIcon" />
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <nav className="headerNav">
-            {nav.map((x) => (
-              <button
-                key={x.id}
-                onClick={() => handleNavClick(x.id)}
-                className="navBtn"
-              >
-                [ {x.label} ]
-              </button>
-            ))}
-          </nav>
-        </div>
-
+  const settingsContent = (
+    <div className={`headerSettingsPanel ${isSettingsOpen ? "isOpen" : ""}`} role="menu" ref={settingsPanelRef}>
+      <div className="headerSettingsGroup">
+        <span className="headerSettingsLabel">{c.header.settings?.language ?? "Language"}</span>
         <button
-          type="button"
-          className={`headerMenuToggle ${isMenuOpen ? "isOpen" : ""}`}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
-          onClick={() => setIsMenuOpen((open) => !open)}
+          className="langToggle"
+          onClick={handleToggleLanguage}
+          aria-label="Toggle language"
+          aria-pressed={language === "fr"}
+          disabled={isLanguageTransitionActive}
+          role="menuitem"
         >
-          <span className="headerMenuIcon" aria-hidden="true">
-            
+          <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+            ENG
           </span>
-          <span className="headerMenuLabel">MENU</span>
+          <span className="langToggleSep">|</span>
+          <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+            FR
+          </span>
         </button>
       </div>
 
-      <div className="container headerMobileWarning" role="note">
-        {mobileWarning}
+      <div className="headerSettingsGroup">
+        <span className="headerSettingsLabel">{c.header.settings?.colorTheme ?? "Color Theme"}</span>
+        <button
+          className="themeToggle"
+          onClick={handleToggleTheme}
+          aria-label="Toggle theme"
+          aria-pressed={theme === "light"}
+          role="menuitem"
+        >
+          <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
+            <img src={brightnessIcon} alt="" className="themeToggleIcon" />
+          </span>
+          <span className="themeToggleSep">|</span>
+          <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+            <img src={nightModeIcon} alt="" className="themeToggleIcon" />
+          </span>
+        </button>
       </div>
+    </div>
+  );
 
-      <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}>
-        <div className="container headerMenuInner">
-          <div className="headerMenuToggles">
-            <button
-              className="langToggle headerMenuLangToggle"
-              onClick={handleToggleLanguage}
-              aria-label="Toggle language"
-              aria-pressed={language === "fr"}
-              disabled={isLanguageTransitionActive}
-            >
-              <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
-                ENG
-              </span>
-              <span className="langToggleSep">|</span>
-              <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
-                FR
-              </span>
-            </button>
-
-            <button
-              className="themeToggle headerMenuThemeToggle"
-              onClick={handleToggleTheme}
-              aria-label="Toggle theme"
-              aria-pressed={theme === "light"}
-            >
-              <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
-                LIGHT
-              </span>
-              <span className="themeToggleSep">|</span>
-              <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
-                DARK
-              </span>
-            </button>
+  return (
+    <>
+      <header
+        className="siteHeader"
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 1200,
+          background: "var(--header-bg)",
+          backdropFilter: "blur(8px)",
+          borderBottom: "1px solid var(--panel-border)",
+        }}
+      >
+        <div className="container headerBar">
+          <div className="headerBrand">
+            <div className="brandStack">
+              <span className="brandTitle">{c.header.brandTitle}</span>
+            </div>
           </div>
 
-          <nav className="headerMenuNav" aria-label="Primary navigation">
-            {nav.map((x) => (
+          <div className="headerDesktopRight">
+            <div className="headerSettingsWrap" ref={settingsButtonRef}>
               <button
-                key={x.id}
-                onClick={() => handleNavClick(x.id)}
-                className="navBtn headerMenuNavBtn"
+                type="button"
+                className={`headerSettingsBtn ${isSettingsOpen ? "isOpen" : ""}`}
+                aria-label="Open settings"
+                aria-haspopup="menu"
+                aria-expanded={isSettingsOpen}
+                onClick={() => setIsSettingsOpen((open) => !open)}
               >
-                [ {x.label} ]
+                <img src={settingsIcon} alt="" className="headerSettingsIcon" />
               </button>
-            ))}
-          </nav>
+            </div>
+
+            <nav className="headerNav">
+              {nav.map((x) => (
+                <button key={x.id} onClick={() => handleNavClick(x.id)} className="navBtn">
+                  [ {x.label} ]
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          <button
+            type="button"
+            className={`headerMenuToggle ${isMenuOpen ? "isOpen" : ""}`}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="headerMenuIcon" aria-hidden="true"></span>
+            <span className="headerMenuLabel">MENU</span>
+          </button>
         </div>
+
+        <div className="container headerMobileWarning" role="note">
+          {mobileWarning}
+        </div>
+
+        <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}>
+          <div className="container headerMenuInner">
+            <div className="headerMenuToggles">
+              <button
+                className="langToggle headerMenuLangToggle"
+                onClick={handleToggleLanguage}
+                aria-label="Toggle language"
+                aria-pressed={language === "fr"}
+                disabled={isLanguageTransitionActive}
+              >
+                <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+                  ENG
+                </span>
+                <span className="langToggleSep">|</span>
+                <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+                  FR
+                </span>
+              </button>
+
+              <button
+                className="themeToggle headerMenuThemeToggle"
+                onClick={handleToggleTheme}
+                aria-label="Toggle theme"
+                aria-pressed={theme === "light"}
+              >
+                <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
+                  LIGHT
+                </span>
+                <span className="themeToggleSep">|</span>
+                <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                  DARK
+                </span>
+              </button>
+            </div>
+
+            <nav className="headerMenuNav" aria-label="Primary navigation">
+              {nav.map((x) => (
+                <button
+                  key={x.id}
+                  onClick={() => handleNavClick(x.id)}
+                  className="navBtn headerMenuNavBtn"
+                >
+                  [ {x.label} ]
+                </button>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div className={`headerSettingsDock ${isSettingsOpen ? "isOpen" : ""}`}>
+        <div className="container headerSettingsDockInner">{settingsContent}</div>
       </div>
-    </header>
+    </>
   );
 }
