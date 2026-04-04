@@ -429,6 +429,18 @@ header {
   color: var(--panel-bg);
 }
 
+.modeToggleIcon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  object-fit: contain;
+  filter: var(--icon-filter);
+}
+
+.modeToggleOpt.isActive .modeToggleIcon {
+  filter: brightness(0) invert(1);
+}
+
 .modeToggleSep {
   color: var(--panel-border);
 }

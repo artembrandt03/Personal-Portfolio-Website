@@ -3,6 +3,8 @@ import { getCopy } from "../../i18n/copy.js";
 import settingsIcon from "../../assets/images/setting.png";
 import brightnessIcon from "../../assets/images/brightness.png";
 import nightModeIcon from "../../assets/images/night-mode.png";
+import briefcaseIcon from "../../assets/images/briefcase.png";
+import gameIcon from "../../assets/images/game.png";
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -144,11 +146,11 @@ export default function Header({
           role="menuitem"
         >
           <span className={`modeToggleOpt ${labelMode === "professional" ? "isActive" : ""}`}>
-            {c.header.settings?.modeOptions?.professional ?? "PRO"}
+            <img src={briefcaseIcon} alt="" className="modeToggleIcon" />
           </span>
           <span className="modeToggleSep">|</span>
           <span className={`modeToggleOpt ${labelMode === "gamified" ? "isActive" : ""}`}>
-            {c.header.settings?.modeOptions?.gamified ?? "GAME"}
+            <img src={gameIcon} alt="" className="modeToggleIcon" />
           </span>
         </button>
       </div>
@@ -255,11 +257,11 @@ export default function Header({
                 aria-pressed={labelMode === "gamified"}
               >
                 <span className={`modeToggleOpt ${labelMode === "professional" ? "isActive" : ""}`}>
-                  {c.header.settings?.modeOptions?.professional ?? "PRO"}
+                  <img src={briefcaseIcon} alt="" className="modeToggleIcon" />
                 </span>
                 <span className="modeToggleSep">|</span>
                 <span className={`modeToggleOpt ${labelMode === "gamified" ? "isActive" : ""}`}>
-                  {c.header.settings?.modeOptions?.gamified ?? "GAME"}
+                  <img src={gameIcon} alt="" className="modeToggleIcon" />
                 </span>
               </button>
             </div>
