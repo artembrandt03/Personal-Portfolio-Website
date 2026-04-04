@@ -1078,6 +1078,8 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
 
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1934,5 +1936,18 @@ footer {
 
   .experienceCompany {
     font-size: 14px;
+  }
+
+  .projectModalTitle {
+    word-break: break-word;
+  }
+
+  .projectModalActions {
+    gap: 8px;
+  }
+
+  .projectModalActions .btn {
+    font-size: 11px;
+    padding: 8px 12px;
   }
 }
