@@ -384,6 +384,10 @@ header {
 }
 
 .themeToggleOpt.isActive .themeToggleIcon {
+  filter: none;
+}
+
+[data-theme="light"] .themeToggleOpt.isActive .themeToggleIcon {
   filter: brightness(0) invert(1);
 }
 
@@ -438,6 +442,10 @@ header {
 }
 
 .modeToggleOpt.isActive .modeToggleIcon {
+  filter: none;
+}
+
+[data-theme="light"] .modeToggleOpt.isActive .modeToggleIcon {
   filter: brightness(0) invert(1);
 }
 
