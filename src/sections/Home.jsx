@@ -81,11 +81,14 @@ export default function Home({ language = "en", labelMode = "professional" }) {
           />
           <h1 className="h1">{profile.name}</h1>
 
-          <div style={{ color: "var(--muted)", marginBottom: 14 }}>
-            <Highlight>{c.home.title}</Highlight>
+          <div style={{ color: "var(--muted)", marginBottom: 10, borderLeft: "2px solid var(--panel-border)", paddingLeft: 10 }}>
+            <div>{c.home.titleLine1}</div>
+            <div>{c.home.titleLine2}</div>
           </div>
 
-          <p className="p">{c.home.tagline}</p>
+          <p className="p">{c.home.p1}</p>
+          <p className="p">{c.home.p2}</p>
+          <p className="p">{c.home.p3}</p>
 
           <div style={{ marginTop: 18 }}>
             <div className="cardTitle" style={{ marginBottom: 8 }}>

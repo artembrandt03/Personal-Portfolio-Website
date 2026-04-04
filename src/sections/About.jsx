@@ -13,15 +13,7 @@ export default function About({ language = "en", labelMode = "professional" }) {
       />
 
       <div className="card">
-        <p className="p">{c.about.p1}</p>
-
-        <div style={{ height: 14 }} />
-
-        <p className="p">{c.about.p2}</p>
-
-        <div style={{ height: 14 }} />
-
-        <p className="p">{c.about.p3}</p>
+        <p className="p">Placeholder — Coming soon.</p>
       </div>
     </div>
   );

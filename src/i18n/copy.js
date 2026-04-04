@@ -31,9 +31,10 @@ export const copy = {
     },
     home: {
       section: { primary: "Overview", secondary: "Entry" },
-      title: "Graduating Computer Science Student | Full-Stack Developer",
-      tagline:
-        "Welcome! I build clean, practical software and learn by shipping real projects. Explore my background, skills, and hands-on work in this fun terminal-themed portfolio.",
+      titleLine1: "Graduating Computer Science Student",
+      titleLine2: "Full-Stack Developer",
+      p1: "Hey! I'm a CST student at Dawson College (graduating June 2026), who sees projects through from architecture all the way to deployment.",
+      p2: "I like to go beyond coursework with personal projects and bootcamps, and have developed hands-on experience in full-stack development. I work well in teams that follow agile methodologies, but also where good collaboration and good vibes go hand in hand :)",
       getInTouch: "Get in touch",
       location: "Location",
       email: "Email",
@@ -140,9 +141,10 @@ export const copy = {
     },
     home: {
       section: { primary: "Aperçu", secondary: "Entrée" },
-      title: "Étudiant finissant en informatique | Développeur full-stack",
-      tagline:
-        "Bienvenue! Je construis des logiciels propres et pratiques, et j’apprends en livrant de vrais projets. Explorez mon parcours, mes compétences et mes réalisations concrètes dans ce portfolio au style terminal.",
+      titleLine1: "Étudiant finissant en informatique",
+      titleLine2: "Développeur full-stack",
+      p1: "Salut! Je suis étudiant au programme CST du Collège Dawson (diplôme en juin 2026), et je mène les projets de bout en bout, de l'architecture jusqu'au déploiement.",
+      p2: "J'aime aller au-delà des cours avec des projets personnels et des bootcamps, et j'ai développé une solide expérience en développement full-stack. Je travaille bien en équipes agiles, surtout quand la collaboration et la bonne ambiance vont de pair :)",
       getInTouch: "Me contacter",
       location: "Localisation",
       email: "Courriel",
