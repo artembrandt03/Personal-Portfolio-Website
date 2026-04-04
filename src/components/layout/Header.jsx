@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getCopy } from "../../i18n/copy.js";
+import settingsIcon from "../../assets/images/setting.png";
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -17,18 +18,46 @@ export default function Header({
   const c = getCopy(language);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const settingsRef = useRef(null);
+
+  useEffect(() => {
+    if (!isSettingsOpen) return;
+
+    const handlePointerDown = (event) => {
+      if (!settingsRef.current?.contains(event.target)) {
+        setIsSettingsOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsSettingsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isSettingsOpen]);
 
   const handleToggleLanguage = () => {
     if (typeof onToggleLanguage === "function") {
       onToggleLanguage();
     }
     setIsMenuOpen(false);
+    setIsSettingsOpen(false);
   };
 
   const handleToggleTheme = () => {
     if (typeof onToggleTheme === "function") {
       onToggleTheme();
     }
+    setIsSettingsOpen(false);
   };
 
   const nav = [
@@ -47,6 +76,7 @@ export default function Header({
   const handleNavClick = (id) => {
     scrollToId(id);
     setIsMenuOpen(false);
+    setIsSettingsOpen(false);
   };
 
   return (
@@ -68,37 +98,52 @@ export default function Header({
         </div>
 
         <div className="headerDesktopRight">
-          <div className="headerLang">
+          <div className="headerSettingsWrap" ref={settingsRef}>
             <button
-              className="langToggle"
-              onClick={handleToggleLanguage}
-              aria-label="Toggle language"
-              aria-pressed={language === "fr"}
-              disabled={isLanguageTransitionActive}
+              type="button"
+              className={`headerSettingsBtn ${isSettingsOpen ? "isOpen" : ""}`}
+              aria-label="Open settings"
+              aria-haspopup="menu"
+              aria-expanded={isSettingsOpen}
+              onClick={() => setIsSettingsOpen((open) => !open)}
             >
-              <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
-                ENG
-              </span>
-              <span className="langToggleSep">|</span>
-              <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
-                FR
-              </span>
+              <img src={settingsIcon} alt="" className="headerSettingsIcon" />
             </button>
 
-            <button
-              className="themeToggle"
-              onClick={handleToggleTheme}
-              aria-label="Toggle theme"
-              aria-pressed={theme === "light"}
-            >
-              <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
-                DARK
-              </span>
-              <span className="themeToggleSep">|</span>
-              <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
-                LIGHT
-              </span>
-            </button>
+            <div className={`headerSettingsPanel ${isSettingsOpen ? "isOpen" : ""}`} role="menu">
+              <button
+                className="langToggle"
+                onClick={handleToggleLanguage}
+                aria-label="Toggle language"
+                aria-pressed={language === "fr"}
+                disabled={isLanguageTransitionActive}
+                role="menuitem"
+              >
+                <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+                  ENG
+                </span>
+                <span className="langToggleSep">|</span>
+                <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+                  FR
+                </span>
+              </button>
+
+              <button
+                className="themeToggle"
+                onClick={handleToggleTheme}
+                aria-label="Toggle theme"
+                aria-pressed={theme === "light"}
+                role="menuitem"
+              >
+                <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                  DARK
+                </span>
+                <span className="themeToggleSep">|</span>
+                <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
+                  LIGHT
+                </span>
+              </button>
+            </div>
           </div>
 
           <nav className="headerNav">

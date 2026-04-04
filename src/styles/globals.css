@@ -212,6 +212,61 @@ header {
   flex: 0 0 auto;
 }
 
+.headerSettingsWrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.headerSettingsBtn {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  transition: border-color 120ms ease, transform 120ms ease, background-color 120ms ease;
+}
+
+.headerSettingsBtn:hover {
+  border-color: var(--muted);
+  transform: translateY(-1px);
+}
+
+.headerSettingsBtn.isOpen {
+  border-color: var(--muted);
+}
+
+.headerSettingsIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: var(--icon-filter);
+  opacity: 0.9;
+}
+
+.headerSettingsPanel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  display: none;
+  min-width: 230px;
+  padding: 10px;
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  background: var(--panel-bg);
+  z-index: 70;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.headerSettingsPanel.isOpen {
+  display: flex;
+}
+
 .langToggle {
   all: unset;
   cursor: pointer;
