@@ -8,9 +8,6 @@ import Projects from "./sections/Projects.jsx";
 import Hobbies from "./sections/Hobbies.jsx";
 import ProjectDetail from "./sections/ProjectDetail.jsx";
 import GitHubChart from "./components/ui/GitHubChart.jsx";
-import LanguageTransitionOverlay from "./components/ui/LanguageTransitionOverlay.jsx";
-
-const LANGUAGE_TRANSITION_MS = 1000;
 
 export default function App() {
   const [language, setLanguage] = useState(() => {
@@ -27,7 +24,6 @@ export default function App() {
   });
   const [openProject, setOpenProject] = useState(null);
   const [isLanguageTransitionActive, setIsLanguageTransitionActive] = useState(false);
-  const [pendingLanguage, setPendingLanguage] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("portfolio-language", language);
@@ -44,17 +40,8 @@ export default function App() {
   }, [labelMode]);
 
   const toggleLanguage = () => {
-    if (isLanguageTransitionActive) return;
-
     const nextLanguage = language === "en" ? "fr" : "en";
-    setPendingLanguage(nextLanguage);
-    setIsLanguageTransitionActive(true);
     setLanguage(nextLanguage);
-
-    window.setTimeout(() => {
-      setIsLanguageTransitionActive(false);
-      setPendingLanguage(null);
-    }, LANGUAGE_TRANSITION_MS);
   };
 
   const toggleTheme = () => {
@@ -113,12 +100,6 @@ export default function App() {
           onClose={() => setOpenProject(null)}
         />
       </Shell>
-
-      <LanguageTransitionOverlay
-        active={isLanguageTransitionActive}
-        targetLanguage={pendingLanguage ?? language}
-        durationMs={LANGUAGE_TRANSITION_MS}
-      />
     </>
   );
 }
