@@ -84,7 +84,7 @@ export default function Header({
       style={{
         position: "sticky",
         top: 0,
-        zIndex: 50,
+        zIndex: 1200,
         background: "var(--header-bg)",
         backdropFilter: "blur(8px)",
         borderBottom: "1px solid var(--panel-border)",
@@ -135,12 +135,12 @@ export default function Header({
                 aria-pressed={theme === "light"}
                 role="menuitem"
               >
-                <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
-                  DARK
-                </span>
-                <span className="themeToggleSep">|</span>
                 <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
                   LIGHT
+                </span>
+                <span className="themeToggleSep">|</span>
+                <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                  DARK
                 </span>
               </button>
             </div>
@@ -202,12 +202,12 @@ export default function Header({
               aria-label="Toggle theme"
               aria-pressed={theme === "light"}
             >
-              <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
-                DARK
-              </span>
-              <span className="themeToggleSep">|</span>
               <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
                 LIGHT
+              </span>
+              <span className="themeToggleSep">|</span>
+              <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                DARK
               </span>
             </button>
           </div>
