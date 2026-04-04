@@ -7,7 +7,7 @@ import bootcampIcon from "../assets/images/flag-variant.png";
 import gamingIcon from "../assets/images/game-controller.png";
 import { getCopy } from "../i18n/copy.js";
 
-export default function Hobbies({ language = "en" }) {
+export default function Hobbies({ language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
 
   return (
@@ -15,6 +15,7 @@ export default function Hobbies({ language = "en" }) {
       <SectionTitle
         primary={c.hobbies.section.primary}
         secondary={c.hobbies.section.secondary}
+        labelMode={labelMode}
       />
 
       <div className="card">

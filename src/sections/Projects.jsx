@@ -8,7 +8,7 @@ import { RARITY_ORDER, rarityLabel } from "../utils/rarity.js";
 import SectionTitle from "../components/ui/SectionTitle.jsx";
 import { getCopy } from "../i18n/copy.js";
 
-export default function Projects({ onOpen, language = "en" }) {
+export default function Projects({ onOpen, language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
   const [filter, setFilter] = useState("LEGENDARY");
 
@@ -26,6 +26,7 @@ export default function Projects({ onOpen, language = "en" }) {
       <SectionTitle
         primary={c.projects.section.primary}
         secondary={c.projects.section.secondary}
+        labelMode={labelMode}
       />
 
       {/* NEW: big black wrapper panel */}
@@ -39,7 +40,7 @@ export default function Projects({ onOpen, language = "en" }) {
               onClick={() => setFilter(r)}
               aria-pressed={filter === r}
             >
-              {rarityLabel(r, language)}
+              {rarityLabel(r, language, labelMode)}
             </button>
           ))}
 
@@ -59,7 +60,7 @@ export default function Projects({ onOpen, language = "en" }) {
           visible(r) ? (
             <div key={r} className="projectsRarityBlock">
               <div className="rarityHeader">
-                <Tag rarity={r} language={language} />
+                <Tag rarity={r} language={language} labelMode={labelMode} />
                 <span className="rarityCount">({grouped.get(r).length})</span>
               </div>
 

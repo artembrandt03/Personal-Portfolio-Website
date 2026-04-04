@@ -10,7 +10,7 @@ import mlIcon from "../assets/images/skills/ml.png";
 import devopsIcon from "../assets/images/skills/devops.png";
 import engineeringPracticesIcon from "../assets/images/skills/eng-practices.png";
 
-export default function Skills({ language = "en" }) {
+export default function Skills({ language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
 
   const iconByTitle = {
@@ -28,6 +28,7 @@ export default function Skills({ language = "en" }) {
       <SectionTitle
         primary={c.skills.section.primary}
         secondary={c.skills.section.secondary}
+        labelMode={labelMode}
       />
 
       <div className="grid2 skillsGrid">

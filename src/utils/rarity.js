@@ -2,16 +2,32 @@ export const RARITY_ORDER = ["LEGENDARY", "EPIC", "RARE", "COMMON"];
 
 const RARITY_LABELS = {
   en: {
-    LEGENDARY: "LEGENDARY",
-    EPIC: "EPIC",
-    RARE: "RARE",
-    COMMON: "COMMON",
+    gamified: {
+      LEGENDARY: "LEGENDARY",
+      EPIC: "EPIC",
+      RARE: "RARE",
+      COMMON: "COMMON",
+    },
+    professional: {
+      LEGENDARY: "HIGHLIGHTS",
+      EPIC: "ADVANCED",
+      RARE: "INTERMEDIATE",
+      COMMON: "BEGINNER",
+    },
   },
   fr: {
-    LEGENDARY: "LÉGENDAIRE",
-    EPIC: "ÉPIQUE",
-    RARE: "RARE",
-    COMMON: "COMMUN",
+    gamified: {
+      LEGENDARY: "LÉGENDAIRE",
+      EPIC: "ÉPIQUE",
+      RARE: "RARE",
+      COMMON: "COMMUN",
+    },
+    professional: {
+      LEGENDARY: "POINTS FORTS",
+      EPIC: "AVANCÉ",
+      RARE: "INTERMÉDIAIRE",
+      COMMON: "DÉBUTANT",
+    },
   },
 };
 
@@ -22,7 +38,8 @@ export const rarityColorVar = (rarity) => {
   return "var(--common)";
 };
 
-export const rarityLabel = (rarity, language = "en") => {
-  const labels = RARITY_LABELS[language] ?? RARITY_LABELS.en;
+export const rarityLabel = (rarity, language = "en", labelMode = "professional") => {
+  const labelsByLanguage = RARITY_LABELS[language] ?? RARITY_LABELS.en;
+  const labels = labelsByLanguage[labelMode] ?? labelsByLanguage.professional;
   return `[ ${labels[rarity] ?? rarity} ]`;
 };

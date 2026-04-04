@@ -1,6 +1,6 @@
 import { rarityColorVar, rarityLabel } from "../../utils/rarity.js";
 
-export default function Tag({ rarity, language = "en" }) {
+export default function Tag({ rarity, language = "en", labelMode = "professional" }) {
   const c = rarityColorVar(rarity);
   return (
     <span
@@ -14,7 +14,7 @@ export default function Tag({ rarity, language = "en" }) {
         color: c,
       }}
     >
-      {rarityLabel(rarity, language)}
+      {rarityLabel(rarity, language, labelMode)}
     </span>
   );
 }

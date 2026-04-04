@@ -1,4 +1,5 @@
 // src/sections/Home.jsx
+import { useRef, useState } from "react";
 import Highlight from "../components/ui/Highlight.jsx";
 import { profile } from "../data/profile.js";
 import { getCopy } from "../i18n/copy.js";
@@ -6,52 +7,121 @@ import { getCopy } from "../i18n/copy.js";
 import githubIcon from "../assets/images/github.png";
 import gitlabIcon from "../assets/images/gitlab.png";
 import linkedinIcon from "../assets/images/linkedin.png";
+import uaFlagImage from "../assets/images/ua-flag.png";
 
-import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
 import SectionTitle from "../components/ui/SectionTitle.jsx";
 
-export default function Home({ language = "en" }) {
+export default function Home({ language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
+  const [isUkraineBurstActive, setIsUkraineBurstActive] = useState(false);
+  const [ukraineFlags, setUkraineFlags] = useState([]);
+  const [emailCopied, setEmailCopied] = useState(false);
+  const ukraineClicksRef = useRef([]);
+
+  const handleLanguageChipClick = (lang) => {
+    if (!String(lang).toLowerCase().includes("ukrain")) return;
+
+    const now = Date.now();
+    const recentClicks = ukraineClicksRef.current.filter((t) => now - t < 1800);
+    recentClicks.push(now);
+    ukraineClicksRef.current = recentClicks;
+
+    if (recentClicks.length < 10) return;
+
+    const burstItems = Array.from({ length: 85 }, (_, i) => ({
+      id: `${now}-${i}`,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 0.55}s`,
+      duration: `${2.1 + Math.random() * 1.2}s`,
+      size: `${20 + Math.random() * 22}px`,
+      drift: `${(Math.random() - 0.5) * 120}px`,
+      rotate: `${(Math.random() - 0.5) * 35}deg`,
+    }));
+
+    setUkraineFlags(burstItems);
+    setIsUkraineBurstActive(true);
+    ukraineClicksRef.current = [];
+
+    window.setTimeout(() => {
+      setIsUkraineBurstActive(false);
+      setUkraineFlags([]);
+    }, 3000);
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("artem.brandt03@gmail.com");
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   return (
     <div className="container">
+      {isUkraineBurstActive ? (
+        <div className="ukraineBurst" aria-hidden="true">
+          {ukraineFlags.map((flag) => (
+            <span
+              key={flag.id}
+              className="ukraineBurstFlag"
+              style={{
+                left: flag.left,
+                top: flag.top,
+                animationDelay: flag.delay,
+                animationDuration: flag.duration,
+                "--flag-size": flag.size,
+                "--drift-x": flag.drift,
+                "--twist": flag.rotate,
+              }}
+            >
+              <img src={uaFlagImage} alt="" className="ukraineBurstFlagImg" />
+            </span>
+          ))}
+        </div>
+      ) : null}
+
       <div className="grid2">
-        {/* LEFT: ENTRY */}
         <div className="card">
           <SectionTitle
             primary={c.home.section.primary}
             secondary={c.home.section.secondary}
+            labelMode={labelMode}
           />
           <h1 className="h1">{profile.name}</h1>
 
-          <div style={{ color: "var(--muted)", marginBottom: 14 }}>
-            <Highlight>{c.home.title}</Highlight>
+          <div style={{ color: "var(--muted)", marginBottom: 10, borderLeft: "2px solid var(--panel-border)", paddingLeft: 10 }}>
+            <div>{c.home.titleLine1}</div>
+            <div>{c.home.titleLine2}</div>
           </div>
 
-          <p className="p">{c.home.tagline}</p>
+          <p className="p">{c.home.p1}</p>
+          <p className="p">{c.home.p2}</p>
+          <p className="p">{c.home.p3}</p>
 
           <div style={{ marginTop: 18 }}>
             <div className="cardTitle" style={{ marginBottom: 8 }}>
               {c.home.languagesLabel}
             </div>
             <div className="row">
-              {c.home.languages.map((lang) => (
-                <span key={lang} className="kbd">
+              {c.home.languages.map((lang, idx) => (
+                <button
+                  key={lang}
+                  type="button"
+                  className="kbd kbdButton"
+                  onClick={() => handleLanguageChipClick(lang)}
+                  aria-label={idx === 2 ? "Ukrainian easter egg" : undefined}
+                >
                   {lang}
-                </span>
+                </button>
               ))}
             </div>
           </div>
-
         </div>
 
-        {/* RIGHT: GET IN TOUCH */}
         <div className="card contactCard">
           <div className="cardTitle">
             <Highlight>{c.home.getInTouch}</Highlight>
           </div>
 
-          {/* Location */}
           <div style={{ marginBottom: 12 }}>
             <div className="cardTitle" style={{ marginBottom: 6 }}>
               {c.home.location}
@@ -59,15 +129,22 @@ export default function Home({ language = "en" }) {
             <div>Montreal, QC</div>
           </div>
 
-          {/* Email (plain text link) */}
-          <div style={{ marginBottom: 14 }}>
+          <div style={{ marginBottom: 14, position: "relative" }}>
             <div className="cardTitle" style={{ marginBottom: 6 }}>
               {c.home.email}
             </div>
             <a href="mailto:artem.brandt03@gmail.com">artem.brandt03@gmail.com</a>
+            <button
+              type="button"
+              className="emailCopyBtn"
+              onClick={handleCopyEmail}
+              title="Copy email to clipboard"
+              style={{ position: "absolute", top: 0, right: 0 }}
+            >
+              {emailCopied ? "✓" : c.home.emailCopy}
+            </button>
           </div>
 
-          {/* Social buttons */}
           <div className="iconBtnRow contactBtnRow">
             <a
               className="iconBtn contactBtn"
