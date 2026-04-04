@@ -3,6 +3,7 @@ import Shell from "./components/layout/Shell.jsx";
 
 import Home from "./sections/Home.jsx";
 import About from "./sections/About.jsx";
+import Experience from "./sections/Experience.jsx";
 import Skills from "./sections/Skills.jsx";
 import Projects from "./sections/Projects.jsx";
 import Hobbies from "./sections/Hobbies.jsx";
@@ -90,6 +91,11 @@ export default function App() {
         {/* CHARACTER SHEET */}
         <section id="about" className="section">
           <About language={language} labelMode={labelMode} />
+        </section>
+
+        {/* EXPERIENCE / QUEST LOG */}
+        <section id="experience">
+          <Experience language={language} labelMode={labelMode} />
         </section>
 
         {/* SKILL TREE */}

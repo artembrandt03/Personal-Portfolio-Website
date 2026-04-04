@@ -79,6 +79,7 @@ export default function Header({
   const nav = [
     { id: "start", label: navLabels.start },
     { id: "about", label: navLabels.about },
+    { id: "experience", label: navLabels.experience },
     { id: "skills", label: navLabels.skills },
     { id: "projects", label: navLabels.projects },
     { id: "hobbies", label: navLabels.hobbies },
