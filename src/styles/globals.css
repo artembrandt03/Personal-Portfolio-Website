@@ -606,12 +606,14 @@ header {
 
 .headerMenuNav {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 8px;
 }
 
 .headerMenuToggles {
   display: flex;
+  flex-direction: row;
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
@@ -1259,35 +1261,81 @@ footer {
    ========================= */
 @media (max-width: 880px) {
   .headerBar {
-    height: auto !important;
-    padding: 10px 0 !important;
-
-    /* stack brand + nav */
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 10px !important;
-  }
-
-  .headerNav {
-    /* allow all buttons to show */
-    justify-content: flex-start !important;
-    flex-wrap: wrap !important;
-
-    /* kill the clipping behavior */
-    overflow: visible !important;
-
-    width: 100% !important;
+    height: 64px !important;
+    padding: 0 10px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     gap: 8px !important;
   }
 
-  .headerLang {
-    align-self: flex-start;
+  .headerBrand {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .headerMenuToggle {
+    flex: 0 0 auto;
+  }
+
+  .headerNav {
+    display: none;
+  }
+
+  .headerMenuPanel {
+    display: none;
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 50%;
+    max-width: 400px;
+    height: calc(100vh - 64px);
+    background: var(--panel-bg);
+    border-left: 1px solid var(--panel-border);
+    overflow-y: auto;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+  }
+
+  .headerMenuInner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .headerMenuToggles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .headerMenuNav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .headerMenuLangToggle,
+  .headerMenuThemeToggle,
+  .headerMenuNavBtn {
+    width: auto !important;
+    flex: 0 1 auto !important;
+  }
+
+  .headerMenuLangToggle {
+    flex: 0 1 auto;
+  }
+
+  .headerMenuThemeToggle {
+    flex: 0 1 auto;
   }
 
   .navBtn {
-    /* bigger tap target */
-    padding: 10px 12px !important;
-    font-size: 12px !important;
+    padding: 5px 7px !important;
+    font-size: 11px !important;
   }
 }
 
