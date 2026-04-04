@@ -16,6 +16,8 @@ export default function Header({
   isLanguageTransitionActive = false,
   theme = "dark",
   onToggleTheme,
+  labelMode = "professional",
+  onToggleLabelMode,
 }) {
   const c = getCopy(language);
 
@@ -64,12 +66,20 @@ export default function Header({
     }
   };
 
+  const handleToggleLabelMode = () => {
+    if (typeof onToggleLabelMode === "function") {
+      onToggleLabelMode();
+    }
+    setIsMenuOpen(false);
+  };
+
+  const navLabels = c.header.nav?.[labelMode] ?? c.header.nav?.professional ?? c.header.nav;
   const nav = [
-    { id: "start", label: c.header.nav.start },
-    { id: "about", label: c.header.nav.about },
-    { id: "skills", label: c.header.nav.skills },
-    { id: "projects", label: c.header.nav.projects },
-    { id: "hobbies", label: c.header.nav.hobbies },
+    { id: "start", label: navLabels.start },
+    { id: "about", label: navLabels.about },
+    { id: "skills", label: navLabels.skills },
+    { id: "projects", label: navLabels.projects },
+    { id: "hobbies", label: navLabels.hobbies },
   ];
   const mobileWarning =
     c.header.mobileWarning ??
@@ -120,6 +130,25 @@ export default function Header({
           <span className="themeToggleSep">|</span>
           <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
             <img src={nightModeIcon} alt="" className="themeToggleIcon" />
+          </span>
+        </button>
+      </div>
+
+      <div className="headerSettingsGroup">
+        <span className="headerSettingsLabel">{c.header.settings?.labelMode ?? "Label Mode"}</span>
+        <button
+          className="modeToggle"
+          onClick={handleToggleLabelMode}
+          aria-label="Toggle label mode"
+          aria-pressed={labelMode === "gamified"}
+          role="menuitem"
+        >
+          <span className={`modeToggleOpt ${labelMode === "professional" ? "isActive" : ""}`}>
+            {c.header.settings?.modeOptions?.professional ?? "PRO"}
+          </span>
+          <span className="modeToggleSep">|</span>
+          <span className={`modeToggleOpt ${labelMode === "gamified" ? "isActive" : ""}`}>
+            {c.header.settings?.modeOptions?.gamified ?? "GAME"}
           </span>
         </button>
       </div>
@@ -216,6 +245,21 @@ export default function Header({
                 <span className="themeToggleSep">|</span>
                 <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
                   DARK
+                </span>
+              </button>
+
+              <button
+                className="modeToggle headerMenuThemeToggle"
+                onClick={handleToggleLabelMode}
+                aria-label="Toggle label mode"
+                aria-pressed={labelMode === "gamified"}
+              >
+                <span className={`modeToggleOpt ${labelMode === "professional" ? "isActive" : ""}`}>
+                  {c.header.settings?.modeOptions?.professional ?? "PRO"}
+                </span>
+                <span className="modeToggleSep">|</span>
+                <span className={`modeToggleOpt ${labelMode === "gamified" ? "isActive" : ""}`}>
+                  {c.header.settings?.modeOptions?.gamified ?? "GAME"}
                 </span>
               </button>
             </div>

@@ -6,13 +6,27 @@ export const copy = {
       settings: {
         language: "Language",
         colorTheme: "Color Theme",
+        labelMode: "Label Mode",
+        modeOptions: {
+          professional: "PRO",
+          gamified: "GAME",
+        },
       },
       nav: {
-        start: "OVERVIEW",
-        about: "ABOUT",
-        skills: "SKILLS",
-        projects: "PROJECTS",
-        hobbies: "BEYOND",
+        professional: {
+          start: "OVERVIEW",
+          about: "ABOUT",
+          skills: "SKILLS",
+          projects: "PROJECTS",
+          hobbies: "BEYOND",
+        },
+        gamified: {
+          start: "ENTRY",
+          about: "CHARACTER SHEET",
+          skills: "SKILL TREE",
+          projects: "INVENTORY",
+          hobbies: "SIDE QUESTS",
+        },
       },
     },
     home: {
@@ -101,13 +115,27 @@ export const copy = {
       settings: {
         language: "Langue",
         colorTheme: "Thème de couleur",
+        labelMode: "Mode d’affichage",
+        modeOptions: {
+          professional: "PRO",
+          gamified: "JEU",
+        },
       },
       nav: {
-        start: "APERÇU",
-        about: "À PROPOS",
-        skills: "COMPÉTENCES",
-        projects: "PROJETS",
-        hobbies: "AU-DELÀ",
+        professional: {
+          start: "APERÇU",
+          about: "À PROPOS",
+          skills: "COMPÉTENCES",
+          projects: "PROJETS",
+          hobbies: "AU-DELÀ",
+        },
+        gamified: {
+          start: "ENTRÉE",
+          about: "FICHE PERSONNAGE",
+          skills: "ARBRE DE COMPÉTENCES",
+          projects: "INVENTAIRE",
+          hobbies: "QUÊTES SECONDAIRES",
+        },
       },
     },
     home: {

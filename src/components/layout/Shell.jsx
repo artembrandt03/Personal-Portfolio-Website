@@ -9,6 +9,8 @@ export default function Shell({
   isLanguageTransitionActive = false,
   theme = "dark",
   onToggleTheme,
+  labelMode = "professional",
+  onToggleLabelMode,
 }) {
   const backToTopLabel = language === "fr" ? "Retour en haut" : "Back to top";
 
@@ -34,6 +36,8 @@ export default function Shell({
           isLanguageTransitionActive={isLanguageTransitionActive}
           theme={theme}
           onToggleTheme={onToggleTheme}
+          labelMode={labelMode}
+          onToggleLabelMode={onToggleLabelMode}
         />
         <main>{children}</main>
         <div className="backToTopGap">

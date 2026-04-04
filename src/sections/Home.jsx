@@ -7,10 +7,9 @@ import githubIcon from "../assets/images/github.png";
 import gitlabIcon from "../assets/images/gitlab.png";
 import linkedinIcon from "../assets/images/linkedin.png";
 
-import SwapTypeTitle from "../components/ui/SwapTypeTitle.jsx";
 import SectionTitle from "../components/ui/SectionTitle.jsx";
 
-export default function Home({ language = "en" }) {
+export default function Home({ language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
 
   return (
@@ -21,6 +20,7 @@ export default function Home({ language = "en" }) {
           <SectionTitle
             primary={c.home.section.primary}
             secondary={c.home.section.secondary}
+            labelMode={labelMode}
           />
           <h1 className="h1">{profile.name}</h1>
 

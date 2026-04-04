@@ -21,6 +21,10 @@ export default function App() {
     const saved = localStorage.getItem("portfolio-theme");
     return saved === "dark" ? "dark" : "light";
   });
+  const [labelMode, setLabelMode] = useState(() => {
+    const saved = localStorage.getItem("portfolio-label-mode");
+    return saved === "gamified" ? "gamified" : "professional";
+  });
   const [openProject, setOpenProject] = useState(null);
   const [isLanguageTransitionActive, setIsLanguageTransitionActive] = useState(false);
   const [pendingLanguage, setPendingLanguage] = useState(null);
@@ -34,6 +38,10 @@ export default function App() {
     localStorage.setItem("portfolio-theme", theme);
     document.documentElement.setAttribute("data-theme", theme === "light" ? "light" : "");
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("portfolio-label-mode", labelMode);
+  }, [labelMode]);
 
   const toggleLanguage = () => {
     if (isLanguageTransitionActive) return;
@@ -53,6 +61,10 @@ export default function App() {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
+  const toggleLabelMode = () => {
+    setLabelMode((prev) => (prev === "professional" ? "gamified" : "professional"));
+  };
+
   return (
     <>
       <Shell
@@ -61,10 +73,12 @@ export default function App() {
         isLanguageTransitionActive={isLanguageTransitionActive}
         theme={theme}
         onToggleTheme={toggleTheme}
+          labelMode={labelMode}
+          onToggleLabelMode={toggleLabelMode}
       >
         {/* ENTRY */}
         <section id="start" className="section">
-          <Home language={language} />
+          <Home language={language} labelMode={labelMode} />
         </section>
 
         <section className="section">
@@ -75,22 +89,22 @@ export default function App() {
 
         {/* CHARACTER SHEET */}
         <section id="about" className="section">
-          <About language={language} />
+          <About language={language} labelMode={labelMode} />
         </section>
 
         {/* SKILL TREE */}
         <section id="skills" className="section">
-          <Skills language={language} />
+          <Skills language={language} labelMode={labelMode} />
         </section>
 
         {/* INVENTORY */}
         <section id="projects" className="section">
-          <Projects onOpen={setOpenProject} language={language} />
+          <Projects onOpen={setOpenProject} language={language} labelMode={labelMode} />
         </section>
 
         {/* NEW: HOBBIES / SIDE QUESTS */}
         <section id="hobbies" className="section">
-          <Hobbies language={language} />
+          <Hobbies language={language} labelMode={labelMode} />
         </section>
 
         <ProjectDetail
