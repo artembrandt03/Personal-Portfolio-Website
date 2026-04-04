@@ -837,6 +837,35 @@ header {
   opacity: 1;
 }
 
+.emailCopyBtn {
+  all: unset;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  color: var(--muted);
+}
+
+.emailCopyBtn:hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+  color: var(--fg);
+}
+
+[data-theme="light"] .emailCopyBtn:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(26, 26, 26, 0.75);
+}
+
 /* Animated section title */
 .swapType {
   color: inherit;

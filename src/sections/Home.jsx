@@ -15,6 +15,7 @@ export default function Home({ language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
   const [isUkraineBurstActive, setIsUkraineBurstActive] = useState(false);
   const [ukraineFlags, setUkraineFlags] = useState([]);
+  const [emailCopied, setEmailCopied] = useState(false);
   const ukraineClicksRef = useRef([]);
 
   const handleLanguageChipClick = (lang) => {
@@ -46,6 +47,12 @@ export default function Home({ language = "en", labelMode = "professional" }) {
       setIsUkraineBurstActive(false);
       setUkraineFlags([]);
     }, 3000);
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("artem.brandt03@gmail.com");
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
   };
 
   return (
@@ -122,11 +129,20 @@ export default function Home({ language = "en", labelMode = "professional" }) {
             <div>Montreal, QC</div>
           </div>
 
-          <div style={{ marginBottom: 14 }}>
+          <div style={{ marginBottom: 14, position: "relative" }}>
             <div className="cardTitle" style={{ marginBottom: 6 }}>
               {c.home.email}
             </div>
             <a href="mailto:artem.brandt03@gmail.com">artem.brandt03@gmail.com</a>
+            <button
+              type="button"
+              className="emailCopyBtn"
+              onClick={handleCopyEmail}
+              title="Copy email to clipboard"
+              style={{ position: "absolute", top: 0, right: 0 }}
+            >
+              {emailCopied ? "✓" : c.home.emailCopy}
+            </button>
           </div>
 
           <div className="iconBtnRow contactBtnRow">
