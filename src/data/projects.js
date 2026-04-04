@@ -12,6 +12,13 @@ import loveLetterPreview from "../assets/images/previews/LoveLetter.png";
 import jdbcPreview from "../assets/images/previews/JDBC.png";
 import diceePreview from "../assets/images/previews/Dicee.png";
 import simonPreview from "../assets/images/previews/Simon.png";
+import stockedDemo1 from "../assets/images/previews/stocked-demo-1.png";
+import stockedDemo2 from "../assets/images/previews/stocked-demo-2.png";
+import stockedDemo3 from "../assets/images/previews/stocked-demo-3.png";
+import stockedDemo4 from "../assets/images/previews/stocked-demo-4.png";
+import stockedDemo5 from "../assets/images/previews/stocked-demo-5.png";
+import stockedDemo6 from "../assets/images/previews/stocked-demo-6.png";
+import stockedDemo7 from "../assets/images/previews/stocked-demo-7.png";
 
 
 export const projects = [
@@ -66,6 +73,50 @@ export const projects = [
       github: "https://github.com/artembrandt03/MERN-WebProject",
       live: "https://2025-520-project-brandt-masumi-jiang.justlearning.net/",
       video: ""
+    }
+  },
+
+  {
+    id: "stocked",
+    title: "Stocked — Real-Time Trading Simulation Platform",
+    rarity: "LEGENDARY",
+    oneLiner:
+      "Practice-trading platform with live market data, portfolio sandboxing, structured learning paths, and an AI trading mentor.",
+    stack: [
+      "React 19",
+      "Vite 7",
+      "Node.js",
+      "Express 5",
+      "Supabase/PostgreSQL",
+      "Finnhub API",
+      "Google Gemini API",
+      "Stripe",
+      "TradingView Charts",
+      "Azure App Service",
+      "GitLab CI/CD",
+      "Semgrep"
+    ],
+    meta: "Full-Stack Web Platform",
+    overview: [
+      "Stocked is a full-stack trading simulation platform designed for learners who want hands-on market practice without financial risk. Users buy and sell stocks with virtual funds, track portfolio performance, and explore live dashboard data powered by Finnhub and TradingView charts.",
+      "Beyond trading, the platform includes progressive educational courses with quizzes and progress tracking, a Gemini-powered AI mentor for contextual guidance, and partner tooling for gated course publishing via Stripe subscriptions. The system supports secure Supabase authentication (email/password + Google OAuth) and ships through automated GitLab CI/CD to separate Azure dev and production environments."
+    ],
+    media: {
+      screenshots: [
+        stockedDemo1,
+        stockedDemo2,
+        stockedDemo3,
+        stockedDemo4,
+        stockedDemo5,
+        stockedDemo6,
+        stockedDemo7
+      ],
+      alt: "Stocked platform screenshots"
+    },
+    links: {
+      github: "https://github.com/artembrandt03/Stocked",
+      live: "https://stocked-production-d6hfhqduhmfmcbhg.eastus-01.azurewebsites.net/",
+      video: "https://www.youtube.com/watch?v=I-qPv1IeRpo"
     }
   },
 
