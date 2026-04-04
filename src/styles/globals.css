@@ -145,7 +145,7 @@ a:hover {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .btn {
@@ -786,11 +786,15 @@ header {
 .contactCard {
   display: flex;
   flex-direction: column;
+  padding: 16px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  height: fit-content;
 }
 
 .contactBtnRow {
-  flex: 1;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .contactBtn {
