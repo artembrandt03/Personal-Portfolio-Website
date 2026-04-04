@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { getCopy } from "../../i18n/copy.js";
 import settingsIcon from "../../assets/images/setting.png";
+import brightnessIcon from "../../assets/images/brightness.png";
+import nightModeIcon from "../../assets/images/night-mode.png";
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -50,14 +52,12 @@ export default function Header({
       onToggleLanguage();
     }
     setIsMenuOpen(false);
-    setIsSettingsOpen(false);
   };
 
   const handleToggleTheme = () => {
     if (typeof onToggleTheme === "function") {
       onToggleTheme();
     }
-    setIsSettingsOpen(false);
   };
 
   const nav = [
@@ -111,38 +111,44 @@ export default function Header({
             </button>
 
             <div className={`headerSettingsPanel ${isSettingsOpen ? "isOpen" : ""}`} role="menu">
-              <button
-                className="langToggle"
-                onClick={handleToggleLanguage}
-                aria-label="Toggle language"
-                aria-pressed={language === "fr"}
-                disabled={isLanguageTransitionActive}
-                role="menuitem"
-              >
-                <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
-                  ENG
-                </span>
-                <span className="langToggleSep">|</span>
-                <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
-                  FR
-                </span>
-              </button>
+              <div className="headerSettingsGroup">
+                <span className="headerSettingsLabel">{c.header.settings?.language ?? "Language"}</span>
+                <button
+                  className="langToggle"
+                  onClick={handleToggleLanguage}
+                  aria-label="Toggle language"
+                  aria-pressed={language === "fr"}
+                  disabled={isLanguageTransitionActive}
+                  role="menuitem"
+                >
+                  <span className={`langToggleOpt ${language === "en" ? "isActive" : ""}`}>
+                    ENG
+                  </span>
+                  <span className="langToggleSep">|</span>
+                  <span className={`langToggleOpt ${language === "fr" ? "isActive" : ""}`}>
+                    FR
+                  </span>
+                </button>
+              </div>
 
-              <button
-                className="themeToggle"
-                onClick={handleToggleTheme}
-                aria-label="Toggle theme"
-                aria-pressed={theme === "light"}
-                role="menuitem"
-              >
-                <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
-                  LIGHT
-                </span>
-                <span className="themeToggleSep">|</span>
-                <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
-                  DARK
-                </span>
-              </button>
+              <div className="headerSettingsGroup">
+                <span className="headerSettingsLabel">{c.header.settings?.colorTheme ?? "Color Theme"}</span>
+                <button
+                  className="themeToggle"
+                  onClick={handleToggleTheme}
+                  aria-label="Toggle theme"
+                  aria-pressed={theme === "light"}
+                  role="menuitem"
+                >
+                  <span className={`themeToggleOpt ${theme === "light" ? "isActive" : ""}`}>
+                    <img src={brightnessIcon} alt="" className="themeToggleIcon" />
+                  </span>
+                  <span className="themeToggleSep">|</span>
+                  <span className={`themeToggleOpt ${theme === "dark" ? "isActive" : ""}`}>
+                    <img src={nightModeIcon} alt="" className="themeToggleIcon" />
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
 

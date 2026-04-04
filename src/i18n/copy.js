@@ -3,6 +3,10 @@ export const copy = {
     header: {
       brandTitle: "[ classified portfolio ]",
       mobileWarning: "Mobile UI in development. Visual bugs may appear.",
+      settings: {
+        language: "Language",
+        colorTheme: "Color Theme",
+      },
       nav: {
         start: "OVERVIEW",
         about: "ABOUT",
@@ -94,6 +98,10 @@ export const copy = {
   fr: {
     header: {
       brandTitle: "[ portfolio classifié ]",
+      settings: {
+        language: "Langue",
+        colorTheme: "Thème de couleur",
+      },
       nav: {
         start: "APERÇU",
         about: "À PROPOS",
