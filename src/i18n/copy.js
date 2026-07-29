@@ -44,6 +44,8 @@ export const copy = {
     },
     experience: {
       section: { primary: "Experience", secondary: "Quest Log" },
+      pressToOpen: "press to open",
+      close: "CLOSE",
     },
     skills: {
       section: { primary: "Skills", secondary: "Skill Tree" },
@@ -155,6 +157,8 @@ export const copy = {
 
     experience: {
       section: { primary: "Expérience", secondary: "Carnet de Quêtes" },
+      pressToOpen: "ouvrir",
+      close: "FERMER",
     },
     skills: {
       section: { primary: "Compétences", secondary: "Arbre de Compétences" },

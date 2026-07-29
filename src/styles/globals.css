@@ -1537,6 +1537,35 @@ footer {
 }
 
 /* =========================
+   Experience Card (Grid View)
+   ========================= */
+
+.experienceCard {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 120ms ease, transform 160ms ease-out;
+}
+
+.experienceCard:hover {
+  transform: translateY(-4px);
+}
+
+.experienceCardLogo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid var(--panel-border);
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .experienceCardLogo {
+  background: rgba(26, 26, 26, 0.02);
+}
+
+/* =========================
    Project Card rarity glow
    ========================= */
 
