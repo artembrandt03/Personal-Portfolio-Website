@@ -9,6 +9,7 @@ import databaseIcon from "../assets/images/skills/database.png";
 import mlIcon from "../assets/images/skills/ml.png";
 import devopsIcon from "../assets/images/skills/devops.png";
 import engineeringPracticesIcon from "../assets/images/skills/eng-practices.png";
+import qaIcon from "../assets/images/skills/qa.png";
 
 export default function Skills({ language = "en", labelMode = "professional" }) {
   const c = getCopy(language);
@@ -21,8 +22,8 @@ export default function Skills({ language = "en", labelMode = "professional" }) 
     "AI & Machine Learning": mlIcon,
     "DevOps & Tooling": devopsIcon,
     "Engineering Practices": engineeringPracticesIcon,
-    "QA & Testing": engineeringPracticesIcon,
-    "Assurance qualité et tests": engineeringPracticesIcon,
+    "QA & Testing": qaIcon,
+    "Assurance qualité et tests": qaIcon,
   };
 
   return (
