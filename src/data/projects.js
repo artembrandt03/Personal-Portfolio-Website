@@ -273,6 +273,27 @@ export const projects = [
   },
 
   {
+    id: "reachoutai",
+    title: "Reachout AI — Hackathon Voice/SMS Assistant",
+    rarity: "EPIC",
+    oneLiner:
+      "Hackathon SMS/voice AI assistant that won the Advanced Track at DawsHacks 2026, letting anyone talk to Gemini from a basic phone — no app, data plan, or smartphone required.",
+    stack: ["Node.js", "Express", "Twilio", "Gemini API", "SQLite", "JavaScript"],
+    meta: "Hackathon Winner — Advanced Track",
+    overview: [
+      "Reachout AI was built in ~6 hours at DawsHacks 2026 with a 4-person team and won the Advanced Track, addressing the 2.7 billion people worldwide without a smartphone — letting anyone call or text a phone number to have a real conversation with Gemini AI.",
+      "The Node.js/Express backend bridges Twilio (SMS plus voice, using speech-to-text and text-to-speech) with Gemini 2.5 Flash, tracking per-call conversation history in SQLite. Text access covers quick queries like weather, while voice calls support full multi-turn conversations — all designed around SMS's 160-character limit and a screen-free, menu-based UX."
+    ],
+    media: null,
+    links: {
+      github: "https://github.com/talonlikeaclaw/dawshacks-2026",
+      live: "",
+      video: "https://www.youtube.com/watch?v=StS6GObsJNQ",
+      devpost: "https://devpost.com/software/reachout-ai"
+    }
+  },
+
+  {
     id: "greentravel",
     title: "GreenTravel+ — Hackathon Full-Stack",
     rarity: "RARE",
