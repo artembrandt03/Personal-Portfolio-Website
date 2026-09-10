@@ -2,7 +2,6 @@ export const copy = {
   en: {
     header: {
       brandTitle: "[ classified portfolio ]",
-      mobileWarning: "Mobile UI in development. Visual bugs may appear.",
       settings: {
         language: "Language",
         colorTheme: "Color Theme",

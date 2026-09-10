@@ -113,12 +113,6 @@ export default function Header({
     { id: "projects", label: navLabels.projects },
     { id: "hobbies", label: navLabels.hobbies },
   ];
-  const mobileWarning =
-    c.header.mobileWarning ??
-    (language === "fr"
-      ? "Interface mobile en cours de developpement. Des bugs visuels peuvent apparaitre."
-      : "Mobile UI in development. Visual bugs may appear.");
-
   const handleNavClick = (id) => {
     scrollToId(id);
     setIsMenuOpen(false);
@@ -243,9 +237,6 @@ export default function Header({
           </button>
         </div>
 
-        <div className="container headerMobileWarning" role="note">
-          {mobileWarning}
-        </div>
       </header>
 
       {/* Rendered outside <header> on purpose: the header has a backdrop-filter

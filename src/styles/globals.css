@@ -622,10 +622,6 @@ header {
   display: none;
 }
 
-.headerMobileWarning {
-  display: none;
-}
-
 .headerMenuInner {
   display: flex;
   flex-direction: column;
@@ -670,6 +666,11 @@ header {
   .headerBar {
     height: auto;
     padding: 10px 0 8px;
+    /* Grid instead of flex so the brand can sit in a true center column —
+       flex:1 + justify-content:center centers within the leftover space
+       next to the menu button, which visibly skews it off-center. */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
   }
 
   .headerMenuToggle {
@@ -717,9 +718,14 @@ header {
   }
 
   .headerBrand {
-    flex: 1;
-    justify-content: center;
+    grid-column: 2;
+    justify-self: center;
     text-align: center;
+  }
+
+  .headerMenuToggle {
+    grid-column: 3;
+    justify-self: end;
   }
 
   /* Full-screen dim behind the drawer. Fixed + high z-index so it (and the
@@ -818,18 +824,6 @@ header {
 
   .headerMenuNavBtn:last-child {
     border-bottom: none;
-  }
-
-  .headerMobileWarning {
-    display: block;
-    margin: 0 auto 10px;
-    padding: 8px 0 10px;
-    color: var(--muted);
-    font-size: 10px;
-    line-height: 1.45;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-top: 1px solid var(--line);
   }
 }
 
