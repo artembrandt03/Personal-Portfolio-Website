@@ -1653,7 +1653,8 @@ footer {
 }
 
 /* On hover: bigger + visible + terminal flicker */
-.projectCard:hover .pressToOpen {
+.projectCard:hover .pressToOpen,
+.experienceCard:hover .pressToOpen {
   opacity: 1;
   transform: translateY(0);
   font-size: 13px;
@@ -1664,7 +1665,8 @@ footer {
 }
 
 /* Add a tiny cursor block after the text while hovering */
-.projectCard:hover .pressToOpen::after {
+.projectCard:hover .pressToOpen::after,
+.experienceCard:hover .pressToOpen::after {
   content: "▋";
   display: inline-block;
   margin-left: 6px;
