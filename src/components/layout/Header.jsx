@@ -27,6 +27,8 @@ export default function Header({
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const settingsButtonRef = useRef(null);
   const settingsPanelRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const menuPanelRef = useRef(null);
 
   useEffect(() => {
     if (!isSettingsOpen) return;
@@ -54,6 +56,33 @@ export default function Header({
       document.removeEventListener("keydown", handleEscape);
     };
   }, [isSettingsOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handlePointerDown = (event) => {
+      const isInButton = menuButtonRef.current?.contains(event.target);
+      const isInPanel = menuPanelRef.current?.contains(event.target);
+
+      if (!isInButton && !isInPanel) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isMenuOpen]);
 
   const handleToggleLanguage = () => {
     if (typeof onToggleLanguage === "function") {
@@ -202,6 +231,7 @@ export default function Header({
 
           <button
             type="button"
+            ref={menuButtonRef}
             className={`headerMenuToggle ${isMenuOpen ? "isOpen" : ""}`}
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
@@ -216,7 +246,13 @@ export default function Header({
           {mobileWarning}
         </div>
 
-        <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}>
+        <div
+          className={`headerMenuBackdrop ${isMenuOpen ? "isOpen" : ""}`}
+          aria-hidden="true"
+          onClick={() => setIsMenuOpen(false)}
+        />
+
+        <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`} ref={menuPanelRef}>
           <div className="container headerMenuInner">
             <div className="headerMenuToggles">
               <button

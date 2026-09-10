@@ -707,15 +707,74 @@ header {
     font-size: 13px;
   }
 
+  .headerNav {
+    display: none;
+  }
+
+  .headerBrand {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Anchored to the sticky header (top: 100%) rather than position: fixed,
+     so it dims everything below the header without covering the header bar
+     itself (which would visually gray out the MENU button while open). */
+  .headerMenuBackdrop {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: var(--overlay-bg);
+    z-index: 1090;
+  }
+
+  .headerMenuBackdrop.isOpen {
+    display: block;
+  }
+
+  /* Positioned relative to the (sticky, i.e. positioned) header, so it always
+     starts right below the header content — bar + mobile warning — and spans
+     the full width instead of floating as a half-screen drawer. */
   .headerMenuPanel {
     display: none;
-    background: rgba(var(--bg-rgb), 0.96);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--panel-bg);
+    border-top: 1px solid var(--panel-border);
+    border-bottom: 1px solid var(--panel-border);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+    z-index: 1100;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   .headerMenuPanel.isOpen {
     display: block;
+  }
+
+  .headerMenuToggles {
+    flex-direction: column;
+  }
+
+  .headerMenuNav {
+    flex-direction: column;
+  }
+
+  .headerMenuLangToggle,
+  .headerMenuThemeToggle,
+  .headerMenuNavBtn {
+    width: auto !important;
+    flex: 0 1 auto !important;
+  }
+
+  .headerMenuInner {
+    padding: 16px;
+    gap: 16px;
   }
 
   .headerMobileWarning {
@@ -1283,89 +1342,6 @@ footer {
 
 .projectsRarityBlock:first-of-type {
   margin-top: 0;
-}
-
-/* =========================
-   MOBILE NAV FIX (WRAP)
-   ========================= */
-@media (max-width: 880px) {
-  .headerBar {
-    height: 64px !important;
-    padding: 0 10px !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-  }
-
-  .headerBrand {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .headerMenuToggle {
-    flex: 0 0 auto;
-  }
-
-  .headerNav {
-    display: none;
-  }
-
-  .headerMenuPanel {
-    display: none;
-    position: fixed;
-    top: 64px;
-    right: 0;
-    width: 50%;
-    max-width: 400px;
-    height: calc(100vh - 64px);
-    background: var(--panel-bg);
-    border-left: 1px solid var(--panel-border);
-    overflow-y: auto;
-    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
-    z-index: 1100;
-  }
-
-  .headerMenuInner {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .headerMenuToggles {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .headerMenuNav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .headerMenuLangToggle,
-  .headerMenuThemeToggle,
-  .headerMenuNavBtn {
-    width: auto !important;
-    flex: 0 1 auto !important;
-  }
-
-  .headerMenuLangToggle {
-    flex: 0 1 auto;
-  }
-
-  .headerMenuThemeToggle {
-    flex: 0 1 auto;
-  }
-
-  .navBtn {
-    padding: 5px 7px !important;
-    font-size: 11px !important;
-  }
 }
 
 .highlight {
