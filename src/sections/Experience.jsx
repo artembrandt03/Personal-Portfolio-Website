@@ -21,14 +21,19 @@ export default function Experience({ language = "en", labelMode = "professional"
         ? "Developed POC for test migration evaluation and maintained playwright test suites for trading applications."
         : "Développement de POC pour l'évaluation de la migration de tests et maintenance de suites de test Playwright.",
       description: language === "en"
-        ? `• Built a proof-of-concept evaluating migration of automated tests into Canary, TS Imagine's internal Java/Cucumber/Playwright test framework, benchmarking migration time and complexity across test cases to support a stakeholder go/no-go decision.
-• Authored and maintained end-to-end Playwright/TypeScript test modules from TestRail test cases for a client-facing trading application, refactoring existing tests for reusability.
-• Collaborated with senior developers to debug flaky automated tests; worked within a Jira/Bitbucket/TeamCity workflow with daily standups.
-• Maintained and updated TestRail test case documentation.`
-        : `• Construit une preuve de concept évaluant la migration des tests automatisés vers Canary, le cadre de test interne Java/Cucumber/Playwright de TS Imagine, en mesurant le temps et la complexité de la migration pour soutenir une décision de progression.
-• Actualisé et maintenu des modules de test end-to-end Playwright/TypeScript à partir de cas de test TestRail pour une application de trading destinée aux clients, en refactorisiant les tests existants pour la réutilisabilité.
-• Collaboré avec des développeurs seniors pour déboguer les tests automatisés instables; travaillé dans un workflow Jira/Bitbucket/TeamCity avec des points quotidiens.
-• Maintenu et actualisé la documentation des cas de test TestRail.`,
+        ? [
+            "Built a proof-of-concept evaluating migration of automated tests into Canary, TS Imagine's internal Java/Cucumber/Playwright test framework, benchmarking migration time and complexity across test cases to support a stakeholder go/no-go decision.",
+            "Authored and maintained end-to-end Playwright/TypeScript test modules from TestRail test cases for a client-facing trading application, refactoring existing tests for reusability.",
+            "Collaborated with senior developers to debug flaky automated tests; worked within a Jira/Bitbucket/TeamCity workflow with daily standups.",
+            "Maintained and updated TestRail test case documentation.",
+          ]
+        : [
+            "Construit une preuve de concept évaluant la migration des tests automatisés vers Canary, le cadre de test interne Java/Cucumber/Playwright de TS Imagine, en mesurant le temps et la complexité de la migration pour soutenir une décision de progression.",
+            "Actualisé et maintenu des modules de test end-to-end Playwright/TypeScript à partir de cas de test TestRail pour une application de trading destinée aux clients, en refactorisiant les tests existants pour la réutilisabilité.",
+            "Collaboré avec des développeurs seniors pour déboguer les tests automatisés instables; travaillé dans un workflow Jira/Bitbucket/TeamCity avec des points quotidiens.",
+            "Maintenu et actualisé la documentation des cas de test TestRail.",
+          ],
+      stack: ["Playwright", "TypeScript", "Cucumber (BDD)", "TestRail", "Jira", "Bitbucket", "TeamCity"],
     },
     {
       id: "dawson",
@@ -40,8 +45,14 @@ export default function Experience({ language = "en", labelMode = "professional"
         ? "Three-year technical program focused on full-stack development and hands-on software engineering."
         : "Programme technique de trois ans axé sur le développement full-stack et l'ingénierie logicielle pratique.",
       description: language === "en"
-        ? "Three-year technical program focused on full-stack development and hands-on software engineering. Completed coursework in web development, databases, software design patterns, networking, and agile methodologies."
-        : "Programme technique de trois ans axé sur le développement full-stack et l'ingénierie logicielle pratique. Cours complétés en développement web, bases de données, motifs de conception logicielle, réseaux et méthodologies agiles.",
+        ? [
+            "Three-year technical program focused on full-stack development and hands-on software engineering.",
+            "Completed coursework in web development, databases, software design patterns, networking, and agile methodologies.",
+          ]
+        : [
+            "Programme technique de trois ans axé sur le développement full-stack et l'ingénierie logicielle pratique.",
+            "Cours complétés en développement web, bases de données, motifs de conception logicielle, réseaux et méthodologies agiles.",
+          ],
     },
   ];
 
