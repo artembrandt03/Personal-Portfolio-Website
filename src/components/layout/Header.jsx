@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getCopy } from "../../i18n/copy.js";
+import Divider from "../ui/Divider.jsx";
 import settingsIcon from "../../assets/images/setting.png";
 import brightnessIcon from "../../assets/images/brightness.png";
 import nightModeIcon from "../../assets/images/night-mode.png";
@@ -245,16 +246,39 @@ export default function Header({
         <div className="container headerMobileWarning" role="note">
           {mobileWarning}
         </div>
+      </header>
 
-        <div
-          className={`headerMenuBackdrop ${isMenuOpen ? "isOpen" : ""}`}
-          aria-hidden="true"
-          onClick={() => setIsMenuOpen(false)}
-        />
+      {/* Rendered outside <header> on purpose: the header has a backdrop-filter
+          (for its blur), which makes it the containing block for any
+          position:fixed descendant — that clipped this drawer to the header's
+          own small box instead of the full viewport. Living as a sibling here
+          keeps it fixed to the viewport like a real side menu. */}
+      <div
+        className={`headerMenuBackdrop ${isMenuOpen ? "isOpen" : ""}`}
+        aria-hidden="true"
+        onClick={() => setIsMenuOpen(false)}
+      />
 
-        <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`} ref={menuPanelRef}>
-          <div className="container headerMenuInner">
-            <div className="headerMenuToggles">
+      <div
+        className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}
+        ref={menuPanelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+      >
+        <div className="headerMenuInner">
+          <div className="headerMenuPanelHeader">
+            <span className="headerMenuPanelTitle">MENU</span>
+            <button className="closeBtn" onClick={() => setIsMenuOpen(false)}>
+              [ {c.experience.close} ]
+            </button>
+          </div>
+
+          <Divider soft />
+
+          <div className="headerMenuToggles">
+            <div className="headerSettingsGroup">
+              <span className="headerSettingsLabel">{c.header.settings?.language ?? "Language"}</span>
               <button
                 className="langToggle headerMenuLangToggle"
                 onClick={handleToggleLanguage}
@@ -270,7 +294,10 @@ export default function Header({
                   FR
                 </span>
               </button>
+            </div>
 
+            <div className="headerSettingsGroup">
+              <span className="headerSettingsLabel">{c.header.settings?.colorTheme ?? "Color Theme"}</span>
               <button
                 className="themeToggle headerMenuThemeToggle"
                 onClick={handleToggleTheme}
@@ -285,7 +312,10 @@ export default function Header({
                   DARK
                 </span>
               </button>
+            </div>
 
+            <div className="headerSettingsGroup">
+              <span className="headerSettingsLabel">{c.header.settings?.labelMode ?? "Label Mode"}</span>
               <button
                 className="modeToggle headerMenuThemeToggle"
                 onClick={handleToggleLabelMode}
@@ -301,21 +331,23 @@ export default function Header({
                 </span>
               </button>
             </div>
-
-            <nav className="headerMenuNav" aria-label="Primary navigation">
-              {nav.map((x) => (
-                <button
-                  key={x.id}
-                  onClick={() => handleNavClick(x.id)}
-                  className="navBtn headerMenuNavBtn"
-                >
-                  [ {x.label} ]
-                </button>
-              ))}
-            </nav>
           </div>
+
+          <Divider soft />
+
+          <nav className="headerMenuNav" aria-label="Primary navigation">
+            {nav.map((x) => (
+              <button
+                key={x.id}
+                onClick={() => handleNavClick(x.id)}
+                className="navBtn headerMenuNavBtn"
+              >
+                [ {x.label} ]
+              </button>
+            ))}
+          </nav>
         </div>
-      </header>
+      </div>
 
       <div className={`headerSettingsDock ${isSettingsOpen ? "isOpen" : ""}`}>
         <div className="container headerSettingsDockInner">{settingsContent}</div>
