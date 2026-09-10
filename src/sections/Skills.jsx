@@ -21,6 +21,8 @@ export default function Skills({ language = "en", labelMode = "professional" }) 
     "AI & Machine Learning": mlIcon,
     "DevOps & Tooling": devopsIcon,
     "Engineering Practices": engineeringPracticesIcon,
+    "QA & Testing": engineeringPracticesIcon,
+    "Assurance qualité et tests": engineeringPracticesIcon,
   };
 
   return (

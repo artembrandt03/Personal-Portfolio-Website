@@ -50,13 +50,14 @@ export const copy = {
     skills: {
       section: { primary: "Skills", secondary: "Skill Tree" },
       sections: [
-        { title: "Programming Languages", skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"] },
+        { title: "Programming Languages", skills: ["Java", "Python", "C#", "JavaScript", "TypeScript", "HTML", "CSS", "SQL", "Bash"] },
         { title: "Frontend Development", skills: ["React", "Vite", "Avalonia", "HTML/CSS", "JavaScript (ES Modules)", "Bootstrap"] },
         { title: "Backend & APIs", skills: ["Node.js", "Express", "Flask", ".NET (Entity Framework)", "JDBC", "REST APIs"] },
         { title: "Databases & Data", skills: ["PostgreSQL", "MongoDB", "SQLite", "MySQL", "Room (Android)"] },
         { title: "AI & Machine Learning", skills: ["Scikit-learn", "TensorFlow", "Transformers", "Neural Networks", "Decision Trees", "Transfer Learning", "Model Fine-tuning", "Google Colab"] },
-        { title: "DevOps & Tooling", skills: ["Git (GitHub, GitLab)", "Docker", "CI/CD", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
+        { title: "DevOps & Tooling", skills: ["Git (GitHub, GitLab, Bitbucket)", "Docker", "CI/CD", "TeamCity", "Jira", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
         { title: "Engineering Practices", skills: ["Team collaboration", "Agile & SCRUM", "Version control workflows", "Testing & debugging", "Project-based development", "DevOps mindset"] },
+        { title: "QA & Testing", skills: ["Playwright", "Cucumber (BDD)", "TestRail", "End-to-end test automation"] },
       ],
     },
     projects: {
@@ -163,13 +164,14 @@ export const copy = {
     skills: {
       section: { primary: "Compétences", secondary: "Arbre de Compétences" },
       sections: [
-        { title: "Langages de programmation", skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"] },
+        { title: "Langages de programmation", skills: ["Java", "Python", "C#", "JavaScript", "TypeScript", "HTML", "CSS", "SQL", "Bash"] },
         { title: "Développement frontend", skills: ["React", "Vite", "Avalonia", "HTML/CSS", "JavaScript (ES Modules)", "Bootstrap"] },
         { title: "Backend et API", skills: ["Node.js", "Express", "Flask", ".NET (Entity Framework)", "JDBC", "API REST"] },
         { title: "Bases de données & données", skills: ["PostgreSQL", "MongoDB", "SQLite", "MySQL", "Room (Android)"] },
         { title: "IA & apprentissage automatique", skills: ["Scikit-learn", "TensorFlow", "Transformers", "Neural Networks", "Decision Trees", "Transfer Learning", "Model Fine-tuning", "Google Colab"] },
-        { title: "DevOps & outillage", skills: ["Git (GitHub, GitLab)", "Docker", "CI/CD", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
+        { title: "DevOps & outillage", skills: ["Git (GitHub, GitLab, Bitbucket)", "Docker", "CI/CD", "TeamCity", "Jira", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
         { title: "Pratiques d’ingénierie", skills: ["Collaboration d’équipe", "Agile & SCRUM", "Workflows de versionnement", "Tests et débogage", "Développement orienté projets", "Mentalité DevOps"] },
+        { title: "Assurance qualité et tests", skills: ["Playwright", "Cucumber (BDD)", "TestRail", "Automatisation de tests de bout en bout"] },
       ],
     },
     projects: {
