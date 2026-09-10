@@ -1474,6 +1474,69 @@ header {
   margin-top: 10px;
 }
 
+.ghLayout {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.ghMain {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ghStatsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 0 0 148px;
+}
+
+.ghStatTile {
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(var(--bg-rgb), 0.28);
+}
+
+.ghStatLabel {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.ghStatValue {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+.ghStatSub {
+  font-size: 11px;
+  color: var(--faint);
+  margin-top: 2px;
+  min-height: 14px;
+}
+
+@media (max-width: 900px) {
+  .ghLayout {
+    flex-direction: column;
+  }
+
+  .ghStatsCol {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .ghStatTile {
+    flex: 1 1 0;
+  }
+}
+
 .ghLegend {
   display: flex;
   align-items: center;

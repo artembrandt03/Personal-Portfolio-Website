@@ -88,6 +88,10 @@ export const copy = {
       error: "Couldn't load live data — showing recent activity instead.",
       less: "Less",
       more: "More",
+      statsDailyAvg: "Daily Average",
+      statsBestDay: "Best Day",
+      statsStreak: "Longest Streak",
+      statsDaysUnit: "days",
     },
     hobbies: {
       section: { primary: "Beyond the Code", secondary: "Side Quests" },
@@ -209,6 +213,10 @@ export const copy = {
       error: "Impossible de charger les données en direct — affichage de l’activité récente.",
       less: "Moins",
       more: "Plus",
+      statsDailyAvg: "Moyenne quotidienne",
+      statsBestDay: "Meilleur jour",
+      statsStreak: "Plus longue série",
+      statsDaysUnit: "jours",
     },
     hobbies: {
       section: { primary: "Au-delà du Code", secondary: "Quêtes Secondaires" },
