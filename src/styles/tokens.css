@@ -35,12 +35,14 @@
 
   --radius: 14px;
 
-  /* GitHub-style contribution heatmap levels (0 = none .. 4 = most) */
+  /* GitHub-style contribution heatmap levels (0 = none .. 4 = most).
+     Purple/magenta instead of GitHub-green — matches the look the old
+     invert(1)-filtered chart image had in dark mode. */
   --gh-level-0: rgba(255, 255, 255, 0.06);
-  --gh-level-1: #0e4429;
-  --gh-level-2: #006d32;
-  --gh-level-3: #26a641;
-  --gh-level-4: #39d353;
+  --gh-level-1: #2b1055;
+  --gh-level-2: #5c2a9d;
+  --gh-level-3: #9b4fdb;
+  --gh-level-4: #e879f9;
 }
 
 /* Light theme */
