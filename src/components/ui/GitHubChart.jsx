@@ -166,23 +166,25 @@ export default function GitHubChart({ language = "en" }) {
 
       <div className="ghLayout">
         <div className="ghMain">
-          <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>
-            {status === "error"
-              ? c.githubChart.error
-              : status === "loading"
-                ? c.githubChart.loading
-                : contributionsText}
-          </div>
+          <div>
+            <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>
+              {status === "error"
+                ? c.githubChart.error
+                : status === "loading"
+                  ? c.githubChart.loading
+                  : contributionsText}
+            </div>
 
-          {status === "error" ? (
-            <img
-              src={`https://ghchart.rshah.org/${GITHUB_USERNAME}`}
-              alt={c.githubChart.alt}
-              className="githubChartImg"
-              loading="lazy"
-            />
-          ) : (
-            <>
+            {status === "error" && (
+              <img
+                src={`https://ghchart.rshah.org/${GITHUB_USERNAME}`}
+                alt={c.githubChart.alt}
+                className="githubChartImg"
+                loading="lazy"
+              />
+            )}
+
+            {status !== "error" && (
               <div className="githubChartScroll">
                 <div className="ghGrid" aria-label={c.githubChart.alt} role="img">
                   <div className="ghGridBody">
@@ -231,7 +233,11 @@ export default function GitHubChart({ language = "en" }) {
                   </div>
                 </div>
               </div>
+            )}
+          </div>
 
+          {status !== "error" && (
+            <div>
               <div className="ghFooterRow">
                 <span className="ghLegend">
                   {c.githubChart.less}
@@ -243,7 +249,7 @@ export default function GitHubChart({ language = "en" }) {
               </div>
 
               <div className="githubChartScrollHint">{c.githubChart.scrollHint}</div>
-            </>
+            </div>
           )}
         </div>
 

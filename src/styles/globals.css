@@ -1476,21 +1476,37 @@ header {
 
 .ghLayout {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 20px;
   margin-top: 8px;
 }
 
+/* Same idea as .ghStatsCol below: once stretched to the taller column's
+   height, distribute its own two blocks (chart, legend) across that height
+   instead of leaving them top-anchored with dead space trailing below. */
 .ghMain {
   flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* Stretched to match .ghMain's height (align-items: stretch on the parent),
+   then space-between spreads the 3 tiles across that full height instead of
+   bunching at the top and leaving dead space below. */
 .ghStatsCol {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 10px;
   flex: 0 0 148px;
+}
+
+.ghStatTile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .ghStatTile {
