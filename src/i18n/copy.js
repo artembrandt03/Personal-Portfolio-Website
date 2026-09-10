@@ -2,7 +2,6 @@ export const copy = {
   en: {
     header: {
       brandTitle: "[ classified portfolio ]",
-      mobileWarning: "Mobile UI in development. Visual bugs may appear.",
       settings: {
         language: "Language",
         colorTheme: "Color Theme",
@@ -31,10 +30,10 @@ export const copy = {
     },
     home: {
       section: { primary: "Overview", secondary: "Entry" },
-      titleLine1: "Graduating Computer Science Student",
+      titleLine1: "Computer Science Graduate",
       titleLine2: "Full-Stack Developer",
-      p1: "Hey! I'm a CST student at Dawson College (graduating June 2026), who sees projects through from architecture all the way to deployment.",
-      p2: "I like to go beyond coursework with personal projects and bootcamps, and have developed hands-on experience in full-stack development. I work well in teams that follow agile methodologies, but also where good collaboration and good vibes go hand in hand :)",
+      p1: "Hey! I recently graduated from Dawson College's Computer Science & Technology program. I see projects through from architecture all the way to deployment, and I'm seeking full-stack development roles to design, build, and ship production features.",
+      p2: "I have hands-on experience across the full stack, plus QA and DevOps practices. I work well in teams that follow agile methodologies, but also where good collaboration and good vibes go hand in hand :)",
       getInTouch: "Get in touch",
       location: "Location",
       email: "Email",
@@ -44,17 +43,21 @@ export const copy = {
     },
     experience: {
       section: { primary: "Experience", secondary: "Quest Log" },
+      pressToOpen: "press to open",
+      close: "CLOSE",
+      highlights: "Highlights",
     },
     skills: {
       section: { primary: "Skills", secondary: "Skill Tree" },
       sections: [
-        { title: "Programming Languages", skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"] },
+        { title: "Programming Languages", skills: ["Java", "Python", "C#", "JavaScript", "TypeScript", "HTML", "CSS", "SQL", "Bash"] },
         { title: "Frontend Development", skills: ["React", "Vite", "Avalonia", "HTML/CSS", "JavaScript (ES Modules)", "Bootstrap"] },
         { title: "Backend & APIs", skills: ["Node.js", "Express", "Flask", ".NET (Entity Framework)", "JDBC", "REST APIs"] },
         { title: "Databases & Data", skills: ["PostgreSQL", "MongoDB", "SQLite", "MySQL", "Room (Android)"] },
         { title: "AI & Machine Learning", skills: ["Scikit-learn", "TensorFlow", "Transformers", "Neural Networks", "Decision Trees", "Transfer Learning", "Model Fine-tuning", "Google Colab"] },
-        { title: "DevOps & Tooling", skills: ["Git (GitHub, GitLab)", "Docker", "CI/CD", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
+        { title: "DevOps & Tooling", skills: ["Git (GitHub, GitLab, Bitbucket)", "Docker", "CI/CD", "TeamCity", "Jira", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
         { title: "Engineering Practices", skills: ["Team collaboration", "Agile & SCRUM", "Version control workflows", "Testing & debugging", "Project-based development", "DevOps mindset"] },
+        { title: "QA & Testing", skills: ["Playwright", "Cucumber (BDD)", "TestRail"] },
       ],
     },
     projects: {
@@ -79,6 +82,16 @@ export const copy = {
     githubChart: {
       title: "GitHub Activity",
       alt: "Artem Brandt GitHub contributions",
+      scrollHint: "← swipe to see the full year →",
+      contributionsLabel: "{count} contributions in {year}",
+      loading: "Loading contributions…",
+      error: "Couldn't load live data — showing recent activity instead.",
+      less: "Less",
+      more: "More",
+      statsDailyAvg: "Daily Average",
+      statsBestDay: "Best Day",
+      statsStreak: "Longest Streak",
+      statsDaysUnit: "days",
     },
     hobbies: {
       section: { primary: "Beyond the Code", secondary: "Side Quests" },
@@ -141,10 +154,10 @@ export const copy = {
     },
     home: {
       section: { primary: "Aperçu", secondary: "Entrée" },
-      titleLine1: "Étudiant finissant en informatique",
+      titleLine1: "Diplômé en informatique",
       titleLine2: "Développeur full-stack",
-      p1: "Salut! Je suis étudiant au programme CST du Collège Dawson (diplôme en juin 2026), et je mène les projets de bout en bout, de l'architecture jusqu'au déploiement.",
-      p2: "J'aime aller au-delà des cours avec des projets personnels et des bootcamps, et j'ai développé une solide expérience en développement full-stack. Je travaille bien en équipes agiles, surtout quand la collaboration et la bonne ambiance vont de pair :)",
+      p1: "Salut! Je suis récemment diplômé du programme CST du Collège Dawson. Je mène les projets de bout en bout, de l'architecture jusqu'au déploiement, et je recherche des rôles en développement full-stack pour concevoir, construire et déployer des fonctionnalités en production.",
+      p2: "J'ai une solide expérience en développement full-stack, ainsi qu'en contrôle qualité et en pratiques DevOps. Je travaille bien en équipes agiles, surtout quand la collaboration et la bonne ambiance vont de pair :)",
       getInTouch: "Me contacter",
       location: "Localisation",
       email: "Courriel",
@@ -155,17 +168,21 @@ export const copy = {
 
     experience: {
       section: { primary: "Expérience", secondary: "Carnet de Quêtes" },
+      pressToOpen: "ouvrir",
+      close: "FERMER",
+      highlights: "Faits saillants",
     },
     skills: {
       section: { primary: "Compétences", secondary: "Arbre de Compétences" },
       sections: [
-        { title: "Langages de programmation", skills: ["Java", "Python", "C#", "JavaScript", "HTML", "CSS", "SQL", "Bash"] },
+        { title: "Langages de programmation", skills: ["Java", "Python", "C#", "JavaScript", "TypeScript", "HTML", "CSS", "SQL", "Bash"] },
         { title: "Développement frontend", skills: ["React", "Vite", "Avalonia", "HTML/CSS", "JavaScript (ES Modules)", "Bootstrap"] },
         { title: "Backend et API", skills: ["Node.js", "Express", "Flask", ".NET (Entity Framework)", "JDBC", "API REST"] },
         { title: "Bases de données & données", skills: ["PostgreSQL", "MongoDB", "SQLite", "MySQL", "Room (Android)"] },
         { title: "IA & apprentissage automatique", skills: ["Scikit-learn", "TensorFlow", "Transformers", "Neural Networks", "Decision Trees", "Transfer Learning", "Model Fine-tuning", "Google Colab"] },
-        { title: "DevOps & outillage", skills: ["Git (GitHub, GitLab)", "Docker", "CI/CD", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
+        { title: "DevOps & outillage", skills: ["Git (GitHub, GitLab, Bitbucket)", "Docker", "CI/CD", "TeamCity", "Jira", "Linux", "Nginx", "Postman", "VS Code", "Visual Studio"] },
         { title: "Pratiques d’ingénierie", skills: ["Collaboration d’équipe", "Agile & SCRUM", "Workflows de versionnement", "Tests et débogage", "Développement orienté projets", "Mentalité DevOps"] },
+        { title: "Assurance qualité et tests", skills: ["Playwright", "Cucumber (BDD)", "TestRail"] },
       ],
     },
     projects: {
@@ -190,6 +207,16 @@ export const copy = {
     githubChart: {
       title: "Activité GitHub",
       alt: "Contributions GitHub d’Artem Brandt",
+      scrollHint: "← glissez pour voir l’année complète →",
+      contributionsLabel: "{count} contributions en {year}",
+      loading: "Chargement des contributions…",
+      error: "Impossible de charger les données en direct — affichage de l’activité récente.",
+      less: "Moins",
+      more: "Plus",
+      statsDailyAvg: "Moyenne quotidienne",
+      statsBestDay: "Meilleur jour",
+      statsStreak: "Plus longue série",
+      statsDaysUnit: "jours",
     },
     hobbies: {
       section: { primary: "Au-delà du Code", secondary: "Quêtes Secondaires" },

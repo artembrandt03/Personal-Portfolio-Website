@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getCopy } from "../../i18n/copy.js";
+import Divider from "../ui/Divider.jsx";
 import settingsIcon from "../../assets/images/setting.png";
 import brightnessIcon from "../../assets/images/brightness.png";
 import nightModeIcon from "../../assets/images/night-mode.png";
@@ -27,6 +28,8 @@ export default function Header({
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const settingsButtonRef = useRef(null);
   const settingsPanelRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const menuPanelRef = useRef(null);
 
   useEffect(() => {
     if (!isSettingsOpen) return;
@@ -54,6 +57,33 @@ export default function Header({
       document.removeEventListener("keydown", handleEscape);
     };
   }, [isSettingsOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handlePointerDown = (event) => {
+      const isInButton = menuButtonRef.current?.contains(event.target);
+      const isInPanel = menuPanelRef.current?.contains(event.target);
+
+      if (!isInButton && !isInPanel) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isMenuOpen]);
 
   const handleToggleLanguage = () => {
     if (typeof onToggleLanguage === "function") {
@@ -83,12 +113,6 @@ export default function Header({
     { id: "projects", label: navLabels.projects },
     { id: "hobbies", label: navLabels.hobbies },
   ];
-  const mobileWarning =
-    c.header.mobileWarning ??
-    (language === "fr"
-      ? "Interface mobile en cours de developpement. Des bugs visuels peuvent apparaitre."
-      : "Mobile UI in development. Visual bugs may appear.");
-
   const handleNavClick = (id) => {
     scrollToId(id);
     setIsMenuOpen(false);
@@ -202,6 +226,7 @@ export default function Header({
 
           <button
             type="button"
+            ref={menuButtonRef}
             className={`headerMenuToggle ${isMenuOpen ? "isOpen" : ""}`}
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
@@ -212,13 +237,39 @@ export default function Header({
           </button>
         </div>
 
-        <div className="container headerMobileWarning" role="note">
-          {mobileWarning}
-        </div>
+      </header>
 
-        <div className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}>
-          <div className="container headerMenuInner">
-            <div className="headerMenuToggles">
+      {/* Rendered outside <header> on purpose: the header has a backdrop-filter
+          (for its blur), which makes it the containing block for any
+          position:fixed descendant — that clipped this drawer to the header's
+          own small box instead of the full viewport. Living as a sibling here
+          keeps it fixed to the viewport like a real side menu. */}
+      <div
+        className={`headerMenuBackdrop ${isMenuOpen ? "isOpen" : ""}`}
+        aria-hidden="true"
+        onClick={() => setIsMenuOpen(false)}
+      />
+
+      <div
+        className={`headerMenuPanel ${isMenuOpen ? "isOpen" : ""}`}
+        ref={menuPanelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+      >
+        <div className="headerMenuInner">
+          <div className="headerMenuPanelHeader">
+            <span className="headerMenuPanelTitle">MENU</span>
+            <button className="closeBtn" onClick={() => setIsMenuOpen(false)}>
+              [ {c.experience.close} ]
+            </button>
+          </div>
+
+          <Divider soft />
+
+          <div className="headerMenuToggles">
+            <div className="headerSettingsGroup">
+              <span className="headerSettingsLabel">{c.header.settings?.language ?? "Language"}</span>
               <button
                 className="langToggle headerMenuLangToggle"
                 onClick={handleToggleLanguage}
@@ -234,7 +285,10 @@ export default function Header({
                   FR
                 </span>
               </button>
+            </div>
 
+            <div className="headerSettingsGroup">
+              <span className="headerSettingsLabel">{c.header.settings?.colorTheme ?? "Color Theme"}</span>
               <button
                 className="themeToggle headerMenuThemeToggle"
                 onClick={handleToggleTheme}
@@ -249,7 +303,10 @@ export default function Header({
                   DARK
                 </span>
               </button>
+            </div>
 
+            <div className="headerSettingsGroup">
+              <span className="headerSettingsLabel">{c.header.settings?.labelMode ?? "Label Mode"}</span>
               <button
                 className="modeToggle headerMenuThemeToggle"
                 onClick={handleToggleLabelMode}
@@ -265,21 +322,23 @@ export default function Header({
                 </span>
               </button>
             </div>
-
-            <nav className="headerMenuNav" aria-label="Primary navigation">
-              {nav.map((x) => (
-                <button
-                  key={x.id}
-                  onClick={() => handleNavClick(x.id)}
-                  className="navBtn headerMenuNavBtn"
-                >
-                  [ {x.label} ]
-                </button>
-              ))}
-            </nav>
           </div>
+
+          <Divider soft />
+
+          <nav className="headerMenuNav" aria-label="Primary navigation">
+            {nav.map((x) => (
+              <button
+                key={x.id}
+                onClick={() => handleNavClick(x.id)}
+                className="navBtn headerMenuNavBtn"
+              >
+                [ {x.label} ]
+              </button>
+            ))}
+          </nav>
         </div>
-      </header>
+      </div>
 
       <div className={`headerSettingsDock ${isSettingsOpen ? "isOpen" : ""}`}>
         <div className="container headerSettingsDockInner">{settingsContent}</div>
