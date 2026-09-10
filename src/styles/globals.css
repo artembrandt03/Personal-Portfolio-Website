@@ -22,11 +22,6 @@ a:hover {
   text-decoration: underline;
 }
 
-::selection {
-  background: var(--fg);
-  color: var(--bg);
-}
-
 .container {
   width: 100%;
   max-width: var(--maxw);
@@ -1388,10 +1383,12 @@ footer {
 
 /* Fix the “random highlighted” look:
    your screenshot is just text selection styling.
-   Keep it subtle so it doesn’t look like a white marker. */
+   Keep it subtle so it doesn’t look like a white marker.
+   Uses --fg-rgb (theme-aware) instead of hardcoded white so the
+   highlight and text stay readable in both dark and light theme. */
 ::selection {
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
+  background: rgba(var(--fg-rgb), 0.18);
+  color: var(--fg);
 }
 
 .skillsGrid {
