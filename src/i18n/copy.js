@@ -82,6 +82,7 @@ export const copy = {
     githubChart: {
       title: "GitHub Activity",
       alt: "Artem Brandt GitHub contributions",
+      scrollHint: "← swipe to see the full year →",
     },
     hobbies: {
       section: { primary: "Beyond the Code", secondary: "Side Quests" },
@@ -197,6 +198,7 @@ export const copy = {
     githubChart: {
       title: "Activité GitHub",
       alt: "Contributions GitHub d’Artem Brandt",
+      scrollHint: "← glissez pour voir l’année complète →",
     },
     hobbies: {
       section: { primary: "Au-delà du Code", secondary: "Quêtes Secondaires" },

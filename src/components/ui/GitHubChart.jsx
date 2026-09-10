@@ -28,16 +28,16 @@ export default function GitHubChart({ language = "en" }) {
         artembrandt03
       </div>
 
-      <img
-        src="https://ghchart.rshah.org/artembrandt03"
-        alt={c.githubChart.alt}
-        style={{
-          width: "100%",
-          display: "block",
-          filter: "var(--github-chart-filter)",
-        }}
-        loading="lazy"
-      />
+      <div className="githubChartScroll">
+        <img
+          src="https://ghchart.rshah.org/artembrandt03"
+          alt={c.githubChart.alt}
+          className="githubChartImg"
+          loading="lazy"
+        />
+      </div>
+
+      <div className="githubChartScrollHint">{c.githubChart.scrollHint}</div>
     </div>
   );
 }

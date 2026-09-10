@@ -1306,8 +1306,40 @@ header {
   background: rgba(var(--bg-rgb), 0.28);
 }
 
-.githubChartWrap {
-  margin: 0 au2to;
+.githubChartImg {
+  width: 100%;
+  display: block;
+  filter: var(--github-chart-filter);
+}
+
+.githubChartScrollHint {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  /* The chart image is a fixed year-long grid — squeezing it to width:100%
+     on a narrow phone makes every cell illegibly small. Instead give it a
+     legible minimum width and let the wrapper scroll horizontally. */
+  .githubChartScroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -4px;
+    padding: 0 4px;
+  }
+
+  .githubChartImg {
+    width: auto;
+    min-width: 640px;
+  }
+
+  .githubChartScrollHint {
+    display: block;
+    margin-top: 8px;
+    color: var(--faint);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
 }
 
 /* Footer safety */
