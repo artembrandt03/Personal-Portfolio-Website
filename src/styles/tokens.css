@@ -34,6 +34,13 @@
   --common: #34d399;
 
   --radius: 14px;
+
+  /* GitHub-style contribution heatmap levels (0 = none .. 4 = most) */
+  --gh-level-0: rgba(255, 255, 255, 0.06);
+  --gh-level-1: #0e4429;
+  --gh-level-2: #006d32;
+  --gh-level-3: #26a641;
+  --gh-level-4: #39d353;
 }
 
 /* Light theme */
@@ -64,4 +71,10 @@
   --epic: #6d28d9;
   --rare: #0369a1;
   --common: #059669;
+
+  --gh-level-0: rgba(26, 26, 26, 0.06);
+  --gh-level-1: #9be9a8;
+  --gh-level-2: #40c463;
+  --gh-level-3: #30a14e;
+  --gh-level-4: #216e39;
 }

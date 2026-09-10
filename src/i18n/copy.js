@@ -83,6 +83,11 @@ export const copy = {
       title: "GitHub Activity",
       alt: "Artem Brandt GitHub contributions",
       scrollHint: "← swipe to see the full year →",
+      contributionsLabel: "{count} contributions in {year}",
+      loading: "Loading contributions…",
+      error: "Couldn't load live data — showing recent activity instead.",
+      less: "Less",
+      more: "More",
     },
     hobbies: {
       section: { primary: "Beyond the Code", secondary: "Side Quests" },
@@ -199,6 +204,11 @@ export const copy = {
       title: "Activité GitHub",
       alt: "Contributions GitHub d’Artem Brandt",
       scrollHint: "← glissez pour voir l’année complète →",
+      contributionsLabel: "{count} contributions en {year}",
+      loading: "Chargement des contributions…",
+      error: "Impossible de charger les données en direct — affichage de l’activité récente.",
+      less: "Moins",
+      more: "Plus",
     },
     hobbies: {
       section: { primary: "Au-delà du Code", secondary: "Quêtes Secondaires" },
