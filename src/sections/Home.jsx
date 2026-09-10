@@ -106,7 +106,7 @@ export default function Home({ language = "en", labelMode = "professional" }) {
                 <button
                   key={lang}
                   type="button"
-                  className="kbd kbdButton"
+                  className={`kbd kbdButton${idx === 2 ? " ukraineHintButton" : ""}`}
                   onClick={() => handleLanguageChipClick(lang)}
                   aria-label={idx === 2 ? "Ukrainian easter egg" : undefined}
                 >
